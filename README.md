@@ -49,7 +49,7 @@ The following instructions successfully build Grovolve on a fresh installation o
 
 #### Building on Mac
 
-The following instructions successfully build NovoNav on OS X 10.9 Mavericks:
+The following instructions successfully build Grovolve on OS X 10.9 Mavericks:
 
 1. Install Xcode using the App Store.
 2. Install Homebrew: [brew.sh](http://brew.sh/)
@@ -63,7 +63,7 @@ The following instructions successfully build NovoNav on OS X 10.9 Mavericks:
 
 #### Building on Windows
 
-Building on a PC is a bit tougher due to the lack of a standard package manager that can take care of all dependencies.  It's easiest to downloaded each dependency manually and the Qt SDK, and then build the program using the included IDE, Qt Creator.  The following instructions successfully build NovoNav on Windows 7:
+Building on a PC is a bit tougher due to the lack of a standard package manager that can take care of all dependencies.  It's easiest to downloaded each dependency manually and the Qt SDK, and then build the program using the included IDE, Qt Creator.  The following instructions successfully build Grovolve on Windows 7:
 
 1. Install Visual Studio Express 2013: [www.visualstudio.com](http://www.visualstudio.com/)
 2. Install Qt SDK: [qt-project.org](http://qt-project.org/)
