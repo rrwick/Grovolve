@@ -526,7 +526,49 @@ a.button {
   line-height: 1.2;
   color: #fff;
 }
+a.button_windows {
+  width: 134px;
+  height: 58px;
+  padding-top: 22px;
+  padding-left: 68px;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  font-size: 23px;
+  line-height: 1.2;
+  color: #fff;
+}
+a.button_mac {
+  width: 134px;
+  height: 58px;
+  padding-top: 22px;
+  padding-left: 68px;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  font-size: 23px;
+  line-height: 1.2;
+  color: #fff;
+}
+a.button_linux {
+  width: 134px;
+  height: 58px;
+  padding-top: 22px;
+  padding-left: 68px;
+  font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
+  font-size: 23px;
+  line-height: 1.2;
+  color: #fff;
+}
 a.button small {
+  display: block;
+  font-size: 11px;
+}
+a.button_windows small {
+  display: block;
+  font-size: 11px;
+}
+a.button_mac small {
+  display: block;
+  font-size: 11px;
+}
+a.button_linux small {
   display: block;
   font-size: 11px;
 }
@@ -536,15 +578,30 @@ header a.button {
   right: 0;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
 }
-aside a.button {
+aside a.button_windows {
   display: block;
   width: 138px;
   padding-left: 64px;
   margin-bottom: 20px;
   font-size: 21px;
-  background: transparent url(../images/download-button.png) 0 0 no-repeat;
+  background: transparent url(../images/download-windows-button.png) 0 0 no-repeat;
 }
-
+aside a.button_mac {
+  display: block;
+  width: 138px;
+  padding-left: 64px;
+  margin-bottom: 20px;
+  font-size: 21px;
+  background: transparent url(../images/download-mac-button.png) 0 0 no-repeat;
+}
+aside a.button_linux {
+  display: block;
+  width: 138px;
+  padding-left: 64px;
+  margin-bottom: 20px;
+  font-size: 21px;
+  background: transparent url(../images/download-linux-button.png) 0 0 no-repeat;
+}
 
 code, pre {
   margin-bottom: 30px;
