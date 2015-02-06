@@ -38,42 +38,42 @@ Grovolve users are encouraged to download the ready-to-use executable files avai
 The following instructions successfully build Grovolve on a fresh installation of Ubuntu 14.04:
 
 1. Ensure the package lists are up-to-date: `sudo apt-get update`
-2. Install the prerequisite packages: `sudo apt-get install build-essential qtbase5-dev boost-dev-all-or-something tbb-or-something`
-3. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/grovolve`
-4. Open a terminal in the Grovolve directory
+2. Install the prerequisite packages: `sudo apt-get install build-essential qtbase5-dev libboost-all-dev libtbb-dev`
+3. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
+4. Open a terminal in the Grovolve directory.
 5. Set the environment variable to specify that you will be using Qt 5, not Qt 4: `export QT_SELECT=5`
 6. Run qmake to generate a Makefile: `qmake`
 7. Build the program: `make`
-8. `Grovolve` should now be an executable file
+8. `Grovolve` should now be an executable file.
 9. Optionally, copy the program into /usr/local/bin: `sudo make install`
 
 #### Building on Mac
 
 The following instructions successfully build NovoNav on OS X 10.9 Mavericks:
 
-1. Install Xcode using the App Store
+1. Install Xcode using the App Store.
 2. Install Homebrew: [brew.sh](http://brew.sh/)
-3. Install the prerequisite packages: `brew install qt5 boost-or-something tbb-or-something`
-4. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/grovolve`
-5. Open a terminal in the Grovolve directory
+3. Install the prerequisite packages: `brew install qt5 boost tbb`
+4. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
+5. Open a terminal in the Grovolve directory.
 6. Run qmake to generate a Makefile: `/usr/local/opt/qt5/bin/qmake`
 7. Build the program: `make`
-8. `Grovolve` should now be an application bundle
-9. Optionally, copy the program into the 'Applications' folder
+8. `Grovolve` should now be an application bundle.
+9. Optionally, copy the program into the 'Applications' folder.
 
 #### Building on Windows
 
 Building on a PC is a bit tougher due to the lack of a standard package manager that can take care of all dependencies.  It's easiest to downloaded each dependency manually and the Qt SDK, and then build the program using the included IDE, Qt Creator.  The following instructions successfully build NovoNav on Windows 7:
 
-1. Install Visual Studio Express 2013 [www.visualstudio.com](http://www.visualstudio.com/)
-2. Install Qt SDK [qt-project.org](http://qt-project.org/)
-3. Download Boost, compiled by Visual C++ 2013 (MSVC 12.0) [sourceforge.net/projects/boost/files/boost-binaries](http://sourceforge.net/projects/boost/files/boost-binaries/)
-4. Download a compiled copy of Intel TBB [www.threadingbuildingblocks.org/download](https://www.threadingbuildingblocks.org/download/)
-5. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/grovolve`
+1. Install Visual Studio Express 2013: [www.visualstudio.com](http://www.visualstudio.com/)
+2. Install Qt SDK: [qt-project.org](http://qt-project.org/)
+3. Download Boost, compiled by Visual C++ 2013 (MSVC 12.0): [sourceforge.net/projects/boost/files/boost-binaries](http://sourceforge.net/projects/boost/files/boost-binaries/)
+4. Download a compiled copy of Intel TBB: [www.threadingbuildingblocks.org/download](https://www.threadingbuildingblocks.org/download/)
+5. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
 6. Ensure that the Grovolve directory, the Boost directory and the TBB directory are in the same parent directory.
 7. If you have different versions of Boost or TBB than are specified in the Grovolve.pro file, it will be necessary to adjust the filepaths to those library in the Grovolve.pro file.
-8. Open Qt Creator, load Grovolve.pro and configure the project
-9. Switch to a Release configuration and build the project
+8. Open Qt Creator, load Grovolve.pro and configure the project.
+9. Switch to a Release configuration and build the project.
 
 ## Contributing
 
