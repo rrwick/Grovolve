@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>pause-256.png</file>
+        <file>play-256.png</file>
+        <file>reset-256.png</file>
+        <file>settings-256.png</file>
+        <file>sun-256.png</file>
+        <file>tree-512.png</file>
+        <file>environment.png</file>
+        <file>information-256.png</file>
+        <file>information-256-inactive.png</file>
+        <file>cross-128.png</file>
+        <file>tick-128.png</file>
+        <file>graph-128.png</file>
+        <file>load-256.png</file>
+        <file>save-256.png</file>
+        <file>exit-256.png</file>
+        <file>help-256.png</file>
+        <file>loadsettings-256.png</file>
+        <file>savesettings-256.png</file>
+        <file>saveimage-256.png</file>
+        <file>plantparts.png</file>
+        <file>shadows.png</file>
+        <file>evolution.png</file>
+        <file>lifecycle.png</file>
+    </qresource>
+</RCC>

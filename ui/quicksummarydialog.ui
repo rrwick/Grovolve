@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QuickSummaryDialog</class>
+ <widget class="QDialog" name="QuickSummaryDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>664</width>
+    <height>440</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Grovolve quick summary</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Introduction</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QLabel" name="aboutLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Grovolve is free educational software that provides the necessary conditions for true evolution by natural selection.
+
+Simulated plants grow, reproduce and die, and they can evolve to be fit in their environment.  Through this process of evolution, they can become much more complex, evolving from simple, grass-like plants to large, complex tree-like plants.
+
+While the plants and their environment are just a computer simulation, the evolution that they undergo is very much real.  Grovolve does not simulate evolution, it demonstrates it.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="iconLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>256</width>
+           <height>256</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>256</width>
+           <height>256</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images/images.qrc">:/icons/tree-512.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Plants</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="aboutLabel_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Plants in the simulation have three parts: leaves, seedpods and branches.
+
+Leaves are the part of a plant that collects light and provides energy to the plant. Without these, a plant will have no way to feed itself and it will starve.
+
+Sporangia (singular seedpod) are the parts that produce seeds that can become plants of the next generation. Without these, a plant will not have any offspring.
+
+Branches provide the physical structure for the plant. They support the weight of the plant's parts, so heavier plants need thicker branches. Each branch can have multiple parts growing from its end, either leaves, seedpods or more branches.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>225</width>
+           <height>218</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>250</width>
+           <height>218</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images/images.qrc">:/icons/plantparts.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Energy</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QLabel" name="aboutLabel_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>The currency of a plant's life is energy.  A plant can gain energy in only one way - absorbing light with leaves.
+
+A number of things expend the plant's energy.  Growing takes energy, and maintaining existing parts also consumes some energy.  When plants produce seeds, they put some of their own energy into the seeds which, if the seed is destined to become a new plant, will serve as that new plant's initial energy reserve.
+
+When a plant runs out of energy entirely, it dies of starvation and disappears from the program.  Plants can also die of 'bad luck' as there is a small chance of death for every tick of the clock.  This simulates all of the other reasons a plant might die: disease, fire, herbivores, etc.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>123</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>400</width>
+              <height>191</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>400</width>
+              <height>191</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../images/images.qrc">:/icons/shadows.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>122</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Reproduction</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="aboutLabel_4">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>A plant's seedpods produce seeds at a constant rate which go into the seed pool.  This seed pool is not visible but exists in the program's memory.  Each seed contains a copy of the genome of the plant that created it.
+
+Pairs of seeds in the seed pool combine to form new plants (a bit different from how real plants reproduce).  When two seeds combine, they shuffle their genomes together to create a new genome that is a combination of the two.  In this manner, the plant reproduction is sexual - each plant has two parent and inherits half its genome from each parent.  Mutations can also occur at this stage, introducing new, random variation into the genomes.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>254</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>259</width>
+           <height>200</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images/images.qrc">:/icons/lifecycle.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>Genome</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="aboutLabel_6">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Each plant has a genome, that like ours, is made up of a four-letter alphabet.  It specifies all of the details about how the plant will grow.  Exactly how it does this is not particularly important - what is important is that a change to the genome can change how the plant grows.
+
+Genomes change in two ways.  They are shuffled together when two parent plants sexually reproduce to make a child plant.  And they acquire mutations, when one letter in the genome randomly changes to another.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="genomeTextEdit">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="plainText">
+          <string>TCGTTTAGATTGCGTTTTGCGAAACAGCGAGATACGGACTAGGGAAGCCACCTCCGAAACCACGTTCATCAGTGCGACAAAAACCGCCGACTAGGAGCGGAGACGGTCCTCCGCTCTACTTGGTTCGGCTTGGAGAAACACTCATTTTTCGTCCCGGAAACCTGCGTGAAGCGCCTGTCGTAGCCCATATCGAATGCGTCGACACATCCCACGCACGTGAACTCTATAACAATTTGCTGAAGGCGGGTTTGAAATAAAAAAGATCATCGACCGAAAATTAAGAAATTGAACGCGCTTACACACAAATCACTAAAAGTGCGCATTAAGCACATACCAGGTAAAATCCAGTGCGCCTATTGTACGAGACATAAACCTCTTGATACGTGTCGACCAGATAATAAATTAAAACGCTGACGTAAATAATAATAGGTCAAAAGCAAAATACAACTAAAAGAAAACTGCGTAGGAAATAATGAACTTAGGATCACCAGGTTCCGAACATGAGAGTTGTCCCAAGGGACCGTATAGCGAGGAATCCTATATATATGTACATACATAACCTCACTTGTAGTAGGCCTTAACAACAACGATGTTCTCCAAACGGGACAAACTAATATGAATCTCACTAATCCGCAACTATCACACCTATTAGAATCTACTGACCAATGCAACCAACCCTAAAGCTCCCTGACTGTTGCGTGGGTGTTCAATACCCGACCTAACCCTCGATAGAAGTTTAAAATAGTTATCGGGAAGAAGGCAACTCCGAGCGAAAACCGCAACTTACGAAAGATAGTCTGGATAAGCACGTACGCCTTTAAGGCAGGTTCTGCCAGAGAGCACTCCACCTAGTTTGTGCTGGCAGACAAACACCGAAAACCAACTGGATCGACCAAAGTGCGCACCTAAGGCATCGGCCGGCAGTCGCACGCTAACCCTCGAGGGGACACACTCCGACAATAATCACGACTCTTTAACCTGGACCGCCCGCTAAGAGTTAATTCTTAATACAACCCCGTGCGTCCCAAACTAATCATCGTGCTACAGACAAGATGGGACCCGCTTAGCACTATGTTATTTACGCGGGGACTTCGGTTGCCCTGAGTCGACAACAGGGCGGCACTGCCGATCACCGTAACAAATAACACCGCTTTGGCTCATGACAGTCTCTAGTCCCTGCCCAAATCTCAATCCAGTCGCAAGCGTGCCAACGGAGTTCCACACAAAAAGGTCTTTAAAGCTCTAGACGCATCGTTGTCGCAACGTATCGTATGGACGTTATGGCTATTGAGAGACGTAAAATACCGGACACTAGTTAAATAATTGCAGGCCATGTTTCACGCGTATGCCGTCGCACCCTCGACTATGCTAGCTACAGGAAGTGTGCGTGGGATACCCTAACTCCCAGCCTAAGGTATACAAAGAAGACATTGAAACGTCCAGAATTGTGCCTAGAGCTGGAAGGCGTCTCCGCGGCACGAGTGTTCGCTAGCCAAGTATTAGTTGCATGCTCACTGTCTTAGCAATACTGAGGTAAAGGGTAATCGAATGCTACACTAGAATCTCCAGTCTAATCACGATGTGAATAACGAGATGATATTCCACCCAACCCTCTGACATCGGCTTGGGGACCACCAGTAATACCATCTGAGCGTACGGCAGCGAACGGCCGCACTGAACAAAATTGGTGTGTTCACCTCGCATCAACGCACGTGTTGTGAAGAAGCCTGTGCTAAACCGAAACAAGGTACCGATTAGCAACATCGCGCGTGCCCTTCAATCTTCCCAGATGCATCGAGGCCTTGATTTAACAACATTAGGCGAGGGAGCATGACGAATAACTTAATAAACCCTGGTTCACCTGGGTAAAAGCGCCTTGCAAATACAAGATTGGGTGTTGTCTATGCCGAGGGACCCAAGGCCCTCTTTCGCCCTAACCGAACACCGAGACAATGACGCAGATGGATGACATGCATTACCACCCCTATAGAATTAAGCAC</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::NoTextInteraction</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>Evolution</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="aboutLabel_5">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>The forms into which the plants evolve is a result of the process of natural selection.  Plants that happen to be better suited to live in the current environment are more likely to survive, reproduce and spread the genes that made them successful.  Conversely, plants that are ill suited to their environment are more likely to die without leaving offspring.
+
+While the mutations introduced into genomes are random, which organisms survive (the process of natural selection) is not.  It is through this continuous process of 'survival of the fittest' that advantageous mutations accumulate in the gene pool and deleterious mutations are discarded.  Over time, the accumulation of advantageous mutations can lead to large changes, resulting in plants that are bigger and more complex than their ancestors.</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>132</width>
+           <height>300</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>132</width>
+           <height>300</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images/images.qrc">:/icons/evolution.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../images/images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
