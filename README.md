@@ -52,7 +52,7 @@ The following instructions successfully build Grovolve on a fresh installation o
 The following instructions successfully build NovoNav on OS X 10.9 Mavericks:
 
 1. Install Xcode using the App Store
-2. Install Homebrew: [http://brew.sh/](http://brew.sh/)
+2. Install Homebrew: [brew.sh](http://brew.sh/)
 3. Install the prerequisite packages: `brew install qt5 boost-or-something tbb-or-something`
 4. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/grovolve`
 5. Open a terminal in the Grovolve directory
@@ -65,10 +65,10 @@ The following instructions successfully build NovoNav on OS X 10.9 Mavericks:
 
 Building on a PC is a bit tougher due to the lack of a standard package manager that can take care of all dependencies.  It's easiest to downloaded each dependency manually and the Qt SDK, and then build the program using the included IDE, Qt Creator.  The following instructions successfully build NovoNav on Windows 7:
 
-1. Install Visual Studio 2013 [http://brew.sh/](http://brew.sh/)
-2. Install Qt SDK [http://brew.sh/](http://brew.sh/)
-3. Download a compiled copy of Boost [http://brew.sh/](http://brew.sh/)
-4. Download a compiled copy of Intel TBB [http://brew.sh/](http://brew.sh/)
+1. Install Visual Studio Express 2013 [www.visualstudio.com](http://www.visualstudio.com/)
+2. Install Qt SDK [qt-project.org](http://qt-project.org/)
+3. Download Boost, compiled by Visual C++ 2013 (MSVC 12.0) [sourceforge.net/projects/boost/files/boost-binaries](http://sourceforge.net/projects/boost/files/boost-binaries/)
+4. Download a compiled copy of Intel TBB [www.threadingbuildingblocks.org/download](https://www.threadingbuildingblocks.org/download/)
 5. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/grovolve`
 6. Ensure that the Grovolve directory, the Boost directory and the TBB directory are in the same parent directory.
 7. If you have different versions of Boost or TBB than are specified in the Grovolve.pro file, it will be necessary to adjust the filepaths to those library in the Grovolve.pro file.
