@@ -12,11 +12,34 @@ html {
   -ms-text-size-adjust: 100%; /* 2 */
 }
 
-img {
+img.logo {
     max-height: 115px;
     max-width: 139px;
 	border: 0;
 	margin-right: 18px;
+}
+
+img.progression {
+	float: right;
+    max-height: 273px;
+    max-width: 208px;
+	border: 0;
+	margin-left: 10px;
+}
+
+div.floatright {
+float: right;
+width: 160px;
+margin: 0 0 10px 10px;
+background-color: #fff;
+padding: 10px;
+}
+
+div.floatright img {
+border-top: 1px solid #25450c;
+border-right: 1px solid #25450c;
+border-bottom: 1px solid #25450c;
+border-left: 1px solid #25450c;
 }
 
 
@@ -160,6 +183,11 @@ mark {
 
 small {
   font-size: 80%;
+}
+small-green {
+  display: block;
+  font-size: 70%;
+  color: #192d08;
 }
 
 /**
@@ -457,7 +485,7 @@ header {
   padding-bottom: 30px;
   font-family: Arial, Helvetica, sans-serif;
   background: #2f2d11 url(../images/header-bg.jpg) 0 0 repeat-x;
-  border-bottom: solid 1px #4fa127;
+  border-bottom: solid 1px #25450c;
 }
 
 header h1 {
@@ -807,10 +835,13 @@ footer a:hover {
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-  img {
+  img.logo {
     max-height: 100px;
     max-width: 121px;
 	margin-right: 14px;
+  }
+  div.floatright {
+	width: 150px;
   }
   .inner {
     width: 740px;
@@ -844,10 +875,13 @@ footer a:hover {
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
-  img {
+  img.logo {
     max-height: 80px;
     max-width: 97px;
 	margin-right: 10px;
+  }
+  div.floatright {
+	width: 120px;
   }
   .inner {
     width: 93%;
