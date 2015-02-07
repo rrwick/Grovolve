@@ -12,6 +12,11 @@ html {
   -ms-text-size-adjust: 100%; /* 2 */
 }
 
+img {
+  float: right;
+  margin: 0px 0px 0px 0px;
+}
+
 /**
  * Remove default margin.
  */
