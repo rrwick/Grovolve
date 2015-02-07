@@ -877,7 +877,13 @@ footer a:hover {
     background-image: none;
     border-top: solid 1px #ddd;
   }
-  aside#sidebar a.button {
+  aside#sidebar a.button_windows {
+    display: inline-block;
+  }
+  aside#sidebar a.button_mac {
+    display: inline-block;
+  }
+  aside#sidebar a.button_linux {
     display: inline-block;
   }
   #main-content h1:before,
