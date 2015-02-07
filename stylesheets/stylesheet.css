@@ -13,10 +13,10 @@ html {
 }
 
 img {
-    max-height: 120px;
-    max-width: 145px;
+    max-height: 115px;
+    max-width: 139px;
 	border: 0;
-	margin-right: 20px;
+	margin-right: 18px;
 }
 
 
@@ -433,7 +433,7 @@ th {
 
 /* LAYOUT STYLES */
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
@@ -453,9 +453,9 @@ a:hover {
 }
 
 header {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
   background: #2f2d11 url(../images/header-bg.jpg) 0 0 repeat-x;
   border-bottom: solid 1px #4fa127;
 }
@@ -464,11 +464,12 @@ header h1 {
   width: 940px;
   margin-top: 0;
   margin-bottom: 0.2em;
-  font-size: 72px;
+  font-size: 68px;
   font-weight: normal;
   line-height: 1;
   color: #fff;
   letter-spacing: -1px;
+  font-family: "Arial Black", Gadget, sans-serif;
 }
 
 header h2 {
@@ -526,7 +527,7 @@ a.button_windows {
   height: 58px;
   padding-top: 22px;
   padding-left: 68px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 23px;
   line-height: 1.2;
   color: #fff;
@@ -536,7 +537,7 @@ a.button_mac {
   height: 58px;
   padding-top: 22px;
   padding-left: 68px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 23px;
   line-height: 1.2;
   color: #fff;
@@ -546,7 +547,7 @@ a.button_linux {
   height: 58px;
   padding-top: 22px;
   padding-left: 68px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 23px;
   line-height: 1.2;
   color: #fff;
@@ -556,7 +557,7 @@ a.button_github {
   height: 58px;
   padding-top: 22px;
   padding-left: 68px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 23px;
   line-height: 1.2;
   color: #182c09;
@@ -679,7 +680,7 @@ form {
 #main-content h1 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 2.8em;
   font-weight: normal;
   color: #474747;
@@ -689,7 +690,7 @@ form {
 
 #main-content h2 {
   margin-bottom: 8px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: bold;
   color: #474747;
@@ -699,7 +700,7 @@ form {
 #main-content h3 {
   margin-top: 24px;
   margin-bottom: 8px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: bold;
   color: #474747;
@@ -708,7 +709,7 @@ form {
 
 #main-content h4 {
   margin-bottom: 8px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: bold;
   color: #474747;
@@ -717,7 +718,7 @@ form {
 
 #main-content h5 {
   margin-bottom: 8px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #474747;
   text-indent: 3px;
@@ -725,7 +726,7 @@ form {
 
 #main-content h6 {
   margin-bottom: 8px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: .8em;
   color: #474747;
   text-indent: 3px;
@@ -807,12 +808,15 @@ footer a:hover {
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
   img {
-    max-height: 110px;
-    max-width: 133px;
-	margin-right: 16px;
+    max-height: 100px;
+    max-width: 121px;
+	margin-right: 14px;
   }
   .inner {
     width: 740px;
+  }
+  header {
+    padding: 24px 0;
   }
   header h1, header h2 {
     width: 740px;
@@ -821,7 +825,7 @@ footer a:hover {
     font-size: 60px;
   }
   header h2 {
-    font-size: 30px;
+    font-size: 23px;
   }
   #main-content {
     width: 490px;
@@ -841,15 +845,15 @@ footer a:hover {
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
   img {
-    max-height: 88px;
-    max-width: 106px;
+    max-height: 80px;
+    max-width: 97px;
 	margin-right: 10px;
   }
   .inner {
     width: 93%;
   }
   header {
-    padding: 20px 0;
+    padding: 15px 0;
   }
   header .inner {
     position: relative;
@@ -858,10 +862,10 @@ footer a:hover {
     width: 100%;
   }
   header h1 {
-    font-size: 48px;
+    font-size: 44px;
   }
   header h2 {
-    font-size: 24px;
+    font-size: 19px;
   }
 
   #main-content,
