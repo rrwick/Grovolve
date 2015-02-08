@@ -485,6 +485,7 @@ header {
   padding-bottom: 30px;
   font-family: Arial, Helvetica, sans-serif;
   background: #2f2d11 url(../images/header-bg.jpg) 0 0 repeat-x;
+  background-size: 80px;
   border-bottom: solid 1px #25450c;
 }
 
