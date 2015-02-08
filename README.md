@@ -38,7 +38,8 @@ Grovolve users are encouraged to download the ready-to-use executable files avai
 The following instructions successfully build Grovolve on a fresh installation of Ubuntu 14.04:
 
 1. Ensure the package lists are up-to-date: `sudo apt-get update`
-2. Install the prerequisite packages: `sudo apt-get install build-essential qtbase5-dev libboost-all-dev libtbb-dev`
+2. Install the prerequisite packages: `sudo apt-get install build-essential qtbase5-dev libboost1.55-all-dev libtbb-dev`
+  * Other versions of the Boost library should also work, but using version 1.55 will ensure save file compatibility with other versions and platforms of Grovolve.
 3. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
 4. Open a terminal in the Grovolve directory.
 5. Set the environment variable to specify that you will be using Qt 5, not Qt 4: `export QT_SELECT=5`
@@ -54,6 +55,7 @@ The following instructions successfully build Grovolve on OS X 10.9 Mavericks:
 1. Install Xcode using the App Store.
 2. Install Homebrew: [brew.sh](http://brew.sh/)
 3. Install the prerequisite packages: `brew install qt5 boost tbb`
+  * Ideally, install version 1.55 of the Boost library, as this will ensure save file compatibility with other versions and platforms of Grovolve.
 4. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
 5. Open a terminal in the Grovolve directory.
 6. Run qmake to generate a Makefile: `/usr/local/opt/qt5/bin/qmake`
@@ -67,7 +69,8 @@ Building on a PC is a bit tougher due to the lack of a standard package manager 
 
 1. Install Visual Studio Express 2013: [www.visualstudio.com](http://www.visualstudio.com/)
 2. Install Qt SDK: [qt-project.org](http://qt-project.org/)
-3. Download Boost, compiled by Visual C++ 2013 (MSVC 12.0): [sourceforge.net/projects/boost/files/boost-binaries](http://sourceforge.net/projects/boost/files/boost-binaries/)
+3. Download Boost 1.55, compiled by Visual C++ 2013 (MSVC 12.0): [sourceforge.net/projects/boost/files/boost-binaries](http://sourceforge.net/projects/boost/files/boost-binaries/)
+  * Other versions of the Boost library should also work, but using version 1.55 will ensure save file compatibility with other versions and platforms of Grovolve.
 4. Download a compiled copy of Intel TBB: [www.threadingbuildingblocks.org/download](https://www.threadingbuildingblocks.org/download/)
 5. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
 6. Ensure that the Grovolve directory, the Boost directory and the TBB directory are in the same parent directory.
