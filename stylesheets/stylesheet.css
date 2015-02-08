@@ -609,35 +609,43 @@ a.button_github small {
 
 aside a.button_windows {
   display: block;
-  width: 138px;
-  padding-left: 64px;
+  width: 132px;
+  padding-left: 70px;
   margin-bottom: 20px;
+  margin-right: 10px;
   font-size: 21px;
   background: transparent url(../images/download-windows-button.png) 0 0 no-repeat;
+  background-size: 202px;
 }
 aside a.button_mac {
   display: block;
-  width: 138px;
-  padding-left: 64px;
+  width: 132px;
+  padding-left: 70px;
   margin-bottom: 20px;
+  margin-right: 10px;
   font-size: 21px;
   background: transparent url(../images/download-mac-button.png) 0 0 no-repeat;
+  background-size: 202px;
 }
 aside a.button_linux {
   display: block;
-  width: 138px;
-  padding-left: 64px;
+  width: 132px;
+  padding-left: 70px;
   margin-bottom: 20px;
+  margin-right: 10px;
   font-size: 21px;
   background: transparent url(../images/download-linux-button.png) 0 0 no-repeat;
+  background-size: 202px;
 }
 aside a.button_github {
   display: block;
-  width: 138px;
-  padding-left: 64px;
+  width: 132px;
+  padding-left: 70px;
   margin-bottom: 20px;
+  margin-right: 10px;
   font-size: 21px;
   background: transparent url(../images/github-button.png) 0 0 no-repeat;
+  background-size: 202px;
 }
 code, pre {
   margin-bottom: 30px;
