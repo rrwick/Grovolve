@@ -464,10 +464,7 @@ void MainWindow::advanceOneTick()
     m_environment->advanceOneTick();
 
     if (m_environment->possiblyChangeEnvironmentSize())
-    {
-        if (g_simulationSettings->displayOn)
-            setEnvironmentSize();
-    }
+        setEnvironmentSize();
 
 
     if (m_environment->getElapsedTime() % g_simulationSettings->autosaveInterval == 0)
