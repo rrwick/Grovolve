@@ -64,6 +64,13 @@ void SaverAndLoader::saveSimulation()
 
 void SaverAndLoader::loadSimulation()
 {
+    //It is awkward to load whether the program is in basic or advanced mode, so
+    //save the current state and restore it after the load.
+    //I could remove that setting from the SimulationSettings serialisation, but
+    //doing so would break compatibility with the existing save files.  Perhaps
+    //something to do in a future major version release.
+    bool advancedModeBeforeLoad = m_simulationSettings->advancedMode;
+
     std::ifstream ifs(m_fullFileName.toLocal8Bit().data(), std::ios_base::in | std::ios_base::binary);
     boost::iostreams::filtering_istream in;
     in.push(boost::iostreams::gzip_decompressor());
@@ -71,6 +78,8 @@ void SaverAndLoader::loadSimulation()
     boost::archive::text_iarchive ar(in);
 
     ar >> *m_environment >> *m_environmentSettings >> *m_simulationSettings >> *m_stats;
+
+    m_simulationSettings->advancedMode = advancedModeBeforeLoad;
 
     emit finishedLoading();
 }

@@ -876,7 +876,6 @@ void MainWindow::finishedLoading()
         m_environmentWidget->makeClouds();
     m_environmentWidget->update();
 
-    switchBasicAdvancedMode();
     setClickMode();
 }
 
