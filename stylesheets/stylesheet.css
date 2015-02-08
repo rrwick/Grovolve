@@ -42,6 +42,21 @@ border-bottom: 1px solid #25450c;
 border-left: 1px solid #25450c;
 }
 
+div.screenshot_thumbnail {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0 10px 10px;
+}
+
+img.screenshot_thumbnail {
+  max-height: 100px;
+  border-top: 1px solid #25450c;
+  border-right: 1px solid #25450c;
+  border-bottom: 1px solid #25450c;
+  border-left: 1px solid #25450c;
+}
+
+
 
 /**
  * Remove default margin.
