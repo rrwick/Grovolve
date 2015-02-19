@@ -127,6 +127,11 @@ StatsAndHistoryDialog::StatsAndHistoryDialog(QWidget * parent, const Environment
     connect(ui->historyTypeComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(genomeHistoryChanged()));
     connect(ui->genomeHistoryTimeSpinBox, SIGNAL(valueChanged(int)), this, SLOT(genomeHistorySpinBoxChanged()));
     connect(ui->genomeHistoryTimeSpinBox, SIGNAL(editingFinished()), this, SLOT(genomeHistorySpinBoxEditingFinished()));
+    connect(ui->customPlot, SIGNAL(mouseMove(QMouseEvent*)), this, SLOT(mouseMoveSignal(QMouseEvent*)));
+    connect(ui->customPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(mousePressSignal(QMouseEvent*)));
+    connect(ui->customPlot, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(mouseReleaseSignal(QMouseEvent*)));
+    connect(ui->customPlot, SIGNAL(beforeReplot()), this, SLOT(beforeReplot()));
+
 }
 
 StatsAndHistoryDialog::~StatsAndHistoryDialog()
@@ -177,7 +182,7 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->graph(1)->setData(getTimeVector(GROWN_PLANT_HEIGHT),
                                           getDataVector(GROWN_PLANT_HEIGHT));
 
-        ui->customPlot->legend->setVisible(true);
+        turnOnLegend();
         ui->customPlot->yAxis->setLabel("height");
         break;
 
@@ -196,7 +201,7 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->graph(1)->setData(getTimeVector(GROWN_PLANT_MASS),
                                           getDataVector(GROWN_PLANT_MASS));
 
-        ui->customPlot->legend->setVisible(true);
+        turnOnLegend();
         ui->customPlot->yAxis->setLabel("mass");
         break;
 
@@ -237,6 +242,14 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
     setGraphRange();
 }
 
+void StatsAndHistoryDialog::turnOnLegend()
+{
+    // set the placement of the legend (index 0 in the axis rect's inset layout) to not be
+    // border-aligned (default), but freely, so we can reposition it anywhere:
+    ui->customPlot->axisRect()->insetLayout()->setInsetPlacement(0, QCPLayoutInset::ipFree);
+    m_draggingLegend = false;
+    ui->customPlot->legend->setVisible(true);
+}
 
 
 
@@ -572,4 +585,49 @@ int StatsAndHistoryDialog::roundHistoryValue(int valueToRound)
     double ticks = double(valueToRound) / m_sizeOfEachTick;
     int roundedTicks = int(ticks + 0.5);
     return roundedTicks * m_sizeOfEachTick;
+}
+
+
+//The following code was taken from:
+//http://www.qcustomplot.com/index.php/support/forum/481
+void StatsAndHistoryDialog::mouseMoveSignal(QMouseEvent *event)
+{
+  if (m_draggingLegend)
+  {
+    QRectF rect = ui->customPlot->axisRect()->insetLayout()->insetRect(0);
+    // since insetRect is in axisRect coordinates (0..1), we transform the mouse position:
+    QPointF mousePoint((event->pos().x()-ui->customPlot->axisRect()->left())/(double)ui->customPlot->axisRect()->width(),
+                       (event->pos().y()-ui->customPlot->axisRect()->top())/(double)ui->customPlot->axisRect()->height());
+    rect.moveTopLeft(mousePoint-m_dragLegendOrigin);
+    ui->customPlot->axisRect()->insetLayout()->setInsetRect(0, rect);
+    ui->customPlot->replot();
+  }
+
+}
+
+void StatsAndHistoryDialog::mousePressSignal(QMouseEvent *event)
+{
+  if (ui->customPlot->legend->selectTest(event->pos(), false) > 0)
+  {
+    m_draggingLegend = true;
+    // since insetRect is in axisRect coordinates (0..1), we transform the mouse position:
+    QPointF mousePoint((event->pos().x()-ui->customPlot->axisRect()->left())/(double)ui->customPlot->axisRect()->width(),
+                       (event->pos().y()-ui->customPlot->axisRect()->top())/(double)ui->customPlot->axisRect()->height());
+    m_dragLegendOrigin = mousePoint-ui->customPlot->axisRect()->insetLayout()->insetRect(0).topLeft();
+  }
+}
+
+void StatsAndHistoryDialog::mouseReleaseSignal(QMouseEvent *event)
+{
+  Q_UNUSED(event)
+  m_draggingLegend = false;
+}
+
+void StatsAndHistoryDialog::beforeReplot()
+{
+  // this is to prevent the legend from stretching if the plot is stretched.
+  // Since we've set the inset placement to be ipFree, the width/height of the legend
+  // is also defined in axisRect coordinates (0..1) and thus would stretch.
+  // This is due to change in a future release (probably QCP 2.0) since it's basically a design mistake.
+  ui->customPlot->legend->setMaximumSize(ui->customPlot->legend->minimumSizeHint());
 }

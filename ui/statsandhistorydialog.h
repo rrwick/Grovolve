@@ -51,6 +51,8 @@ private:
     Ui::StatsAndHistoryDialog * ui;
     const Environment * m_environment;
     int m_sizeOfEachTick;
+    bool m_draggingLegend;
+    QPointF m_dragLegendOrigin;
 
     void setGraphRange();
     QString makeHistoryInfoCSVHeaderLine();
@@ -59,6 +61,7 @@ private:
     QVector<double> getTimeVector(GraphData graphData);
     QString getYAxisLabel(GraphData graphData);
     int roundHistoryValue(int valueToRound);
+    void turnOnLegend();
 
 private slots:
     void graphChanged(int newGraphIndex);
@@ -70,6 +73,10 @@ private slots:
     void setOrganismWidgetRange();
     void genomeHistorySpinBoxChanged();
     void genomeHistorySpinBoxEditingFinished();
+    void mouseMoveSignal(QMouseEvent *event);
+    void mousePressSignal(QMouseEvent *event);
+    void mouseReleaseSignal(QMouseEvent *event);
+    void beforeReplot();
 };
 
 #endif // ENVIRONMENTINFODIALOG_H
