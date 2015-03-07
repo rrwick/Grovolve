@@ -117,7 +117,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Version: 1.0.0
+          <string>Version: 1.0.1
 
 Copyright 2015 Ryan Wick</string>
          </property>
