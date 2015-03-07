@@ -566,11 +566,6 @@ void MainWindow::saveImageToFileManual()
 
     if (fullFileName != "") //User did not hit cancel
     {
-        WaitingDialog waitingDialog(this, "Saving...", false, false);
-        waitingDialog.show();
-        waitingDialog.setWindowModality(Qt::WindowModal);
-        QApplication::processEvents();
-
         g_simulationSettings->rememberPath(fullFileName);
         saveImageToFile2(fullFileName, true, true);
     }
@@ -587,8 +582,17 @@ QString MainWindow::getPaddedTimeString()
 
 void MainWindow::saveImageToFile2(QString saveFileName, bool highQuality, bool shadows)
 {
+    ui->controlsWidget->setEnabled(false);
+
+    WaitingDialog waitingDialog(this, "Saving image...", false, false);
+    waitingDialog.show();
+    waitingDialog.setWindowModality(Qt::WindowModal);
+    QApplication::processEvents();
+
     QImage saveImage = m_environmentWidget->paintSimulationToImage(highQuality, shadows);
     saveImage.save(saveFileName, 0, 50);
+
+    ui->controlsWidget->setEnabled(true);
 }
 
 
