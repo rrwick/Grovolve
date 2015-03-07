@@ -42,7 +42,8 @@ WaitingDialog::WaitingDialog(QWidget * parent, QString message, bool showCounter
     ui->messageLabel->setFont(g_extraLargeFont);
     ui->messageLabel->setText(message);
     setWindowTitle(message);
-    setFixedSize(sizeHint());
+    setFixedHeight(sizeHint().height());
+    setFixedWidth(sizeHint().width() * 1.3);
 
     g_organismsSavedOrLoaded = 0;
     g_seedsSavedOrLoaded = 0;

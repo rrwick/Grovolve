@@ -751,7 +751,7 @@ void MainWindow::saveSimulationManual()
     if (fullFileName != "") //User did not hit cancel
     {
         g_simulationSettings->rememberPath(fullFileName);
-        saveSimulation(fullFileName, history, "Saving");
+        saveSimulation(fullFileName, history, "Saving...");
     }
     else //User hit cancel
     {
@@ -766,7 +766,7 @@ void MainWindow::saveSimulationAutomatic()
 {
     m_resumeSimulationAfterSave = true;
     stopSimulation();
-    saveSimulation(m_autosavePath, true, "Autosaving");
+    saveSimulation(m_autosavePath, true, "Autosaving...");
 }
 
 
