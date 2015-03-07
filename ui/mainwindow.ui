@@ -15,6 +15,9 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -614,13 +617,6 @@
      </widget>
     </item>
     <item>
-     <widget class="Line" name="line_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
      <widget class="QLabel" name="simulationHiddenLabel">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -659,8 +655,8 @@ the simulation run.</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>445</width>
-         <height>665</height>
+         <width>466</width>
+         <height>667</height>
         </rect>
        </property>
       </widget>
@@ -674,7 +670,7 @@ the simulation run.</string>
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>27</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
