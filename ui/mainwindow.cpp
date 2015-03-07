@@ -466,7 +466,6 @@ void MainWindow::advanceOneTick()
     if (m_environment->possiblyChangeEnvironmentSize())
         setEnvironmentSize();
 
-
     if (m_environment->getElapsedTime() % g_simulationSettings->autosaveInterval == 0)
         saveSimulationAutomatic();
 
@@ -758,13 +757,7 @@ void MainWindow::saveSimulationAutomatic()
 {
     m_resumeSimulationAfterSave = true;
     stopSimulation();
-
-    double elapsedSeconds = m_environment->getLastStartTime().msecsTo(QDateTime::currentDateTime()) / 1000.0;
-    m_environment->addToElapsedRealWorldSeconds(elapsedSeconds);
-
     saveSimulation(m_autosavePath, true, "Autosaving");
-
-    m_environment->setLastStartTime(QDateTime::currentDateTime());
 }
 
 
