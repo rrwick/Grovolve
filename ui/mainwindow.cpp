@@ -690,6 +690,7 @@ bool MainWindow::checkForExtinction()
 
 void MainWindow::closeEvent(QCloseEvent * event)
 {
+    bool simulationRunningAtFunctionStart = simulationIsRunning();
     stopSimulation();
 
     if (m_environment->getElapsedTime() == 0 ||
@@ -705,7 +706,11 @@ void MainWindow::closeEvent(QCloseEvent * event)
                                                       "the program?\n\n"
                                                       "If you click 'Yes', all unsaved\n"
                                                       "progress will be lost."))
+    {
         event->ignore();
+        if (simulationRunningAtFunctionStart)
+            startSimulation();
+    }
 
     else
     {
@@ -799,6 +804,7 @@ void MainWindow::finishedSaving()
 
 void MainWindow::loadSimulationPrompt()
 {
+    bool simulationRunningAtFunctionStart = simulationIsRunning();
     stopSimulation();
 
     QString fullFileName = QFileDialog::getOpenFileName(this, "Load simulation", g_simulationSettings->rememberedPath, "Grovolve simulation (*.grov)");
@@ -815,6 +821,11 @@ void MainWindow::loadSimulationPrompt()
             QMessageBox::critical(this, "Error loading file", "An error occurred when loading the file.\n\n"
                                                               "The file could be corrupt or it could be of the wrong type.");
         }
+    }
+    else //Cancelled
+    {
+        if (simulationRunningAtFunctionStart)
+            startSimulation();
     }
 }
 
@@ -904,6 +915,7 @@ void MainWindow::saveSettings()
 
 void MainWindow::loadSettingsPrompt()
 {
+    bool simulationRunningAtFunctionStart = simulationIsRunning();
     stopSimulation();
 
     QString fullFileName = QFileDialog::getOpenFileName(this, "Load settings", g_simulationSettings->rememberedPath, "Grovolve settings (*.grovset)");
@@ -921,6 +933,9 @@ void MainWindow::loadSettingsPrompt()
                                                               "The file could be corrupt or it could be of the wrong type.");
         }
     }
+
+    if (simulationRunningAtFunctionStart)
+        startSimulation();
 }
 
 void MainWindow::loadSettings(QString fullFileName)
