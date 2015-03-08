@@ -48,10 +48,13 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
     //Create each visual aid and add them to their frames.
     m_sunIntensityVisualAid = new SunIntensityVisualAid(this, ui->sunIntensitySpinBox->value(), ui->sunIntensitySpinBox->maximum());
     ui->sunIntensityFrame->layout()->addWidget(m_sunIntensityVisualAid);
+    ui->sunIntensityFrame->setFixedSize(ui->sunIntensityFrame->sizeHint());
     m_gravityVisualAid = new GravityVisualAid(this, ui->gravitySpinBox->value(), ui->gravitySpinBox->maximum());
     ui->gravityFrame->layout()->addWidget(m_gravityVisualAid);
+    ui->gravityFrame->setFixedSize(ui->gravityFrame->sizeHint());
     m_mutationRateVisualAid = new MutationRateVisualAid(this, ui->mutationRateSpinBox->value(), ui->mutationRateSpinBox->maximum());
     ui->mutationRateFrame->layout()->addWidget(m_mutationRateVisualAid);
+    ui->mutationRateFrame->setFixedSize(ui->mutationRateFrame->sizeHint());
 
     //By fixing the spinboxes sizes, they won't change preferred size when they are bolded/unbolded.
     //A tiny bit of size is added so that they can fit bolded text well.
@@ -172,6 +175,7 @@ void EnvironmentDialog::backButtonPressed()
     ui->backButton->setEnabled(false);
     ui->nextButton->setEnabled(true);
     ui->finishButton->setEnabled(false);
+    ui->restoreDefaultsButton->setEnabled(true);
 }
 
 void EnvironmentDialog::nextButtonPressed()
@@ -180,6 +184,7 @@ void EnvironmentDialog::nextButtonPressed()
     ui->screen2Widget->setVisible(true);
     ui->backButton->setEnabled(true);
     ui->nextButton->setEnabled(false);
+    ui->restoreDefaultsButton->setEnabled(false);
 
     if (ui->immediatelyButton->isChecked() || ui->graduallyButton->isChecked())
         ui->finishButton->setEnabled(true);
