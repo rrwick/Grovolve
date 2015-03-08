@@ -40,6 +40,7 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
 
     ui->currentStatusTitleLabel->setFont(g_extraLargeFont);
     ui->settingsTitleLabel->setFont(g_extraLargeFont);
+    ui->pendingChangesTitleLabel->setFont(g_largeFont);
     ui->pendingChangesLabel->setFont(g_extraLargeFont);
 
     ui->sunIntensitySpinBox->setMaximum(g_simulationSettings->maximumSunIntensity);
@@ -60,7 +61,7 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
     increaseSpinBoxSize(ui->timeForGradualChangeSpinBox);
 
     //Since the zero label and the gradual change spin box take each other's place (i.e. only
-    //only is visible at a time), make the label the same size as the spin box.
+    //one is visible at a time), make the label the same size as the spin box.
     ui->zeroLabel->setFixedSize(ui->timeForGradualChangeSpinBox->sizeHint());
     ui->zeroLabel->setFixedWidth(ui->timeForGradualChangeSpinBox->sizeHint().width() + 2);
 
@@ -69,21 +70,24 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
     //box will appear.
     ui->timeForGradualChangeSpinBox->setVisible(false);
 
+    //By giving this label a minimum height based on the spin box that can show/hide,
+    //we prevent the widgets from moving slightly when the user changes the radio buttons.
+    ui->timeForChangesLabel->setFixedHeight(ui->timeForGradualChangeSpinBox->sizeHint().height() * 1.5);
 
     //Create the info text widgets, and insert them to the left of the label for each setting.
-    ui->sunIntensityInfoText->setInfoText("The sun is the source of all energy for the plants.  This setting controls how "
+    ui->sunIntensityInfoText->setInfoText("The sun is the source of all energy for the plants. This setting controls how "
                                           "bright the sun is, and therefore how much energy is available for the plants.");
-    ui->gravityInfoText->setInfoText("Plants support their weight by growing thicker branches.  Increasing or decreasing "
+    ui->gravityInfoText->setInfoText("Plants support their weight by growing thicker branches. Increasing or decreasing "
                                      "the gravity makes the plants weigh more or less and therefore require more or less "
                                      "support.");
-    ui->mutationRateInfoText->setInfoText("This is the chance that any given number in the genome will randomly change when "
-                                          "passed on to the next generation.  A higher rate can allow for faster evolution but "
-                                          "can also result in an overabundance of deleterious mutations.");
-    ui->immediatelyOrGraduallyInfoText->setInfoText("Changes can be either immediately take full effect, or gradually take effect over "
-                                                    "a specified amount of time.  Large immediate changes can lead to extinction, but those "
-                                                    "same changes may not cause extinction if gradually applied over time.");
-    ui->timeForGradualChangeInfoText->setInfoText("The unit of time is ticks of the simulation clock, not any real world time unit.  "
-                                                  "How long the change will take in real seconds will depend on the speed of your computer.");
+    ui->mutationRateInfoText->setInfoText("This is the chance that any given letter in the genome will randomly change when a "
+                                          "seed is produced. A higher rate can allow for faster evolution but "
+                                          "can also result in an abundance of deleterious mutations.");
+    ui->immediatelyOrGraduallyInfoText->setInfoText("Changes can either occur immediately or gradually take effect over "
+                                                    "a specified amount of time. Large immediate changes may lead to extinction, but those "
+                                                    "same changes may not cause extinction if applied gradually.");
+    ui->timeForGradualChangeInfoText->setInfoText("The unit of time is simulation ticks. "
+                                                  "How long the change will take in real time depends on the speed of your computer.");
 
 
 

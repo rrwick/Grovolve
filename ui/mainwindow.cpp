@@ -100,9 +100,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_environmentWidget = new EnvironmentWidget(this, m_environment);
     ui->scrollArea->setWidget(m_environmentWidget);
 
-    ui->shadowsInfoText->setInfoText("Showing shadows allows you to see where the light is in the simulation. "
-                                     "Dark areas are receiving less light and bright areas more light. "
-                                     "Leaves in shadows absorb less light and therefore produce less energy.");
+    ui->shadowsInfoText->setInfoText("Showing shadows allows you to see the flow of light in the simulation. "
+                                     "Dark areas receive less light and bright areas more light. "
+                                     "Leaves in shadows will absorb less light and therefore produce less energy.");
     ui->clickModeInfoText->setInfoText("You can interact with the simulation by either killing "
                                        "plants or helping them.  When helped, plants live longer and are more "
                                        "likely to produce offspring.");
