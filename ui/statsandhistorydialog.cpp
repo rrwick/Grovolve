@@ -83,7 +83,7 @@ StatsAndHistoryDialog::StatsAndHistoryDialog(QWidget * parent, const Environment
     elapsedTimeString += QString::number(elapsedSeconds) + " sec";
     ui->realWorldTimeLabel->setText(elapsedTimeString);
 
-    ui->organismTypeInfoText->setInfoText("The historical genome below can either be an average genome for the specified point "
+    ui->organismTypeInfoText->setInfoText("The genome below can either be an average genome for the specified point "
                                           "in history or a randomly-chosen organism at that point in history.");
     ui->historyOrganismInfoText->setInfoText("This is what an organism would look like if it had the genome shown to the left.");
     setGenomeHistoryInfoText();

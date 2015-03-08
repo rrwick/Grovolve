@@ -306,7 +306,7 @@ When a plant runs out of energy entirely, it dies of starvation and disappears f
          <property name="text">
           <string>A plant's seedpods produce seeds at a constant rate which go into the seed pool.  This seed pool is not visible but exists in the program's memory.  Each seed contains a copy of the genome of the plant that created it.
 
-Pairs of seeds in the seed pool combine to form new plants (a bit different from how real plants reproduce).  When two seeds combine, they shuffle their genomes together to create a new genome that is a combination of the two.  In this manner, the plant reproduction is sexual - each plant has two parent and inherits half its genome from each parent.  Mutations can also occur at this stage, introducing new, random variation into the genomes.</string>
+Pairs of seeds in the seed pool combine to form new plants (a bit different from how real plants reproduce).  When two seeds combine, they shuffle their genomes together to create a new genome that is a combination of the two.  In this manner, the plant reproduction is sexual - each plant has two parents and inherits half its genome from each parent.  Mutations can also occur at this stage, introducing new, random variation into the genomes.</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -369,7 +369,7 @@ Pairs of seeds in the seed pool combine to form new plants (a bit different from
           </size>
          </property>
          <property name="text">
-          <string>Each plant has a genome, that like ours, is made up of a four-letter alphabet.  It specifies all of the details about how the plant will grow.  Exactly how it does this is not particularly important - what is important is that a change to the genome can change how the plant grows.
+          <string>Each plant has a genome, which like ours, is made up of a four-letter alphabet.  It specifies all of the details about how the plant will grow.  Exactly how it does this is not particularly important - what is important is that a change to the genome can change how the plant grows.
 
 Genomes change in two ways.  They are shuffled together when two parent plants sexually reproduce to make a child plant.  And they acquire mutations, when one letter in the genome randomly changes to another.</string>
          </property>
