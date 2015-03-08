@@ -30,6 +30,7 @@
 #include "infotextwidget.h"
 #include "../settings/environmentsettings.h"
 #include "../settings/simulationsettings.h"
+#include <QLineEdit>
 
 EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
     QDialog(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint),
@@ -63,15 +64,9 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
     increaseSpinBoxSize(ui->mutationRateSpinBox);
     increaseSpinBoxSize(ui->timeForGradualChangeSpinBox);
 
-    //Since the zero label and the gradual change spin box take each other's place (i.e. only
-    //one is visible at a time), make the label the same size as the spin box.
-    ui->zeroLabel->setFixedSize(ui->timeForGradualChangeSpinBox->sizeHint());
-    ui->zeroLabel->setFixedWidth(ui->timeForGradualChangeSpinBox->sizeHint().width() + 2);
-
-    //Start by just showing the zero label (which is currently blank).  When the user selects
-    //either the immediate or gradual buttons, either text will appear in the label or the spin
-    //box will appear.
-    ui->timeForGradualChangeSpinBox->setVisible(false);
+    //Start with the gradual change widget disabled.  If the user selects the gradual change
+    //radio button, it will enable.
+    ui->timeForGradualChangeWidget->setEnabled(false);
 
     //By giving this label a minimum height based on the spin box that can show/hide,
     //we prevent the widgets from moving slightly when the user changes the radio buttons.
@@ -87,7 +82,8 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
                                           "seed is produced. A higher rate can allow for faster evolution but "
                                           "can also result in an abundance of deleterious mutations.");
     ui->immediatelyOrGraduallyInfoText->setInfoText("Changes can either occur immediately or gradually take effect over "
-                                                    "a specified amount of time. Large immediate changes may lead to extinction, but those "
+                                                    "a specified amount of time.<br><br>"
+                                                    "Large immediate changes may lead to extinction, but those "
                                                     "same changes may not cause extinction if applied gradually.");
     ui->timeForGradualChangeInfoText->setInfoText("The unit of time is simulation ticks. "
                                                   "How long the change will take in real time depends on the speed of your computer.");
@@ -212,19 +208,15 @@ void EnvironmentDialog::finishButtonPressed()
 
 void EnvironmentDialog::immediatelyButtonPressed()
 {
-    ui->timeForGradualChangeSpinBox->setEnabled(false);
-    ui->zeroLabel->setVisible(true);
-    ui->zeroLabel->setText("immediate");
-    ui->timeForGradualChangeSpinBox->setVisible(false);
+    ui->timeForGradualChangeWidget->setEnabled(false);
+    ui->timeForGradualChangeSpinBox->findChild<QLineEdit*>()->deselect();  //On Windows, this wasn't deselecting on its own after using the mouse wheel, and it looked weird to have a disabled spin box with a selection.
     ui->finishButton->setEnabled(true);
 }
 
 
 void EnvironmentDialog::graduallyButtonPressed()
 {
-    ui->timeForGradualChangeSpinBox->setEnabled(true);
-    ui->zeroLabel->setVisible(false);
-    ui->timeForGradualChangeSpinBox->setVisible(true);
+    ui->timeForGradualChangeWidget->setEnabled(true);
     ui->finishButton->setEnabled(true);
 }
 

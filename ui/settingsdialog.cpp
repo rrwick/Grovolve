@@ -70,7 +70,7 @@ void SettingsDialog::setInfoTexts()
 
     ui->startingGenomeInfoText->setInfoText("This is the genome for each plant in the starting population. "
                                             "The default starting genome codes for a simple plant with one branch, "
-                                            "one leaf and one seedpod. "
+                                            "one leaf and one seedpod.<br><br>"
                                             "If the number of letters in the starting genome does not match the "
                                             "'genome length' setting below, then the starting genome will either "
                                             "be truncated or extended.");
@@ -115,7 +115,8 @@ void SettingsDialog::setInfoTexts()
                                                "its gene.");
 
     ui->growthRandomnessInfoText->setInfoText("This is the randomness that is added to all aspects of a plant part's growth: "
-                                              "length, rate and angle. If set to 0%, two plants with the exact same genome will "
+                                              "length, rate and angle.<br><br>"
+                                              "If set to 0%, two plants with the exact same genome will "
                                               "grow exactly the same.");
 
     ui->leafDensityInfoText->setInfoText("This is the linear density of leaves. A leaf's mass is equal to its length times "
@@ -128,48 +129,53 @@ void SettingsDialog::setInfoTexts()
                                             "length times this value.");
 
     ui->newSeedsPerTickPerSeedpodInfoText->setInfoText("This is how many seeds (on average) each seedpod produces in a "
-                                                       "given tick of the simulation clock. For example, 0.5 means that on average, "
+                                                       "given tick of the simulation clock.<br><br>"
+                                                       "For example, 0.5 means that on average, "
                                                        "each seedpod will produce one seed for every two ticks of the clock.");
 
     ui->newOrganismsPerTickPerSeedInfoText->setInfoText("This is how many organisms are created for each seed present in a "
-                                                        "tick of the simulation clock. For example, if this value is 2.0% and there are "
+                                                        "tick of the simulation clock.<br><br>"
+                                                        "For example, if this value is 2.0% and there are "
                                                         "1000 seeds, then 20 organisms will be created.");
 
     ui->maxSeedAgeInfoText->setInfoText("This is how long seeds last, as measured in number of ticks of the simulation clock.");
 
     ui->branchStrengthScalingPowerInfoText->setInfoText("A branch's strength is calculated by raising its width to a power (this "
-                                                        "setting) and then multiplying it by a constant factor (the previous setting). "
+                                                        "setting) and then multiplying it by a constant factor (the previous setting).<br><br>"
                                                         "When the load on a branch exceeds its strength, it will grow in width.");
 
     ui->branchStrengthFactorInfoText->setInfoText("A branch's strength is calculated by raising its width to a power (the next "
-                                                  "setting) and then multiplying it by a constant factor (this setting). When "
-                                                  "the load on a branch exceeds its strength, it will grow in width.");
+                                                  "setting) and then multiplying it by a constant factor (this setting).<br><br>"
+                                                  "When the load on a branch exceeds its strength, it will grow in width.");
 
     ui->leafAbsorbanceInfoText->setInfoText("This is the fraction of light absorbed by each leaf, the rest being transmitted "
-                                            "through the leaf. A value of 100% means leaves absorb all light, whereas a value "
+                                            "through the leaf.<br><br>"
+                                            "A value of 100% means leaves absorb all light, whereas a value "
                                             "of 0% means that all light is transmitted through leaves.");
 
     ui->dayLengthInfoText->setInfoText("This is the duration (in ticks of the clock) for the part of the day when the sun "
-                                       "is shining. During this period, the sun moves across the sky. The full length of "
+                                       "is shining. During this period, the sun moves across the sky.<br><br>"
+                                       "The full length of "
                                        "the day/night cycle is the sum of this setting and the following setting.");
 
     ui->nightLengthInfoText->setInfoText("This is the duration (in ticks of the clock) for the part of the day when the sun "
-                                         "is not shining. The full length of the day/night cycle is the sum of this setting "
+                                         "is not shining.<br><br>"
+                                         "The full length of the day/night cycle is the sum of this setting "
                                          "and the previous setting.");
 
     ui->genomeLengthInfoText->setInfoText("This is the fixed number of letters in each plant's genome.");
 
     ui->averageCrossoverLengthInfoText->setInfoText("During sexual recombination of two parent genomes to make a child genome, "
-                                                    "this is the average length of a genome segment between crossover events. "
+                                                    "this is the average length of a genome segment between crossover events.<br><br>"
                                                     "High values lead to less frequent crossover while low values lead to more "
                                                     "frequent crossover.");
 
-    ui->maxChildrenPerBranchInfoText->setInfoText("This is the number of possible plant parts that can grow from each branch. "
+    ui->maxChildrenPerBranchInfoText->setInfoText("This is the number of possible plant parts that can grow from each branch.<br><br>"
                                                   "Higher values allow for denser trees, whereas lower values only allow for "
                                                   "sparser trees.");
 
     ui->allowLoopsInfoText->setInfoText("If this is set to 'yes', then a plant part can have a gene that is the same as the gene of one "
-                                        "of the plant parts below it (between it and the root). This allows repetitive structures to form. "
+                                        "of the plant parts below it (between it and the root). This allows repetitive structures to form.<br><br>"
                                         "If set to 'no', plant parts cannot have a gene that is the same as the gene of one "
                                         "of the plant parts below it.");
 
@@ -177,7 +183,7 @@ void SettingsDialog::setInfoTexts()
                                                   "at approximately this size, compensating for changes in population "
                                                   "density.");
 
-    ui->randomDeathRateInfoText->setInfoText("This is the chance that any given organism will die on any given tick of the clock. "
+    ui->randomDeathRateInfoText->setInfoText("This is the chance that any given organism will die on any given tick of the clock.<br><br>"
                                              "A low value allows for long-lived organisms, while a high value makes organisms tend "
                                              "to have shorter lives.");
 
