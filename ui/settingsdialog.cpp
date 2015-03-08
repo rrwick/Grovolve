@@ -60,17 +60,17 @@ SettingsDialog::~SettingsDialog()
 
 void SettingsDialog::setInfoTexts()
 {
-    ui->startingOrganismEnergyInfoText->setInfoText("This is amount of energy given to each plant in the starting population. "
-                                                    "Subsequent plants (generation 2 and onward) have their energy determined "
-                                                    "by how much energy their parents put into the seeds.");
-
     ui->startingEnvironmentWidthInfoText->setInfoText("The environment will start out this wide, but it will automatically adjust "
                                                       "as the simulation progresses to keep the population near the target "
-                                                      "population value.");
+                                                      "population size.");
+
+    ui->startingOrganismEnergyInfoText->setInfoText("This is amount of energy given to each plant in the starting population. "
+                                                    "Subsequent plants (generation 2 and onward) have their energy determined "
+                                                    "by how much energy their parents put into their seeds.");
 
     ui->startingGenomeInfoText->setInfoText("This is the genome for each plant in the starting population. "
-                                            "The default starting genome codes for a plant of minimal complexity "
-                                            "with one branch, one leaf and one seedpod."
+                                            "The default starting genome codes for a simple plant with one branch, "
+                                            "one leaf and one seedpod. "
                                             "If the number of letters in the starting genome does not match the "
                                             "'genome length' setting below, then the starting genome will either "
                                             "be truncated or extended.");

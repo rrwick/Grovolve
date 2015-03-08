@@ -62,11 +62,11 @@ Genome StartingGenomeDialog::getGenomeFromText()
 
         if (letter == 'A')
             returnGenome.addNucleotide(0);
-        else if (letter == 'B')
-            returnGenome.addNucleotide(1);
         else if (letter == 'C')
+            returnGenome.addNucleotide(1);
+        else if (letter == 'G')
             returnGenome.addNucleotide(2);
-        else if (letter == 'D')
+        else if (letter == 'T')
             returnGenome.addNucleotide(3);
     }
 
@@ -90,9 +90,9 @@ void StartingGenomeDialog::randomGenome()
         switch(g_randomNumbers->getRandomZeroToThree())
         {
         case 0: randomGenome += 'A'; break;
-        case 1: randomGenome += 'B'; break;
-        case 2: randomGenome += 'C'; break;
-        case 3: randomGenome += 'D'; break;
+        case 1: randomGenome += 'C'; break;
+        case 2: randomGenome += 'G'; break;
+        case 3: randomGenome += 'T'; break;
         }
     }
 

@@ -55,7 +55,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter a genome into this list in using only the letters A, B, C and D.  Invalid characters or numbers will be ignored when you click OK.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>Enter a genome into this list in using only the letters A, C, G and T.  Invalid characters or numbers will be ignored when you click OK.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
