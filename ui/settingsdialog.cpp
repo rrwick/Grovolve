@@ -61,10 +61,10 @@ SettingsDialog::~SettingsDialog()
 void SettingsDialog::setInfoTexts()
 {
     ui->startingEnvironmentWidthInfoText->setInfoText("The environment will start out this wide, but it will automatically adjust "
-                                                      "as the simulation progresses to keep the population near the target "
+                                                      "as the simulation progresses to keep the number of plants near the target "
                                                       "population size.");
 
-    ui->startingOrganismEnergyInfoText->setInfoText("This is amount of energy given to each plant in the starting population. "
+    ui->startingOrganismEnergyInfoText->setInfoText("This is the amount of energy given to each plant in the starting population. "
                                                     "Subsequent plants (generation 2 and onward) have their energy determined "
                                                     "by how much energy their parents put into their seeds.");
 
@@ -76,24 +76,24 @@ void SettingsDialog::setInfoTexts()
                                             "be truncated or extended.");
 
     ui->organismMaintenanceCostInfoText->setInfoText("This amount of energy is deducted from each plant for every tick "
-                                                     "of the clock.  It is the fixed cost (unrelated to size) of keeping "
-                                                     "the plant alive for a tick.");
+                                                     "of the clock. It is the fixed cost (unrelated to size) of keeping "
+                                                     "a plant alive for a tick.");
 
-    ui->plantPartMaintenanceCostInfoText->setInfoText("This amount of energy is deducted from each plant for each plant part "
-                                                      "(leaf, branch or seedpod) for every tick of the clock.  It is the "
-                                                      "fixed cost of keeping a plant part alive for a tick.");
+    ui->plantPartMaintenanceCostInfoText->setInfoText("This amount of energy is deducted from each plant for each of their plant parts "
+                                                      "(leaf, branch or seedpod) for every tick of the clock. It is the "
+                                                      "fixed cost of maintaining a plant part for a tick.");
 
     ui->leafMaintenanceCostInfoText->setInfoText("For each of a plant's leaves, this value, multiplied by the leaf's length, "
-                                                 "determines the energy deducted from the plant for each tick of the clock.  "
-                                                 "It is the length-dependent cost of keeping a leaf alive for a tick.");
+                                                 "determines the energy deducted from the plant for each tick of the clock. "
+                                                 "It is the length-dependent cost of maintaining a leaf for a tick.");
 
     ui->branchMaintenanceCostInfoText->setInfoText("For each of a plant's branches, this value, multiplied by the branch's area, "
-                                                   "determines the energy deducted from the plant for each tick of the clock.  "
-                                                   "It is the area-dependent cost of keeping a branch alive for a tick.");
+                                                   "determines the energy deducted from the plant for each tick of the clock. "
+                                                   "It is the area-dependent cost of maintaining a branch for a tick.");
 
     ui->seedpodMaintenanceCostInfoText->setInfoText("For each of a plant's seedpods, this value, multiplied by the seedpod's length, "
-                                                    "determines the energy deducted from the plant for each tick of the clock.  "
-                                                    "It is the length-dependent cost of keeping a seedpod alive for a tick.");
+                                                    "determines the energy deducted from the plant for each tick of the clock. "
+                                                    "It is the length-dependent cost of maintaining a seedpod for a tick.");
 
     ui->leafGrowthCostInfoText->setInfoText("This is the energy deducted from a plant for each unit length of leaf "
                                             "that is grown.");
@@ -104,61 +104,63 @@ void SettingsDialog::setInfoTexts()
     ui->seedpodGrowthCostInfoText->setInfoText("This is the energy deducted from a plant for each unit length of seedpod "
                                                "that is grown.");
 
-    ui->seedCreationCostInfoText->setInfoText("This is the energy deducted from a plant for each seed that its seedpods create.");
+    ui->seedCreationCostInfoText->setInfoText("This is the energy deducted from a plant for each seed that its seedpods create. "
+                                              "This is in addition to the energy that a plant puts into its seeds for the "
+                                              "following generation.");
 
     ui->leafLengthInfoText->setInfoText("This is length of all fully-grown leaves in the simulation.");
 
-    ui->growRateGeneRatioInfoText->setInfoText("This is the scaling factor for the growth rate of plant parts.  A plant part's "
+    ui->growRateGeneRatioInfoText->setInfoText("This is the scaling factor for the growth rate of plant parts. A plant part's "
                                                "growth rate is determined by multiplying this value by the growth rate value in "
                                                "its gene.");
 
     ui->growthRandomnessInfoText->setInfoText("This is the randomness that is added to all aspects of a plant part's growth: "
-                                              "length, rate and angle.  If set to 0%, two plants with the exact same genome will "
+                                              "length, rate and angle. If set to 0%, two plants with the exact same genome will "
                                               "grow exactly the same.");
 
-    ui->leafDensityInfoText->setInfoText("This is the linear density of leaves.  A leaf's mass is equal to its length times "
+    ui->leafDensityInfoText->setInfoText("This is the linear density of leaves. A leaf's mass is equal to its length times "
                                          "this value.");
 
-    ui->seedpodDensityInfoText->setInfoText("This is the linear density of seedpods.  A seedpod's mass is equal to its "
-                                            "length times this value.");
-
-    ui->branchDensityInfoText->setInfoText("This is the area density of branches.  A branch's mass is equal to its area times "
+    ui->branchDensityInfoText->setInfoText("This is the area density of branches. A branch's mass is equal to its area times "
                                            "this value.");
 
+    ui->seedpodDensityInfoText->setInfoText("This is the linear density of seedpods. A seedpod's mass is equal to its "
+                                            "length times this value.");
+
     ui->newSeedsPerTickPerSeedpodInfoText->setInfoText("This is how many seeds (on average) each seedpod produces in a "
-                                                       "given tick of the simulation clock.  E.g. 0.5 means that on average,"
+                                                       "given tick of the simulation clock. For example, 0.5 means that on average, "
                                                        "each seedpod will produce one seed for every two ticks of the clock.");
 
     ui->newOrganismsPerTickPerSeedInfoText->setInfoText("This is how many organisms are created for each seed present in a "
-                                                        "tick of the simulation clock.  E.g. if this value is 2.0% and there are "
+                                                        "tick of the simulation clock. For example, if this value is 2.0% and there are "
                                                         "1000 seeds, then 20 organisms will be created.");
 
     ui->maxSeedAgeInfoText->setInfoText("This is how long seeds last, as measured in number of ticks of the simulation clock.");
 
-    ui->branchStrengthFactorInfoText->setInfoText("A branch's strength is calculated by raising its width to a power (the next "
-                                                  "setting), and then multiplying it by a constant factor (this setting).  When "
-                                                  "the load on a branch exceeds its strength, it will grow in width.");
-
     ui->branchStrengthScalingPowerInfoText->setInfoText("A branch's strength is calculated by raising its width to a power (this "
-                                                        "setting), and then multiplying it by a constant factor (the previous setting).  "
+                                                        "setting) and then multiplying it by a constant factor (the previous setting). "
                                                         "When the load on a branch exceeds its strength, it will grow in width.");
 
+    ui->branchStrengthFactorInfoText->setInfoText("A branch's strength is calculated by raising its width to a power (the next "
+                                                  "setting) and then multiplying it by a constant factor (this setting). When "
+                                                  "the load on a branch exceeds its strength, it will grow in width.");
+
     ui->leafAbsorbanceInfoText->setInfoText("This is the fraction of light absorbed by each leaf, the rest being transmitted "
-                                            "through the leaf.  A value of 100% means leaves absorb all light, whereas a value "
+                                            "through the leaf. A value of 100% means leaves absorb all light, whereas a value "
                                             "of 0% means that all light is transmitted through leaves.");
 
-    ui->dayLengthInfoText->setInfoText("This is the length (in ticks of the clock) for the part of the day when the sun "
-                                       "is shining.  During this period, the sun moves across the sky. The full length of "
+    ui->dayLengthInfoText->setInfoText("This is the duration (in ticks of the clock) for the part of the day when the sun "
+                                       "is shining. During this period, the sun moves across the sky. The full length of "
                                        "the day/night cycle is the sum of this setting and the following setting.");
 
-    ui->nightLengthInfoText->setInfoText("This is the length (in ticks of the clock) for the part of the day when the sun "
+    ui->nightLengthInfoText->setInfoText("This is the duration (in ticks of the clock) for the part of the day when the sun "
                                          "is not shining. The full length of the day/night cycle is the sum of this setting "
                                          "and the previous setting.");
 
     ui->genomeLengthInfoText->setInfoText("This is the fixed number of letters in each plant's genome.");
 
-    ui->averageCrossoverLengthInfoText->setInfoText("This is the average length of a genome segment between crossover events "
-                                                    "in sexual recombination of two parent genomes to make a child genome.  "
+    ui->averageCrossoverLengthInfoText->setInfoText("During sexual recombination of two parent genomes to make a child genome, "
+                                                    "this is the average length of a genome segment between crossover events. "
                                                     "High values lead to less frequent crossover while low values lead to more "
                                                     "frequent crossover.");
 
@@ -166,15 +168,16 @@ void SettingsDialog::setInfoTexts()
                                                   "Higher values allow for denser trees, whereas lower values only allow for "
                                                   "sparser trees.");
 
-    ui->allowLoopsInfoText->setInfoText("If this is set to 'yes', then a plant part can have a gene that is the same as one "
-                                        "of its ancestor plant parts.  This means that repetitive looping structures can form.  "
-                                        "If set to 'no', plant parts cannot have a gene that is the same as one of its ancestors.");
+    ui->allowLoopsInfoText->setInfoText("If this is set to 'yes', then a plant part can have a gene that is the same as the gene of one "
+                                        "of the plant parts below it (between it and the root). This allows repetitive structures to form. "
+                                        "If set to 'no', plant parts cannot have a gene that is the same as the gene of one "
+                                        "of the plant parts below it.");
 
-    ui->targetPopulationSizeInfoText->setInfoText("The population will remain at approximately this level, as the environment "
-                                                  "automatically gets wider or narrower to compensate for changes in population "
+    ui->targetPopulationSizeInfoText->setInfoText("The environment will automatically get wider or narrower to keep the population "
+                                                  "at approximately this size, compensating for changes in population "
                                                   "density.");
 
-    ui->randomDeathRateInfoText->setInfoText("This is the chance that any given organism will die on any given tick of the clock.  "
+    ui->randomDeathRateInfoText->setInfoText("This is the chance that any given organism will die on any given tick of the clock. "
                                              "A low value allows for long-lived organisms, while a high value makes organisms tend "
                                              "to have shorter lives.");
 
