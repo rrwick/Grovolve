@@ -54,11 +54,11 @@ AutoSaveImagesDialog::AutoSaveImagesDialog(QWidget * parent) :
                                    "named with the date and time of when the simulation was started.";
     ui->autoImageSaveSettingsGridLayout->addWidget(new InfoTextWidget(this, saveLocationInfoText), 0, 0);
 
-    QString timeIntervalInfoText = "When the simulation clock reaches a multiple of this number, an image will be saved.  "
+    QString timeIntervalInfoText = "When the simulation clock reaches a multiple of this number, an image will be saved.<br><br>"
                                    "Small values give lots of frequent images, while large values give fewer infrequent images.";
     ui->autoImageSaveSettingsGridLayout->addWidget(new InfoTextWidget(this, timeIntervalInfoText), 3, 0);
 
-    QString qualityInfoText = "High quality images are larger but will take up more space.  Low quality images are smaller and take up less space.";
+    QString qualityInfoText = "High quality images are larger but will take up more space. Low quality images are smaller and take up less space.";
     ui->autoImageSaveSettingsGridLayout->addWidget(new InfoTextWidget(this, qualityInfoText), 4, 0);
 
 
