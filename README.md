@@ -1,6 +1,10 @@
 # Grovolve
 
-Grovolve is an artificial life simulator that demonstrates evolution by natural selection.  It is intended as an educational tool to improve the user's understanding of the evolutionary process.
+Grovolve is an artificial life simulator that demonstrates evolution by natural selection.  It is an educational tool to improve the user's understanding of the evolutionary process.
+
+Visit the Grovolve website for information and screenshots: <a href="http://rrwick.github.io/Grovolve/" target="_blank">rrwick.github.io/Grovolve</a>
+
+## Introduction
 
 Grovolve simulates plants growing, reproducing and dying in an environment with sunlight that shines from above.  Plants acquire energy by absorbing light with their leaves and expend their energy on growth, maintenance and generating spores.  When a plant runs out of energy, it dies.  Each plant has a genome that determines its growth and shape, and this genome is inherited, from parent to offspring, with the chance of mutations.
 
