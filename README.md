@@ -1,4 +1,4 @@
-# Grovolve
+# <img src="http://rrwick.github.io/Grovolve/images/logo.png" alt="alt text" width="129" height="107" align="middle">Grovolve
 
 Grovolve is an artificial life simulator that demonstrates evolution by natural selection.  It is an educational tool to improve the user's understanding of the evolutionary process.
 
