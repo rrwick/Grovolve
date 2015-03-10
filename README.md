@@ -54,8 +54,8 @@ The following instructions successfully build Grovolve on OS X 10.9 Mavericks:
 
 1. Install Xcode using the App Store.
 2. Install Homebrew: [brew.sh](http://brew.sh/)
-3. Install the prerequisite packages: `brew install qt5 boost tbb`
-  * Ideally, install version 1.55 of the Boost library, as this will ensure save file compatibility with other versions and platforms of Grovolve.
+3. Install the prerequisite packages: `brew install qt5 boost155 tbb`
+  * Ideally, install version 1.55 of the Boost library, as this will ensure save file compatibility with other platforms.  Grovolve should build correctly with later versions of Boost, but the save files it generates may not be able to be opened by other copies of Grovolve.
 4. Download the Grovolve code from GitHub: `git clone https://github.com/rrwick/Grovolve.git`
 5. Open a terminal in the Grovolve directory.
 6. Run qmake to generate a Makefile: `/usr/local/opt/qt5/bin/qmake`
@@ -83,6 +83,10 @@ Building on a PC is a bit tougher due to the lack of a standard package manager 
 New contributors are welcome!  If you're interested or have ideas, please contact me (Ryan) at rrwick@gmail.com.
 
 ## History
+
+Version 1.0.2 – bug fixes and UI improvements
+
+Version 1.0.1 – bug fix
 
 Version 1.0.0 – initial release
 
