@@ -1,4 +1,4 @@
-# <img src="http://rrwick.github.io/Grovolve/images/logo.png" alt="alt text" width="129" height="107" align="middle">Grovolve
+# <img src="http://rrwick.github.io/Grovolve/images/logo.png" alt="" width="129" height="107" align="middle">Grovolve
 
 Grovolve is an artificial life simulator that demonstrates evolution by natural selection.  It is an educational tool to improve the user's understanding of the evolutionary process.
 
@@ -37,7 +37,7 @@ Simulations can be saved to file and resumed later.  At regular intervals, the p
 
 Grovolve users are encouraged to download the ready-to-use executable files available in the 'Releases' section of GitHub.  Users that wish to modify the program or compile it themselves can do so using the following instructions.
 
-#### Building on Linux
+#### <img src="http://rrwick.github.io/Grovolve/images/OS/linux.png" alt="" width="52" height="60" align="middle"> Building on Linux
 
 The following instructions successfully build Grovolve on a fresh installation of Ubuntu 14.04:
 
@@ -52,7 +52,7 @@ The following instructions successfully build Grovolve on a fresh installation o
 8. `Grovolve` should now be an executable file.
 9. Optionally, copy the program into /usr/local/bin: `sudo make install`
 
-#### Building on Mac
+#### <img src="http://rrwick.github.io/Grovolve/images/OS/apple.png" alt="" width="52" height="60" align="middle"> Building on Mac
 
 The following instructions successfully build Grovolve on OS X 10.9 Mavericks:
 
@@ -67,7 +67,7 @@ The following instructions successfully build Grovolve on OS X 10.9 Mavericks:
 8. `Grovolve` should now be an application bundle.
 9. Optionally, copy the program into the 'Applications' folder.
 
-#### Building on Windows
+#### <img src="http://rrwick.github.io/Grovolve/images/OS/windows.png" alt="" width="52" height="60" align="middle"> Building on Windows
 
 Building on a PC is a bit tougher due to the lack of a standard package manager that can take care of all dependencies.  It's easiest to downloaded each dependency manually and the Qt SDK, and then build the program using the included IDE, Qt Creator.  The following instructions successfully build Grovolve on Windows 7:
 
