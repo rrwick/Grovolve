@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
-    <height>440</height>
+    <width>796</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,11 +45,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Grovolve is free educational software that provides the necessary conditions for true evolution by natural selection.
-
-Simulated plants grow, reproduce and die, and they can evolve to be fit in their environment.  Through this process of evolution, they can become much more complex, evolving from simple, grass-like plants to large, complex tree-like plants.
-
-While the plants and their environment are just a computer simulation, the evolution that they undergo is very much real.  Grovolve does not simulate evolution, it demonstrates it.</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Grovolve is free educational software that demonstrates evolution by natural selection.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Simulated plants grow, reproduce and die, and they can evolve to be fit in their environment.  Through this process of evolution, they can become much more complex, evolving from simple, grass-like plants to large, complex tree-like plants.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;While the plants and their environment are simulated, their evolution is very real.  Grovolve does not simulate evolution, it &lt;span style=&quot; font-style:italic;&quot;&gt;demonstrates&lt;/span&gt; it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -112,13 +108,7 @@ While the plants and their environment are just a computer simulation, the evolu
           </size>
          </property>
          <property name="text">
-          <string>Plants in the simulation have three parts: leaves, seedpods and branches.
-
-Leaves are the part of a plant that collects light and provides energy to the plant. Without these, a plant will have no way to feed itself and it will starve.
-
-Sporangia (singular seedpod) are the parts that produce seeds that can become plants of the next generation. Without these, a plant will not have any offspring.
-
-Branches provide the physical structure for the plant. They support the weight of the plant's parts, so heavier plants need thicker branches. Each branch can have multiple parts growing from its end, either leaves, seedpods or more branches.</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Plants in the simulation have three parts: leaves, seedpods and branches.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Leaves are the part of a plant that collects light and provides energy to the plant. Without these, a plant would have no way to feed itself and would starve.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Seedpods are the parts that produce seeds that can become plants of the next generation. Without these, a plant cannot reproduce.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Branches provide the physical structure for the plant. They support the weight of the plant's parts, so heavier plants need thicker branches. Each branch can have multiple parts growing from its end – either leaves, seedpods or more branches.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -187,11 +177,7 @@ Branches provide the physical structure for the plant. They support the weight o
           </size>
          </property>
          <property name="text">
-          <string>The currency of a plant's life is energy.  A plant can gain energy in only one way - absorbing light with leaves.
-
-A number of things expend the plant's energy.  Growing takes energy, and maintaining existing parts also consumes some energy.  When plants produce seeds, they put some of their own energy into the seeds which, if the seed is destined to become a new plant, will serve as that new plant's initial energy reserve.
-
-When a plant runs out of energy entirely, it dies of starvation and disappears from the program.  Plants can also die of 'bad luck' as there is a small chance of death for every tick of the clock.  This simulates all of the other reasons a plant might die: disease, fire, herbivores, etc.</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The currency of a plant's life is energy.  A plant can gain energy in only one way – absorbing light with leaves.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;A number of things sap the plant's energy.  Growing takes energy, as well as maintaining existing parts.  When plants produce seeds, they put some of their own energy into the seeds which, if the seed is destined to become a new plant, will serve as that new plant's initial energy reserve.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;When a plant runs out of energy entirely, it dies of starvation and disappears from the program.  Plants can also die of 'bad luck' as there is a small chance of death for every tick of the clock.  This simulates all of the other reasons a plant might die: disease, fire, herbivores, etc.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -304,9 +290,7 @@ When a plant runs out of energy entirely, it dies of starvation and disappears f
           </size>
          </property>
          <property name="text">
-          <string>A plant's seedpods produce seeds at a constant rate which go into the seed pool.  This seed pool is not visible but exists in the program's memory.  Each seed contains a copy of the genome of the plant that created it.
-
-Pairs of seeds in the seed pool combine to form new plants (a bit different from how real plants reproduce).  When two seeds combine, they shuffle their genomes together to create a new genome that is a combination of the two.  In this manner, the plant reproduction is sexual - each plant has two parents and inherits half its genome from each parent.  Mutations can also occur at this stage, introducing new, random variation into the genomes.</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A plant's seedpods produce seeds at a constant rate which go into the seed pool.  This seed pool is not visible but exists in the program's memory.  Each seed contains a copy of the genome of the plant that created it.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Pairs of seeds in the seed pool combine to form new plants (a bit different from how real plants reproduce).  When two seeds combine, they shuffle their genomes together to create a new genome that is a combination of the two.  In this manner, the plant reproduction is sexual – each plant has two parents and inherits half its genome from each.  Mutations can also occur at this stage, introducing new, random variation into the genomes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -369,9 +353,7 @@ Pairs of seeds in the seed pool combine to form new plants (a bit different from
           </size>
          </property>
          <property name="text">
-          <string>Each plant has a genome, which like ours, is made up of a four-letter alphabet.  It specifies all of the details about how the plant will grow.  Exactly how it does this is not particularly important - what is important is that a change to the genome can change how the plant grows.
-
-Genomes change in two ways.  They are shuffled together when two parent plants sexually reproduce to make a child plant.  And they acquire mutations, when one letter in the genome randomly changes to another.</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Each plant has a genome, which like ours, is made up of a four-letter alphabet.  It specifies all of the details about how the plant will grow.  A change to the genome can change how the plant grows.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Genomes change in two ways: they are shuffled together when two parent plants sexually reproduce to make a child plant; and they acquire mutations, when one letter in the genome randomly changes to another.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -443,9 +425,7 @@ Genomes change in two ways.  They are shuffled together when two parent plants s
           </size>
          </property>
          <property name="text">
-          <string>The forms into which the plants evolve is a result of the process of natural selection.  Plants that happen to be better suited to live in the current environment are more likely to survive, reproduce and spread the genes that made them successful.  Conversely, plants that are ill suited to their environment are more likely to die without leaving offspring.
-
-While the mutations introduced into genomes are random, which organisms survive (the process of natural selection) is not.  It is through this continuous process of 'survival of the fittest' that advantageous mutations accumulate in the gene pool and deleterious mutations are discarded.  Over time, the accumulation of advantageous mutations can lead to large changes, resulting in plants that are bigger and more complex than their ancestors.</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The forms into which the plants evolve is a result of the process of natural selection.  Plants that happen to be better suited to live in the current environment are more likely to survive, reproduce and spread the genes that made them successful.  Conversely, plants that are ill-suited to their environment are more likely to die without leaving offspring.&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;While the mutations introduced into genomes are random, which organisms survive (the process of natural selection) is not.  It is through this continuous process of 'survival of the fittest' that advantageous mutations accumulate in the gene pool and deleterious mutations are discarded.  Over time, the accumulation of advantageous mutations can lead to large changes, resulting in plants that are larger and more complex than their ancestors.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
