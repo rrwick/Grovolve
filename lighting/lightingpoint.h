@@ -33,8 +33,8 @@ public:
     {}
 
     PlantPart * m_leaf;
-    double m_x;
-    double m_y;
+    float m_x;
+    float m_y;
 
     //This is a pointer to the other point that originated from the same leaf.
     LightingPoint * m_pairPoint;
