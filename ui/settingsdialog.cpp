@@ -72,7 +72,7 @@ void SettingsDialog::setInfoTexts()
                                             "The default starting genome codes for a simple plant with one branch, "
                                             "one leaf and one seedpod.<br><br>"
                                             "If the number of letters in the starting genome does not match the "
-                                            "'genome length' setting below, then the starting genome will either "
+                                            "'genome length' setting below, the starting genome will "
                                             "be truncated or extended.");
 
     ui->organismMaintenanceCostInfoText->setInfoText("This amount of energy is deducted from each plant for every tick "
@@ -187,10 +187,10 @@ void SettingsDialog::setInfoTexts()
                                              "A low value allows for long-lived organisms, while a high value makes organisms tend "
                                              "to have shorter lives.");
 
-    ui->shadowAntialiasingInfoText->setInfoText("Antialiasing shadows makes the shadows appear smoother and nicer, but at a "
+    ui->shadowAntialiasingInfoText->setInfoText("Antialiasing shadows makes the shadows appear smoother, but at a "
                                                 "significant performance cost.");
 
-    ui->cloudsInfoText->setInfoText("Clouds in the sky are a purely aesthetic feature that has no effect on the simulation.");
+    ui->cloudsInfoText->setInfoText("Clouds in the sky are a purely aesthetic feature that have no effect on the simulation.");
 }
 
 

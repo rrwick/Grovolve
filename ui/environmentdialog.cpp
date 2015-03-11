@@ -74,7 +74,7 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
 
     //Create the info text widgets, and insert them to the left of the label for each setting.
     ui->sunIntensityInfoText->setInfoText("The sun is the source of all energy for the plants. This setting controls how "
-                                          "bright the sun is, and therefore how much energy is available for the plants.");
+                                          "bright the sun is, and therefore how much energy is available.");
     ui->gravityInfoText->setInfoText("Plants support their weight by growing thicker branches. Increasing or decreasing "
                                      "the gravity makes the plants weigh more or less and therefore require more or less "
                                      "support.");
@@ -86,7 +86,7 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
                                                     "Large immediate changes may lead to extinction, but those "
                                                     "same changes may not cause extinction if applied gradually.");
     ui->timeForGradualChangeInfoText->setInfoText("The unit of time is simulation ticks. "
-                                                  "How long the change will take in real time depends on the speed of your computer.");
+                                                  "How long the change will take in real time depends on your computer's speed.");
 
 
 

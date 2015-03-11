@@ -49,7 +49,7 @@ AutoSaveImagesDialog::AutoSaveImagesDialog(QWidget * parent) :
         turnOff();
 
 
-    QString saveLocationInfoText = "This is the file location on your computer where the images will be saved.<br><br>"
+    QString saveLocationInfoText = "This is the file location on your computer where the images are saved.<br><br>"
                                    "They will not be saved directly in this folder, but rather in a subdirectory "
                                    "named with the date and time of when the simulation was started.";
     ui->autoImageSaveSettingsGridLayout->addWidget(new InfoTextWidget(this, saveLocationInfoText), 0, 0);

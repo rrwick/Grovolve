@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>447</width>
+    <width>518</width>
     <height>1070</height>
    </rect>
   </property>
@@ -179,7 +179,7 @@
       <item>
        <widget class="QLabel" name="messageLabel">
         <property name="text">
-         <string>If alterations are made to the environmental settings below, you can then click the 'Next' button whereupon you can choose to apply the new settings immediately or gradually over time.</string>
+         <string>If alterations are made to the environmental settings below, you can click the 'Next' button to choose to apply the new settings immediately or gradually over time.</string>
         </property>
         <property name="wordWrap">
          <bool>true</bool>

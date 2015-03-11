@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>If your computer crashed while running Grovolve, it may be possible to recover the simulation that was in progress.
+      <string>If your computer crashes while running Grovolve, it may be possible to recover the simulation that was in progress.
 
 Grovolve periodically automatically saves files to your computer's temporary file directory.  Look here for any save files that begin with 'Grovolve':</string>
      </property>
