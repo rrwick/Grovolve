@@ -17,7 +17,7 @@
 
 
 #include "lighting.h"
-#include <math.h>
+#include <cmath>
 #include <algorithm>    // std::sort
 #include "tbb/parallel_sort.h"
 #include "tbb/parallel_for.h"
@@ -328,7 +328,13 @@ double Lighting::calculateLightForLeafSection(int shadowCount, double xDistance)
     //Intensity of light = sunIntensity * pow(1.0 - leafAbsorbance, shadowCount)
     //Quantity of light = Intensity * xDistance
     //Absorbed light = Quantity * leafAbsorbance
-    return m_sunIntensity * pow(1.0 - g_simulationSettings->leafAbsorbance, shadowCount) * xDistance * g_simulationSettings->leafAbsorbance;
+
+    double leafTransmittance = 1.0 - g_simulationSettings->leafAbsorbance;
+    double power = 1.0;
+    for (int i = 0; i < shadowCount; ++i)
+        power *= leafTransmittance;
+
+    return m_sunIntensity * power * xDistance * g_simulationSettings->leafAbsorbance;
 }
 
 
