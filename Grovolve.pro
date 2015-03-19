@@ -114,11 +114,10 @@ INCLUDEPATH += ui
 
 CONFIG += c++11
 
-
+# Uncomment this line if building for Windows XP
+#QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
 
 win32:INCLUDEPATH += $$PWD/../boost_1_55_0/
-
-
 win32:INCLUDEPATH += $$PWD/../tbb43_20141204oss/include/
 win32:RC_FILE = images/myapp.rc
 
