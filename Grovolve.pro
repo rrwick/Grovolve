@@ -114,14 +114,26 @@ INCLUDEPATH += ui
 
 CONFIG += c++11
 
+
+
 win32:INCLUDEPATH += $$PWD/../boost_1_55_0/
-win32:LIBS += -L$$PWD/../boost_1_55_0/lib64-msvc-12.0/
+
+
 win32:INCLUDEPATH += $$PWD/../tbb43_20141204oss/include/
-win32:LIBS += -L$$PWD/../tbb43_20141204oss/lib/intel64/vc12/
-win32:LIBS += -L$$PWD/../tbb43_20141204oss/bin/intel64/vc12/
-win32:LIBS += -L$$PWD/../tbb43_20141204oss/lib/ia32/vc12/
-win32:LIBS += -L$$PWD/../tbb43_20141204oss/bin/ia32/vc12/
 win32:RC_FILE = images/myapp.rc
+
+# 64 bit libraries
+win32:contains(QMAKE_TARGET.arch, x86_64):{
+LIBS += -L$$PWD/../boost_1_55_0/lib64-msvc-12.0/
+LIBS += -L$$PWD/../tbb43_20141204oss/lib/intel64/vc12/
+LIBS += -L$$PWD/../tbb43_20141204oss/bin/intel64/vc12/
+}
+# 32 bit libraries
+win32:!contains(QMAKE_TARGET.arch, x86_64):{
+LIBS += -L$$PWD/../boost_1_55_0/lib32-msvc-12.0/
+LIBS += -L$$PWD/../tbb43_20141204oss/lib/ia32/vc12/
+LIBS += -L$$PWD/../tbb43_20141204oss/bin/ia32/vc12/
+}
 
 macx:INCLUDEPATH += /usr/local/include/
 macx:LIBS += -L/usr/local/lib
