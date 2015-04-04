@@ -97,6 +97,13 @@ StatsAndHistoryDialog::StatsAndHistoryDialog(QWidget * parent, const Environment
     ui->customPlot->axisRect()->setRangeDrag(Qt::Horizontal);
     ui->customPlot->axisRect()->setRangeZoom(Qt::Horizontal);
 
+    //Move legend to the top left to begin.  It can then be dragged around
+    //by the user.
+    QRectF rect = ui->customPlot->axisRect()->insetLayout()->insetRect(0);
+    rect.moveTopLeft(QPointF(0.0, 0.0));
+    ui->customPlot->axisRect()->insetLayout()->setInsetRect(0, rect);
+    ui->customPlot->replot();
+
     int maxSliderPosition = g_stats->logEntries() - 1;
     ui->genomeHistoryTimeSlider->setMaximum(maxSliderPosition);
     ui->genomeHistoryTimeSlider->setValue(maxSliderPosition);
