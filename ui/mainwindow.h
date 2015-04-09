@@ -117,6 +117,7 @@ private slots:
     void loadSimulationPrompt();
     void loadSettingsPrompt();
     void mouseDrag(QPoint change);
+    void scrollAreaChanged();
 };
 
 #endif // MAINWINDOW_H

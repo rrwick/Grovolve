@@ -51,6 +51,11 @@ extern int g_organismsSavedOrLoaded;
 extern int g_seedsSavedOrLoaded;
 extern int g_historyOrganismsSavedOrLoaded;
 
+extern double g_visibleAreaTop;
+extern double g_visibleAreaBottom;
+extern double g_visibleAreaLeft;
+extern double g_visibleAreaRight;
+
 QString formatDoubleForDisplay(double num, double decimalPlacesToDisplay, QLocale locale);
 QFont getMonospaceFont();
 

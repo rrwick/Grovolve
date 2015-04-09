@@ -135,6 +135,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRecover_autosave_files, SIGNAL(triggered()), this, SLOT(openRecoverFilesDialog()));
     connect(m_environmentWidget, SIGNAL(mouseDrag(QPoint)), this, SLOT(mouseDrag(QPoint)));
     connect(ui->speedSlider, SIGNAL(valueChanged(int)), this, SLOT(simulationSpeedChanged()));
+    connect(ui->scrollArea->verticalScrollBar(), SIGNAL(rangeChanged(int,int)), this, SLOT(scrollAreaChanged()));
+    connect(ui->scrollArea->horizontalScrollBar(), SIGNAL(rangeChanged(int,int)), this, SLOT(scrollAreaChanged()));
+    connect(ui->scrollArea->verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(scrollAreaChanged()));
+    connect(ui->scrollArea->horizontalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(scrollAreaChanged()));
 
 
     //The spin box for setting the zoom should have the same step size as using
@@ -1052,4 +1056,16 @@ void MainWindow::mouseDrag(QPoint change)
 {
     ui->scrollArea->horizontalScrollBar()->setValue(ui->scrollArea->horizontalScrollBar()->value() + change.x());
     ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->value() + change.y());
+}
+
+
+void MainWindow::scrollAreaChanged()
+{
+    int verticalSize = ui->scrollArea->verticalScrollBar()->pageStep() + ui->scrollArea->verticalScrollBar()->maximum() - ui->scrollArea->verticalScrollBar()->minimum();
+    g_visibleAreaTop = double(ui->scrollArea->verticalScrollBar()->value() - ui->scrollArea->verticalScrollBar()->minimum()) / verticalSize;
+    g_visibleAreaBottom = double(ui->scrollArea->verticalScrollBar()->pageStep() + ui->scrollArea->verticalScrollBar()->value() - ui->scrollArea->verticalScrollBar()->minimum()) / verticalSize;
+
+    int horizontalSize = ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->maximum() - ui->scrollArea->horizontalScrollBar()->minimum();
+    g_visibleAreaLeft = double(ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
+    g_visibleAreaRight = double(ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
 }
