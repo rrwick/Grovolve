@@ -80,14 +80,22 @@ double Cloud::getLeftEdge() const
 {
     return m_cloudShape.boundingRect().left();
 }
-
 double Cloud::getRightEdge() const
 {
     return m_cloudShape.boundingRect().right();
 }
-
+double Cloud::getTopEdge() const
+{
+    return m_cloudShape.boundingRect().top();
+}
 double Cloud::getBottomEdge() const
 {
     return m_cloudShape.boundingRect().bottom();
+}
+QRectF Cloud::getBoundingRect(double environmentHeight) const
+{
+    QRectF rect = m_cloudShape.boundingRect();
+    rect.translate(0.0, environmentHeight - m_elevation);
+    return rect;
 }
 

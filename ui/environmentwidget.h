@@ -60,6 +60,7 @@ private:
     std::vector<Cloud> m_clouds;
     const Organism * m_highlightedOrganism;
     QPoint m_lastMousePosition;
+    QRectF m_visibleRect;
 
     void paintSimulation(QPainter * painter);
     void paintMessage(QPainter * painter);

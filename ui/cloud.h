@@ -35,7 +35,9 @@ public:
     void moveCloudMultipleSteps(int steps);
     double getLeftEdge() const;
     double getRightEdge() const;
+    double getTopEdge() const;
     double getBottomEdge() const;
+    QRectF getBoundingRect(double environmentHeight) const;
     static double getCloudScale(double elevation) {return 0.1 * pow(elevation, g_simulationSettings->cloudScalingPower);}
 
 private:

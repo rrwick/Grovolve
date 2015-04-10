@@ -1068,4 +1068,7 @@ void MainWindow::scrollAreaChanged()
     int horizontalSize = ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->maximum() - ui->scrollArea->horizontalScrollBar()->minimum();
     g_visibleAreaLeft = double(ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
     g_visibleAreaRight = double(ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
+
+    //Since only the visible region is painted, it is necessary to repaint the simulation now.
+    m_environmentWidget->update();
 }
