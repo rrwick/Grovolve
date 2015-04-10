@@ -553,29 +553,37 @@ void PlantPart::getShapesForDrawing(std::vector<QLineF> * branchLines,
                                     std::vector<QRectF> * seedpodsEnds,
                                     double environmentHeight) const
 {
+    //Only get the shapes if they are in the visible area.
+    if (getLeftmostDrawnPoint(false) < g_visibleRect.right() &&
+            getRightmostDrawnPoint(false) > g_visibleRect.left() &&
+            environmentHeight - getHighestDrawnPoint(false) < g_visibleRect.bottom())
+    {
+        if (m_type == BRANCH)
+        {
+            branchLines->push_back(QLineF(m_start.m_x, environmentHeight - m_start.m_y, m_end.m_x, environmentHeight - m_end.m_y));  //Subtract Y from height to invert the drawing, as simulation (0, 0) is bottom left but drawing (0, 0) is top left.
+            branchWidths->push_back(m_width);
+        }
+        else if (m_type == LEAF)
+        {
+            leafLines->push_back(QLineF(m_start.m_x, environmentHeight - m_start.m_y,
+                                        m_end.m_x, environmentHeight - m_end.m_y));  //Subtract Y from height to invert the drawing, as simulation (0, 0) is bottom left but drawing (0, 0) is top left.
+        }
+        else //SEEDPOD
+        {
+            seedpodsLines->push_back(QLineF(m_start.m_x, environmentHeight - m_start.m_y, m_end.m_x, environmentHeight - m_end.m_y));  //Subtract Y from height to invert the drawing, as simulation (0, 0) is bottom left but drawing (0, 0) is top left.
+
+            double seedpodRadius = getBulbRadius();
+            seedpodsEnds->push_back(QRectF(m_end.m_x - seedpodRadius,
+                                           environmentHeight - (m_end.m_y + seedpodRadius),
+                                           seedpodRadius * 2, seedpodRadius * 2));
+        }
+    }
+
+    //Now pass the objects on to any children.
     if (m_type == BRANCH)
     {
-        //Add the shape info for this branch.
-        branchLines->push_back(QLineF(m_start.m_x, environmentHeight - m_start.m_y, m_end.m_x, environmentHeight - m_end.m_y));  //Subtract Y from height to invert the drawing, as simulation (0, 0) is bottom left but drawing (0, 0) is top left.
-        branchWidths->push_back(m_width);
-
-        //Now pass the objects on to any children.
         for (std::vector<PlantPart *>::const_iterator i = m_children.begin(); i != m_children.end(); ++i)
             (*i)->getShapesForDrawing(branchLines, branchWidths, leafLines, seedpodsLines, seedpodsEnds, environmentHeight);
-    }
-    else if (m_type == LEAF)
-    {
-        leafLines->push_back(QLineF(m_start.m_x, environmentHeight - m_start.m_y,
-                                    m_end.m_x, environmentHeight - m_end.m_y));  //Subtract Y from height to invert the drawing, as simulation (0, 0) is bottom left but drawing (0, 0) is top left.
-    }
-    else //SEEDPOD
-    {
-        seedpodsLines->push_back(QLineF(m_start.m_x, environmentHeight - m_start.m_y, m_end.m_x, environmentHeight - m_end.m_y));  //Subtract Y from height to invert the drawing, as simulation (0, 0) is bottom left but drawing (0, 0) is top left.
-
-        double seedpodRadius = getBulbRadius();
-        seedpodsEnds->push_back(QRectF(m_end.m_x - seedpodRadius,
-                                       environmentHeight - (m_end.m_y + seedpodRadius),
-                                       seedpodRadius * 2, seedpodRadius * 2));
     }
 }
 
