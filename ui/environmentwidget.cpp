@@ -161,13 +161,13 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
     painter->fillRect(m_visibleRect, skyGradient);
 
 
+    //Antialias everything from now on.  PERHAPS MAKE THIS A SETTING TO HELP OUT SLOWER MACHINES?
+    painter->setRenderHint(QPainter::Antialiasing, true);
+
+
     //Paint the clouds
     if (g_simulationSettings->cloudsOn)
         paintClouds(painter);
-
-
-    //Antialias everything from now on.  PERHAPS MAKE THIS A SETTING TO HELP OUT SLOWER MACHINES?
-    painter->setRenderHint(QPainter::Antialiasing, true);
 
 
     //Draw the plants.
