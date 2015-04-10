@@ -31,10 +31,7 @@ int g_organismsSavedOrLoaded;
 int g_seedsSavedOrLoaded;
 int g_historyOrganismsSavedOrLoaded;
 
-double g_visibleAreaTop;
-double g_visibleAreaBottom;
-double g_visibleAreaLeft;
-double g_visibleAreaRight;
+QRectF g_visibleRect;
 
 
 QString formatDoubleForDisplay(double num, double decimalPlacesToDisplay, QLocale locale)

@@ -22,6 +22,7 @@
 #include <QString>
 #include <QLocale>
 #include <QFont>
+#include <QRectF>
 
 enum PlantPartType {BRANCH, LEAF, SEEDPOD, NO_PART, ANY_PART};
 enum GraphData {POPULATION,
@@ -51,10 +52,7 @@ extern int g_organismsSavedOrLoaded;
 extern int g_seedsSavedOrLoaded;
 extern int g_historyOrganismsSavedOrLoaded;
 
-extern double g_visibleAreaTop;
-extern double g_visibleAreaBottom;
-extern double g_visibleAreaLeft;
-extern double g_visibleAreaRight;
+extern QRectF g_visibleRect;
 
 QString formatDoubleForDisplay(double num, double decimalPlacesToDisplay, QLocale locale);
 QFont getMonospaceFont();

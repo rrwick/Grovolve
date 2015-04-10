@@ -1062,12 +1062,44 @@ void MainWindow::mouseDrag(QPoint change)
 void MainWindow::scrollAreaChanged()
 {
     int verticalSize = ui->scrollArea->verticalScrollBar()->pageStep() + ui->scrollArea->verticalScrollBar()->maximum() - ui->scrollArea->verticalScrollBar()->minimum();
-    g_visibleAreaTop = double(ui->scrollArea->verticalScrollBar()->value() - ui->scrollArea->verticalScrollBar()->minimum()) / verticalSize;
-    g_visibleAreaBottom = double(ui->scrollArea->verticalScrollBar()->pageStep() + ui->scrollArea->verticalScrollBar()->value() - ui->scrollArea->verticalScrollBar()->minimum()) / verticalSize;
+    double visibleAreaTopFraction = double(ui->scrollArea->verticalScrollBar()->value() - ui->scrollArea->verticalScrollBar()->minimum()) / verticalSize;
+    double visibleAreaBottomFraction = double(ui->scrollArea->verticalScrollBar()->pageStep() + ui->scrollArea->verticalScrollBar()->value() - ui->scrollArea->verticalScrollBar()->minimum()) / verticalSize;
 
     int horizontalSize = ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->maximum() - ui->scrollArea->horizontalScrollBar()->minimum();
-    g_visibleAreaLeft = double(ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
-    g_visibleAreaRight = double(ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
+    double visibleAreaLeftFraction = double(ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
+    double visibleAreaRightFraction = double(ui->scrollArea->horizontalScrollBar()->pageStep() + ui->scrollArea->horizontalScrollBar()->value() - ui->scrollArea->horizontalScrollBar()->minimum()) / horizontalSize;
+
+    //Determine the visible region of the simulation.
+    int visibleAreaTop = m_environment->getHeight() * visibleAreaTopFraction;
+    int visibleAreaBottom = m_environment->getHeight() * visibleAreaBottomFraction;
+    int visibleAreaLeft = m_environment->getWidth() * visibleAreaLeftFraction;
+    int visibleAreaRight = m_environment->getWidth() * visibleAreaRightFraction;
+
+    //Enlarge the visible region by a tad, to cover for rounding issues,
+    //but make sure it stays in bounds.
+    visibleAreaTop -= 2;
+    if (visibleAreaTop < 0)
+        visibleAreaTop = 0;
+    visibleAreaBottom += 2;
+    if (visibleAreaBottom > m_environment->getHeight())
+        visibleAreaBottom = m_environment->getHeight();
+    visibleAreaLeft -= 2;
+    if (visibleAreaLeft < 0)
+        visibleAreaLeft = 0;
+    visibleAreaRight += 2;
+    if (visibleAreaRight > m_environment->getWidth())
+        visibleAreaRight = m_environment->getWidth();
+
+    //TEST CODE!!!!
+    //SHRINK THE VISIBLE AREA SO I CAN SEE THAT IT'S WORKING!
+    visibleAreaTop += 20;
+    visibleAreaBottom -= 20;
+    visibleAreaLeft += 20;
+    visibleAreaRight -= 20;
+
+    g_visibleRect = QRectF(QPointF(visibleAreaLeft, visibleAreaTop),
+                           QPointF(visibleAreaRight, visibleAreaBottom));
+
 
     //Since only the visible region is painted, it is necessary to repaint the simulation now.
     m_environmentWidget->update();

@@ -122,43 +122,11 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
     painter->scale(g_simulationSettings->zoom, g_simulationSettings->zoom);
 
 
-    //Determine the visible region of the simulation.
-    int visibleAreaTop = m_environment->getHeight() * g_visibleAreaTop;
-    int visibleAreaBottom = m_environment->getHeight() * g_visibleAreaBottom;
-    int visibleAreaLeft = m_environment->getWidth() * g_visibleAreaLeft;
-    int visibleAreaRight = m_environment->getWidth() * g_visibleAreaRight;
-
-    //Enlarge the visible region by a tad, to cover for rounding issues,
-    //but make sure it stays in bounds.
-    visibleAreaTop -= 2;
-    if (visibleAreaTop < 0)
-        visibleAreaTop = 0;
-    visibleAreaBottom += 2;
-    if (visibleAreaBottom > m_environment->getHeight())
-        visibleAreaBottom = m_environment->getHeight();
-    visibleAreaLeft -= 2;
-    if (visibleAreaLeft < 0)
-        visibleAreaLeft = 0;
-    visibleAreaRight += 2;
-    if (visibleAreaRight > m_environment->getWidth())
-        visibleAreaRight = m_environment->getWidth();
-
-    //TEST CODE!!!!
-    //SHRINK THE VISIBLE AREA SO I CAN SEE THAT IT'S WORKING!
-    visibleAreaTop += 20;
-    visibleAreaBottom -= 20;
-    visibleAreaLeft += 20;
-    visibleAreaRight -= 20;
-
-    m_visibleRect = QRectF(QPointF(visibleAreaLeft, visibleAreaTop),
-                           QPointF(visibleAreaRight, visibleAreaBottom));
-
-
     //Fill the background with the sky.
     QLinearGradient skyGradient(QPointF(0, m_environment->getHeight()), QPointF(0,0));
     skyGradient.setColorAt(0, g_simulationSettings->getSunIntensityAdjustedSkyBottomColor(g_environmentSettings->m_currentValues.m_sunIntensity));
     skyGradient.setColorAt(1, g_simulationSettings->getSunIntensityAdjustedSkyTopColor(g_environmentSettings->m_currentValues.m_sunIntensity));
-    painter->fillRect(m_visibleRect, skyGradient);
+    painter->fillRect(g_visibleRect, skyGradient);
 
 
     //Antialias everything from now on.  PERHAPS MAKE THIS A SETTING TO HELP OUT SLOWER MACHINES?
@@ -268,10 +236,10 @@ void EnvironmentWidget::paintClouds(QPainter * painter)
     for (size_t i = 0; i < m_clouds.size(); ++i)
     {
         QRectF cloudBoundingRect = m_clouds[i].getBoundingRect(m_environment->getHeight());
-        if (cloudBoundingRect.top() < m_visibleRect.bottom() &&
-                cloudBoundingRect.bottom() > m_visibleRect.top() &&
-                cloudBoundingRect.left() < m_visibleRect.right() &&
-                cloudBoundingRect.right() > m_visibleRect.left())
+        if (cloudBoundingRect.top() < g_visibleRect.bottom() &&
+                cloudBoundingRect.bottom() > g_visibleRect.top() &&
+                cloudBoundingRect.left() < g_visibleRect.right() &&
+                cloudBoundingRect.right() > g_visibleRect.left())
         {
             m_clouds[i].paintCloud(painter, m_environment->getHeight());
         }

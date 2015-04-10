@@ -63,9 +63,9 @@ public:
     double getMaintenanceCost() const;
     bool descendsFromGeneIndex(double otherGeneIndex) const;
     double getHighestPoint() const;
-    double getHighestDrawnPoint() const;
-    double getRightmostDrawnPoint() const;
-    double getLeftmostDrawnPoint() const;
+    double getHighestDrawnPoint(bool checkDescendants = true) const;
+    double getRightmostDrawnPoint(bool checkDescendants = true) const;
+    double getLeftmostDrawnPoint(bool checkDescendants = true) const;
     bool isFinishedGrowing() const;
     double getArea() const {return getLength() * m_width;} //Only used for branches
     double getBulbRadius() const {return getLength() / g_simulationSettings->seedpodLengthToBulbRadius;} //Only used for seedpods

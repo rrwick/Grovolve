@@ -439,11 +439,11 @@ double PlantPart::getHighestPoint() const
 
 
 
-double PlantPart::getHighestDrawnPoint() const
+double PlantPart::getHighestDrawnPoint(bool checkDescendants) const
 {
     double highestDrawnPoint = std::max(m_start.m_y, m_end.m_y) + getDrawnThickness() / 2.0;
 
-    if (m_type == BRANCH)
+    if (m_type == BRANCH && checkDescendants)
     {
         for (std::vector<PlantPart *>::const_iterator i = m_children.begin(); i != m_children.end(); ++i)
         {
@@ -452,17 +452,17 @@ double PlantPart::getHighestDrawnPoint() const
                 highestDrawnPoint = highestDrawnPointInChild;
         }
     }
-    else if (m_type == SEEDPOD)
+    if (m_type == SEEDPOD)
         highestDrawnPoint = std::max(highestDrawnPoint, m_end.m_y + getBulbRadius());
 
     return highestDrawnPoint;
 }
 
-double PlantPart::getRightmostDrawnPoint() const
+double PlantPart::getRightmostDrawnPoint(bool checkDescendants) const
 {
     double rightmostDrawnPoint = std::max(m_start.m_x, m_end.m_x) + getDrawnThickness() / 2.0;
 
-    if (m_type == BRANCH)
+    if (m_type == BRANCH && checkDescendants)
     {
         for (std::vector<PlantPart *>::const_iterator i = m_children.begin(); i != m_children.end(); ++i)
         {
@@ -471,17 +471,17 @@ double PlantPart::getRightmostDrawnPoint() const
                 rightmostDrawnPoint = rightmostDrawnPointInChild;
         }
     }
-    else if (m_type == SEEDPOD)
+    if (m_type == SEEDPOD)
         rightmostDrawnPoint = std::max(rightmostDrawnPoint, m_end.m_x + getBulbRadius());
 
     return rightmostDrawnPoint;
 }
 
-double PlantPart::getLeftmostDrawnPoint() const
+double PlantPart::getLeftmostDrawnPoint(bool checkDescendants) const
 {
     double leftmostDrawnPoint = std::min(m_start.m_x, m_end.m_x) - getDrawnThickness() / 2.0;
 
-    if (m_type == BRANCH)
+    if (m_type == BRANCH && checkDescendants)
     {
         for (std::vector<PlantPart *>::const_iterator i = m_children.begin(); i != m_children.end(); ++i)
         {
@@ -490,7 +490,7 @@ double PlantPart::getLeftmostDrawnPoint() const
                 leftmostDrawnPoint = leftmostDrawnPointInChild;
         }
     }
-    else if (m_type == SEEDPOD)
+    if (m_type == SEEDPOD)
         leftmostDrawnPoint = std::min(leftmostDrawnPoint, m_end.m_x - getBulbRadius());
 
     return leftmostDrawnPoint;
