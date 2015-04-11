@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QScrollArea" name="scrollArea">
+    <widget class="VerticalScrollArea" name="scrollArea">
      <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
      </property>
@@ -44,9 +44,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-634</y>
-        <width>421</width>
-        <height>1450</height>
+        <y>-88</y>
+        <width>425</width>
+        <height>1912</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -1833,6 +1833,12 @@
    <class>InfoTextWidget</class>
    <extends>QWidget</extends>
    <header>infotextwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>VerticalScrollArea</class>
+   <extends>QScrollArea</extends>
+   <header>verticalscrollarea.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

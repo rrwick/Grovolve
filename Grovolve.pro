@@ -59,7 +59,8 @@ SOURCES += \
     ui/statsandhistorydialog.cpp \
     ui/cloud.cpp \
     ui/recoverautosavefilesdialog.cpp \
-    ui/myscrollarea.cpp
+    ui/myscrollarea.cpp \
+    ui/verticalscrollarea.cpp
 
 HEADERS  += \
     program/environment.h \
@@ -97,7 +98,8 @@ HEADERS  += \
     ui/statsandhistorydialog.h \
     ui/cloud.h \
     ui/recoverautosavefilesdialog.h \
-    ui/myscrollarea.h
+    ui/myscrollarea.h \
+    ui/verticalscrollarea.h
 
 FORMS    += \
     ui/mainwindow.ui \
