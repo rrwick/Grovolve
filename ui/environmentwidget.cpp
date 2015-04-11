@@ -148,19 +148,21 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
     if (g_simulationSettings->shadowsDrawn)
     {
         //Create a pixmap of the darkness color.
-        QPixmap darkness(m_environment->getWidth() * g_simulationSettings->zoom,
-                         m_environment->getHeight() * g_simulationSettings->zoom);
+        QPixmap darkness(g_visibleRect.width() * g_simulationSettings->zoom,
+                         g_visibleRect.height() * g_simulationSettings->zoom);
         darkness.fill(g_simulationSettings->nightTimeColor);
 
         //Create a pixmap to hold the shadows.
-        QPixmap shadows(m_environment->getWidth() * g_simulationSettings->zoom,
-                        m_environment->getHeight() * g_simulationSettings->zoom);
+        QPixmap shadows(g_visibleRect.width() * g_simulationSettings->zoom,
+                        g_visibleRect.width() * g_simulationSettings->zoom);
         QColor shadowColor(Qt::black);
         shadowColor.setAlphaF(1.0 - (g_lighting->getSunIntensity() / g_environmentSettings->m_currentValues.m_sunIntensity));
         shadows.fill(shadowColor);
 
         //Paint the shadow polygons onto the shadows pixmap
         QPainter shadowPainter(&shadows);
+        shadowPainter.translate(-g_visibleRect.left() * g_simulationSettings->zoom,
+                                -g_visibleRect.top() * g_simulationSettings->zoom);
         shadowPainter.scale(g_simulationSettings->zoom, g_simulationSettings->zoom);
         shadowPainter.setRenderHint(QPainter::Antialiasing, g_simulationSettings->shadowAntialiasing);
         shadowPainter.setPen(Qt::NoPen);
@@ -180,7 +182,9 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
 
         //Draw the shadows onto the screen.
         painter->scale(1.0 / g_simulationSettings->zoom, 1.0 / g_simulationSettings->zoom);
-        painter->drawPixmap(0, 0, darkness);
+        painter->drawPixmap(g_visibleRect.left() * g_simulationSettings->zoom,
+                            g_visibleRect.top() * g_simulationSettings->zoom,
+                            darkness);
     }
 }
 

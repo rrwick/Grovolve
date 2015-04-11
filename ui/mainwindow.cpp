@@ -1092,10 +1092,10 @@ void MainWindow::scrollAreaChanged()
 
     //TEST CODE!!!!
     //SHRINK THE VISIBLE AREA SO I CAN SEE THAT IT'S WORKING!
-    visibleAreaTop += 20;
-    visibleAreaBottom -= 20;
-    visibleAreaLeft += 20;
-    visibleAreaRight -= 20;
+    visibleAreaTop += 10;
+    visibleAreaBottom -= 10;
+    visibleAreaLeft += 10;
+    visibleAreaRight -= 10;
 
     g_visibleRect = QRectF(QPointF(visibleAreaLeft, visibleAreaTop),
                            QPointF(visibleAreaRight, visibleAreaBottom));
