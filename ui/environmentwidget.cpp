@@ -154,7 +154,7 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
 
         //Create a pixmap to hold the shadows.
         QPixmap shadows(g_visibleRect.width() * g_simulationSettings->zoom,
-                        g_visibleRect.width() * g_simulationSettings->zoom);
+                        g_visibleRect.height() * g_simulationSettings->zoom);
         QColor shadowColor(Qt::black);
         shadowColor.setAlphaF(1.0 - (g_lighting->getSunIntensity() / g_environmentSettings->m_currentValues.m_sunIntensity));
         shadows.fill(shadowColor);
