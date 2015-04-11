@@ -1090,16 +1090,8 @@ void MainWindow::scrollAreaChanged()
     if (visibleAreaRight > m_environment->getWidth())
         visibleAreaRight = m_environment->getWidth();
 
-    //TEST CODE!!!!
-    //SHRINK THE VISIBLE AREA SO I CAN SEE THAT IT'S WORKING!
-    visibleAreaTop += 10;
-    visibleAreaBottom -= 10;
-    visibleAreaLeft += 10;
-    visibleAreaRight -= 10;
-
     g_visibleRect = QRectF(QPointF(visibleAreaLeft, visibleAreaTop),
                            QPointF(visibleAreaRight, visibleAreaBottom));
-
 
     //Since only the visible region is painted, it is necessary to repaint the simulation now.
     m_environmentWidget->update();

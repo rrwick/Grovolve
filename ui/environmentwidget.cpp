@@ -171,7 +171,7 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
         std::vector<QPolygonF> shadowPolygons;
         createShadowPolygons(&shadowPolygons);
         for (std::vector<QPolygonF>::iterator i = shadowPolygons.begin(); i != shadowPolygons.end(); ++i)
-            shadowPainter.drawPolygon(*i);
+            shadowPainter.drawConvexPolygon(*i);
 
         //Paint the shadows pixmap onto the darkness pixmap to create a final
         //pixmap that can be drawn to the screen.  In this final pixmap, total
@@ -418,14 +418,24 @@ void EnvironmentWidget::createShadowPolygons(std::vector<QPolygonF> * shadowPoly
 
     for (int i = 0; i < int(leaves.size()); ++i)
     {
-        QPolygonF shadow;
-        shadow << QPointF(leaves[i]->getStart().m_x, envHeight - leaves[i]->getStart().m_y);
-        shadow << QPointF(leaves[i]->getEnd().m_x, envHeight - leaves[i]->getEnd().m_y);
-        shadow << QPointF(leaves[i]->getEnd().m_x + xOffset, envHeight - (leaves[i]->getEnd().m_y + yOffset));
-        shadow << QPointF(leaves[i]->getStart().m_x + xOffset, envHeight - (leaves[i]->getStart().m_y + yOffset));
-        shadow << QPointF(leaves[i]->getStart().m_x, envHeight - leaves[i]->getStart().m_y);
+        QPointF p1(leaves[i]->getStart().m_x, envHeight - leaves[i]->getStart().m_y);
+        QPointF p2(leaves[i]->getEnd().m_x, envHeight - leaves[i]->getEnd().m_y);
+        QPointF p3(leaves[i]->getEnd().m_x + xOffset, envHeight - (leaves[i]->getEnd().m_y + yOffset));
+        QPointF p4(leaves[i]->getStart().m_x + xOffset, envHeight - (leaves[i]->getStart().m_y + yOffset));
 
-        shadowPolygons->push_back(shadow);
+        //If the shadow is at least partially in the visible area, add it to the
+        //vector of polygons to be drawn.
+        double highestPoint = std::min(p1.y(), p2.y());
+        double leftmostPoint = std::min({p1.x(), p2.x(), p3.x(), p4.x()});
+        double rightmostPoint = std::max({p1.x(), p2.x(), p3.x(), p4.x()});
+        if (leftmostPoint < g_visibleRect.right() &&
+                rightmostPoint > g_visibleRect.left() &&
+                highestPoint < g_visibleRect.bottom())
+        {
+            QPolygonF shadow;
+            shadow << p1 << p2 << p3 << p4 << p1;
+            shadowPolygons->push_back(shadow);
+        }
     }
 }
 
