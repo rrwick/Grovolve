@@ -408,8 +408,6 @@ bool Environment::possiblyChangeEnvironmentSize()
 
             if (newWidth < g_simulationSettings->minimumEnvironmentWidth)
                 newWidth = g_simulationSettings->minimumEnvironmentWidth;
-            if (newWidth > g_simulationSettings->maximumEnvironmentWidth)
-                newWidth = g_simulationSettings->maximumEnvironmentWidth;
 
             setWidth(newWidth);
             sizeChanged = true;

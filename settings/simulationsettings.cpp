@@ -87,7 +87,6 @@ SimulationSettings::SimulationSettings()
     environmentHeightCheckInterval = 10;
     environmentWidthCheckInterval = 10000;
     minimumEnvironmentWidth = 500;
-    maximumEnvironmentWidth = 16000; //This value was chosen because the shadow pixmap can only be 32767 wide, and a max zoom of 2.0 will require a pixmap twice as wide as the environment.
 
     //Colors
     skyBottomColor = QColor(230, 235, 245);

@@ -86,7 +86,6 @@ public:
     int environmentHeightCheckInterval; //The environment height isn't checked every tick, just at this interval.
     int environmentWidthCheckInterval; //The environment width isn't checked every tick, just at this interval.
     int minimumEnvironmentWidth;
-    int maximumEnvironmentWidth;
     QColor skyBottomColor;
     QColor skyTopColor;
     QColor leafColor;
