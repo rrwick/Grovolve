@@ -63,6 +63,7 @@
 #include "boost/iostreams/filter/gzip.hpp"
 #include "tbb/task_scheduler_init.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -135,11 +136,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRecover_autosave_files, SIGNAL(triggered()), this, SLOT(openRecoverFilesDialog()));
     connect(m_environmentWidget, SIGNAL(mouseDrag(QPoint)), this, SLOT(mouseDrag(QPoint)));
     connect(ui->speedSlider, SIGNAL(valueChanged(int)), this, SLOT(simulationSpeedChanged()));
-    connect(ui->scrollArea->verticalScrollBar(), SIGNAL(rangeChanged(int,int)), this, SLOT(scrollAreaChanged()));
-    connect(ui->scrollArea->horizontalScrollBar(), SIGNAL(rangeChanged(int,int)), this, SLOT(scrollAreaChanged()));
-    connect(ui->scrollArea->verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(scrollAreaChanged()));
-    connect(ui->scrollArea->horizontalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(scrollAreaChanged()));
-
+    connect(ui->scrollArea, SIGNAL(changed()), this, SLOT(scrollAreaChanged()));
 
     //The spin box for setting the zoom should have the same step size as using
     //the mouse wheel to set the zoom.
@@ -497,6 +494,8 @@ void MainWindow::setEnvironmentSize()
 
     m_environmentWidget->setMinimumSize(newWidth, newHeight);
     ui->scrollArea->verticalScrollBar()->setValue(ui->scrollArea->verticalScrollBar()->maximum());
+
+    scrollAreaChanged();
 }
 
 

@@ -637,7 +637,7 @@ the simulation run.</string>
      </widget>
     </item>
     <item>
-     <widget class="QScrollArea" name="scrollArea">
+     <widget class="MyScrollArea" name="scrollArea">
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOn</enum>
       </property>
@@ -655,8 +655,8 @@ the simulation run.</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>466</width>
-         <height>667</height>
+         <width>455</width>
+         <height>665</height>
         </rect>
        </property>
       </widget>
@@ -670,7 +670,7 @@ the simulation run.</string>
      <x>0</x>
      <y>0</y>
      <width>1101</width>
-     <height>21</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -860,6 +860,12 @@ the simulation run.</string>
    <class>InfoTextWidget</class>
    <extends>QWidget</extends>
    <header>infotextwidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MyScrollArea</class>
+   <extends>QScrollArea</extends>
+   <header>myscrollarea.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
