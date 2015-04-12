@@ -64,15 +64,8 @@ void EnvironmentWidget::paintEvent(QPaintEvent * event)
 {
     QPainter painter(this);
 
-    //If the display is off, just fill the area with grey, display a message and quit.
-    if (!(g_simulationSettings->displayOn))
-    {
-        painter.fillRect(0, 0, width(), height(), QColor(200, 200, 200));
-        paintMessage(&painter);
-    }
-
     //Paint everything about the simulation in a separate function.
-    else
+    if (g_simulationSettings->displayOn)
         paintSimulation(&painter, false);
 
     //Now call the super class's paintEvent to draw the frame around the edge.
@@ -284,22 +277,6 @@ void EnvironmentWidget::drawOrganism(QPainter * painter, const Organism * organi
 {
     m_environment->drawOrganism(painter, organism, m_highlightedOrganism, alwaysDraw);
 }
-
-
-
-
-//This function prints the 'Click...' message for when the simulation is hidden.
-void EnvironmentWidget::paintMessage(QPainter * painter)
-{
-    QFont messageFont;
-    messageFont.setPixelSize(24);
-    painter->setFont(messageFont);
-
-    QRect textRect(0, 0, width(), height());
-
-    painter->drawText(textRect, Qt::AlignCenter, "Click 'Show simulation'\nto see the plants.");
-}
-
 
 
 

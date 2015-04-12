@@ -62,7 +62,6 @@ private:
     QPoint m_lastMousePosition;
 
     void paintSimulation(QPainter * painter, bool drawEverything);
-    void paintMessage(QPainter * painter);
     void drawOrganism(QPainter * painter, const Organism * organism, bool alwaysDraw);
     void createShadowPolygons(std::vector<QPolygonF> * shadowPolygons);
     void paintClouds(QPainter * painter, bool drawAllClouds);
