@@ -61,12 +61,11 @@ private:
     const Organism * m_highlightedOrganism;
     QPoint m_lastMousePosition;
 
-    void paintSimulation(QPainter * painter);
+    void paintSimulation(QPainter * painter, bool drawEverything);
     void paintMessage(QPainter * painter);
-    void drawOrganism(QPainter * painter, const Organism *organism);
+    void drawOrganism(QPainter * painter, const Organism * organism, bool alwaysDraw);
     void createShadowPolygons(std::vector<QPolygonF> * shadowPolygons);
-    void paintPlants(QPainter * painter);
-    void paintClouds(QPainter * painter);
+    void paintClouds(QPainter * painter, bool drawAllClouds);
     void createOneCloud(int movementSteps);
     void mousePressOrMove(QMouseEvent * event);
     Point2D getPointFromMouseEvent(QMouseEvent * event);

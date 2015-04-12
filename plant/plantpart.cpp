@@ -551,12 +551,14 @@ void PlantPart::getShapesForDrawing(std::vector<QLineF> * branchLines,
                                     std::vector<QLineF> * leafLines,
                                     std::vector<QLineF> * seedpodsLines,
                                     std::vector<QRectF> * seedpodsEnds,
-                                    double environmentHeight) const
+                                    double environmentHeight,
+                                    bool ignoreVisibleArea) const
 {
     //Only get the shapes if they are in the visible area.
-    if (getLeftmostDrawnPoint(false) < g_visibleRect.right() &&
-            getRightmostDrawnPoint(false) > g_visibleRect.left() &&
-            environmentHeight - getHighestDrawnPoint(false) < g_visibleRect.bottom())
+    if (ignoreVisibleArea ||
+            (getLeftmostDrawnPoint(false) < g_visibleRect.right() &&
+             getRightmostDrawnPoint(false) > g_visibleRect.left() &&
+             environmentHeight - getHighestDrawnPoint(false) < g_visibleRect.bottom()))
     {
         if (m_type == BRANCH)
         {
@@ -583,7 +585,7 @@ void PlantPart::getShapesForDrawing(std::vector<QLineF> * branchLines,
     if (m_type == BRANCH)
     {
         for (std::vector<PlantPart *>::const_iterator i = m_children.begin(); i != m_children.end(); ++i)
-            (*i)->getShapesForDrawing(branchLines, branchWidths, leafLines, seedpodsLines, seedpodsEnds, environmentHeight);
+            (*i)->getShapesForDrawing(branchLines, branchWidths, leafLines, seedpodsLines, seedpodsEnds, environmentHeight, ignoreVisibleArea);
     }
 }
 

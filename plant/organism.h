@@ -68,7 +68,7 @@ public:
     void setGeneration(double newGeneration) {m_generation = newGeneration;}
     void resetBirthDate() {m_birthDate = 0;}
     void help() {m_helped = true;}
-    void drawOrganism(QPainter * painter, double environmentHeight, bool highlight = false) const;
+    void drawOrganism(QPainter * painter, double environmentHeight, bool highlight = false, bool alwaysDraw = false) const;
     bool isPointInsideOrganism(Point2D point) const;
     bool isFinishedGrowing() const;
     double getHeight() const;

@@ -73,7 +73,7 @@ void EnvironmentWidget::paintEvent(QPaintEvent * event)
 
     //Paint everything about the simulation in a separate function.
     else
-        paintSimulation(&painter);
+        paintSimulation(&painter, false);
 
     //Now call the super class's paintEvent to draw the frame around the edge.
     QFrame::paintEvent(event);
@@ -102,7 +102,7 @@ QImage EnvironmentWidget::paintSimulationToImage(bool highQuality, bool shadows)
                            m_environment->getHeight() * g_simulationSettings->zoom,
                            QImage::Format_RGB32);
     QPainter painter(&simulationImage);
-    paintSimulation(&painter);
+    paintSimulation(&painter, true);
 
 
     g_simulationSettings->zoom = originalZoom;
@@ -116,7 +116,9 @@ QImage EnvironmentWidget::paintSimulationToImage(bool highQuality, bool shadows)
 //This function paints the whole simulation using the given painter.  It is used both to
 //paint the widget to the screen (when the painter paints to this widget) and to draw the
 //simulation to a QImage (when the painter paints to a pixmap).
-void EnvironmentWidget::paintSimulation(QPainter * painter)
+//If drawEverything is true, then the entire environment will be drawn.  If false, only
+//the visible area will be drawn.
+void EnvironmentWidget::paintSimulation(QPainter * painter, bool drawEverything)
 {
     //Scale all painting to the current zoom level.
     painter->scale(g_simulationSettings->zoom, g_simulationSettings->zoom);
@@ -126,7 +128,10 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
     QLinearGradient skyGradient(QPointF(0, m_environment->getHeight()), QPointF(0,0));
     skyGradient.setColorAt(0, g_simulationSettings->getSunIntensityAdjustedSkyBottomColor(g_environmentSettings->m_currentValues.m_sunIntensity));
     skyGradient.setColorAt(1, g_simulationSettings->getSunIntensityAdjustedSkyTopColor(g_environmentSettings->m_currentValues.m_sunIntensity));
-    painter->fillRect(g_visibleRect, skyGradient);
+    if (drawEverything)
+        painter->fillRect(0, 0, m_environment->getWidth(), m_environment->getHeight(), skyGradient);
+    else
+        painter->fillRect(g_visibleRect, skyGradient);
 
 
     //Antialias everything from now on.  PERHAPS MAKE THIS A SETTING TO HELP OUT SLOWER MACHINES?
@@ -135,13 +140,13 @@ void EnvironmentWidget::paintSimulation(QPainter * painter)
 
     //Paint the clouds
     if (g_simulationSettings->cloudsOn)
-        paintClouds(painter);
+        paintClouds(painter, drawEverything);
 
 
     //Draw the plants.
     const std::list<Organism *> * organisms = m_environment->getOrganismList();
     for (std::list<Organism *>::const_iterator i = organisms->begin(); i != organisms->end(); ++i)
-        drawOrganism(painter, *i);
+        drawOrganism(painter, *i, drawEverything);
 
 
     //Draw the shadows.
@@ -227,23 +232,20 @@ void EnvironmentWidget::createOneCloud(int movementSteps)
 }
 
 
-void EnvironmentWidget::paintPlants(QPainter * painter)
-{
-    const std::list<Organism *> * organisms = m_environment->getOrganismList();
-    for (std::list<Organism *>::const_iterator i = organisms->begin(); i != organisms->end(); ++i)
-        drawOrganism(painter, *i);
-}
 
-
-void EnvironmentWidget::paintClouds(QPainter * painter)
+//If drawAllCoulds is true, then all clouds will be drawn, even if they
+//are not in the visible area.  If false, only clouds that are at least
+//partially in the visible area will be drawn.
+void EnvironmentWidget::paintClouds(QPainter * painter, bool drawAllClouds)
 {
     for (size_t i = 0; i < m_clouds.size(); ++i)
     {
         QRectF cloudBoundingRect = m_clouds[i].getBoundingRect(m_environment->getHeight());
-        if (cloudBoundingRect.top() < g_visibleRect.bottom() &&
-                cloudBoundingRect.bottom() > g_visibleRect.top() &&
-                cloudBoundingRect.left() < g_visibleRect.right() &&
-                cloudBoundingRect.right() > g_visibleRect.left())
+        if (drawAllClouds ||
+                (cloudBoundingRect.top() < g_visibleRect.bottom() &&
+                 cloudBoundingRect.bottom() > g_visibleRect.top() &&
+                 cloudBoundingRect.left() < g_visibleRect.right() &&
+                 cloudBoundingRect.right() > g_visibleRect.left()))
         {
             m_clouds[i].paintCloud(painter, m_environment->getHeight());
         }
@@ -278,9 +280,9 @@ void EnvironmentWidget::moveClouds()
 
 
 
-void EnvironmentWidget::drawOrganism(QPainter * painter, const Organism * organism)
+void EnvironmentWidget::drawOrganism(QPainter * painter, const Organism * organism, bool alwaysDraw)
 {
-    m_environment->drawOrganism(painter, organism, m_highlightedOrganism);
+    m_environment->drawOrganism(painter, organism, m_highlightedOrganism, alwaysDraw);
 }
 
 

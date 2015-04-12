@@ -58,7 +58,8 @@ public:
                              std::vector<QLineF> * leafLines,
                              std::vector<QLineF> * seedpodsLines,
                              std::vector<QRectF> * seedpodsEnds,
-                             double environmentHeight) const;
+                             double environmentHeight,
+                             bool ignoreVisibleArea) const;
     double getGrowthCost();
     double getMaintenanceCost() const;
     bool descendsFromGeneIndex(double otherGeneIndex) const;

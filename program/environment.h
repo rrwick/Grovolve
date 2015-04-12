@@ -52,7 +52,7 @@ public:
     void advanceOneTick();
     bool possiblyChangeEnvironmentSize();
     void logStats();
-    void drawOrganism(QPainter * painter, const Organism * organism, const Organism * highlightOrganism) const {organism->drawOrganism(painter, m_height, organism == highlightOrganism);}
+    void drawOrganism(QPainter * painter, const Organism * organism, const Organism * highlightOrganism, bool alwaysDraw) const {organism->drawOrganism(painter, m_height, organism == highlightOrganism, alwaysDraw);}
     Organism * findOrganismUnderPoint(Point2D point) const;
     void addLeavesToVector(std::vector<PlantPart *> *leafVector);
     void setWidth(int newWidth);

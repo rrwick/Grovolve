@@ -152,7 +152,11 @@ void Organism::setColorsWithoutRandomness()
 //so the organism can be drawn.  It does this by passing the pointers to the first
 //PlantPart which will add its shape(s) and then pass the pointers on to any
 //children it has.
-void Organism::drawOrganism(QPainter * painter, double environmentHeight, bool highlight) const
+//The alwaysDraw parameter controls whether this function takes the visible area
+//into account.  If false, an organism is only drawn when its region of the
+//environment is visible.  If true, it is always drawn.  True is used for things
+//like the SingleOrganismWidget and saving images.
+void Organism::drawOrganism(QPainter * painter, double environmentHeight, bool highlight, bool alwaysDraw) const
 {
     QColor branchFillColor;
     QColor branchLineColor;
@@ -176,7 +180,7 @@ void Organism::drawOrganism(QPainter * painter, double environmentHeight, bool h
     std::vector<QLineF> leafLines;
     std::vector<QLineF> seedpodsLines;
     std::vector<QRectF> seedpodsEnds;
-    m_firstPart->getShapesForDrawing(&branchLines, &branchWidths, &leafLines, &seedpodsLines, &seedpodsEnds, environmentHeight);
+    m_firstPart->getShapesForDrawing(&branchLines, &branchWidths, &leafLines, &seedpodsLines, &seedpodsEnds, environmentHeight, alwaysDraw);
 
     if (m_helped)
     {

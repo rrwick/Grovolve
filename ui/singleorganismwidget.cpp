@@ -83,6 +83,6 @@ void SingleOrganismWidget::paintEvent(QPaintEvent * /*event*/)
     painter.setTransform(transform);
 
     //Paint the organism.
-    m_organism->drawOrganism(&painter, 0.0);
+    m_organism->drawOrganism(&painter, 0.0, false, true);
 
 }
