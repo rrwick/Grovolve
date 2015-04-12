@@ -215,7 +215,7 @@
          <enum>Qt::StrongFocus</enum>
         </property>
         <property name="minimum">
-         <number>1000</number>
+         <number>1</number>
         </property>
         <property name="maximum">
          <number>100000000</number>
