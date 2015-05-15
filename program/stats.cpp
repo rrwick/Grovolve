@@ -52,6 +52,10 @@ void Stats::cleanUp()
     m_meanMassOfFullyGrownPlants.clear();
     m_meanSeedsPerPlant.clear();
     m_meanEnergyPerSeed.clear();
+    m_meanEnergyPerPlant.clear();
+    m_meanMaintenanceCostPerPlant.clear();
+    m_meanDeathAge.clear();
+    m_meanNonStarvationDeathAge.clear();
 
     for (std::vector<Organism *>::const_iterator i = m_averageGenomeOrganism.begin();
          i != m_averageGenomeOrganism.end(); ++i)
@@ -77,6 +81,10 @@ void Stats::addToLog(Environment * environment)
     m_meanMassOfFullyGrownPlants.push_back(environment->getMeanMassOfFullyGrownPlants());
     m_meanSeedsPerPlant.push_back(environment->getMeanSeedsPerPlant());
     m_meanEnergyPerSeed.push_back(environment->getAverageEnergyPerSeed());
+    m_meanEnergyPerPlant.push_back(10.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
+    m_meanMaintenanceCostPerPlant.push_back(20.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
+    m_meanDeathAge.push_back(40.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
+    m_meanNonStarvationDeathAge.push_back(80.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
 
     if (environment->getOrganismCount() == 0)
     {
@@ -111,6 +119,10 @@ void Stats::deleteHalfOfAllData()
     deleteHalfOfOneDoubleDataGroup(&m_meanMassOfFullyGrownPlants);
     deleteHalfOfOneDoubleDataGroup(&m_meanSeedsPerPlant);
     deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerSeed);
+    deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerPlant);
+    deleteHalfOfOneDoubleDataGroup(&m_meanMaintenanceCostPerPlant);
+    deleteHalfOfOneDoubleDataGroup(&m_meanDeathAge);
+    deleteHalfOfOneDoubleDataGroup(&m_meanNonStarvationDeathAge);
 
     deleteHalfOfOneOrganismDataGroup(&m_averageGenomeOrganism);
     deleteHalfOfOneOrganismDataGroup(&m_randomGenomeOrganism);

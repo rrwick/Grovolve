@@ -244,6 +244,50 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->legend->setVisible(false);
         ui->customPlot->yAxis->setLabel("energy");
         break;
+
+    case 5: //Energy per plant
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkRed);
+        ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setData(getTimeVector(ENERGY_PER_PLANT),
+                                          getDataVector(ENERGY_PER_PLANT));
+
+        ui->customPlot->legend->setVisible(false);
+        ui->customPlot->yAxis->setLabel("energy");
+        break;
+
+    case 6: //Maintenance cost per plant
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkRed);
+        ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setData(getTimeVector(MAINTENANCE_COST_PER_PLANT),
+                                          getDataVector(MAINTENANCE_COST_PER_PLANT));
+
+        ui->customPlot->legend->setVisible(false);
+        ui->customPlot->yAxis->setLabel("energy");
+        break;
+
+    case 7: //Death age
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkRed);
+        ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setData(getTimeVector(MEAN_DEATH_AGE),
+                                          getDataVector(MEAN_DEATH_AGE));
+
+        ui->customPlot->legend->setVisible(false);
+        ui->customPlot->yAxis->setLabel("age");
+        break;
+
+    case 8: //Non-starvation death age
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkRed);
+        ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setData(getTimeVector(MEAN_NON_STARVATION_DEATH_AGE),
+                                          getDataVector(MEAN_NON_STARVATION_DEATH_AGE));
+
+        ui->customPlot->legend->setVisible(false);
+        ui->customPlot->yAxis->setLabel("age");
+        break;
     }
 
     setGraphRange();
@@ -384,6 +428,10 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVHeaderLine()
     header += "Mean mass of fully grown plants,";
     header += "Number of seeds,";
     header += "Mean energy per seed,";
+    header += "Mean energy per plant,";
+    header += "Mean maintenance cost per plant,";
+    header += "Mean death age,";
+    header += "Mean non-starvation death age,";
     header += "Average genome,";
     header += "Randomly selected genome";
     return header;
@@ -399,6 +447,10 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVBodyLine(int i)
     body += QString::number(g_stats->m_meanMassOfFullyGrownPlants[i]) + ",";
     body += QString::number(g_stats->m_meanSeedsPerPlant[i]) + ",";
     body += QString::number(g_stats->m_meanEnergyPerSeed[i]) + ",";
+    body += QString::number(g_stats->m_meanEnergyPerPlant[i]) + ",";
+    body += QString::number(g_stats->m_meanMaintenanceCostPerPlant[i]) + ",";
+    body += QString::number(g_stats->m_meanDeathAge[i]) + ",";
+    body += QString::number(g_stats->m_meanNonStarvationDeathAge[i]) + ",";
     body += g_stats->m_averageGenomeOrganism[i]->getGenome()->outputAsString() + ",";
     body += g_stats->m_randomGenomeOrganism[i]->getGenome()->outputAsString();
     return body;
@@ -460,6 +512,18 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case ENERGY_PER_SEED:
         statVector = &(g_stats->m_meanEnergyPerSeed);
         break;
+    case ENERGY_PER_PLANT:
+        statVector = &(g_stats->m_meanEnergyPerPlant);
+        break;
+    case MAINTENANCE_COST_PER_PLANT:
+        statVector = &(g_stats->m_meanMaintenanceCostPerPlant);
+        break;
+    case MEAN_DEATH_AGE:
+        statVector = &(g_stats->m_meanDeathAge);
+        break;
+    case MEAN_NON_STARVATION_DEATH_AGE:
+        statVector = &(g_stats->m_meanNonStarvationDeathAge);
+        break;
     default:
         return QVector<double>();
     }
@@ -500,6 +564,18 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
         break;
     case ENERGY_PER_SEED:
         statVector = &(g_stats->m_meanEnergyPerSeed);
+        break;
+    case ENERGY_PER_PLANT:
+        statVector = &(g_stats->m_meanEnergyPerPlant);
+        break;
+    case MAINTENANCE_COST_PER_PLANT:
+        statVector = &(g_stats->m_meanMaintenanceCostPerPlant);
+        break;
+    case MEAN_DEATH_AGE:
+        statVector = &(g_stats->m_meanDeathAge);
+        break;
+    case MEAN_NON_STARVATION_DEATH_AGE:
+        statVector = &(g_stats->m_meanNonStarvationDeathAge);
         break;
     default:
         return QVector<double>();

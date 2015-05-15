@@ -457,6 +457,26 @@
            <string>Mean energy per seed</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>Mean energy per plant</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mean maintenance cost per plant</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mean death age</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mean non starvation death age</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>
