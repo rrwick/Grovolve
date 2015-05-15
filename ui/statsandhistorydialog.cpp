@@ -278,7 +278,18 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->yAxis->setLabel("age");
         break;
 
-    case 8: //Non-starvation death age
+    case 8: //Starvation death age
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkRed);
+        ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setData(getTimeVector(MEAN_STARVATION_DEATH_AGE),
+                                          getDataVector(MEAN_STARVATION_DEATH_AGE));
+
+        ui->customPlot->legend->setVisible(false);
+        ui->customPlot->yAxis->setLabel("age");
+        break;
+
+    case 9: //Non-starvation death age
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(0)->setPen(graphPen);
@@ -450,6 +461,7 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVBodyLine(int i)
     body += QString::number(g_stats->m_meanEnergyPerPlant[i]) + ",";
     body += QString::number(g_stats->m_meanMaintenanceCostPerPlant[i]) + ",";
     body += QString::number(g_stats->m_meanDeathAge[i]) + ",";
+    body += QString::number(g_stats->m_meanStarvationDeathAge[i]) + ",";
     body += QString::number(g_stats->m_meanNonStarvationDeathAge[i]) + ",";
     body += g_stats->m_averageGenomeOrganism[i]->getGenome()->outputAsString() + ",";
     body += g_stats->m_randomGenomeOrganism[i]->getGenome()->outputAsString();
@@ -521,6 +533,9 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case MEAN_DEATH_AGE:
         statVector = &(g_stats->m_meanDeathAge);
         break;
+    case MEAN_STARVATION_DEATH_AGE:
+        statVector = &(g_stats->m_meanStarvationDeathAge);
+        break;
     case MEAN_NON_STARVATION_DEATH_AGE:
         statVector = &(g_stats->m_meanNonStarvationDeathAge);
         break;
@@ -573,6 +588,9 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
         break;
     case MEAN_DEATH_AGE:
         statVector = &(g_stats->m_meanDeathAge);
+        break;
+    case MEAN_STARVATION_DEATH_AGE:
+        statVector = &(g_stats->m_meanStarvationDeathAge);
         break;
     case MEAN_NON_STARVATION_DEATH_AGE:
         statVector = &(g_stats->m_meanNonStarvationDeathAge);

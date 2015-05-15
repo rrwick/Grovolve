@@ -53,6 +53,7 @@ public:
     std::vector<double> m_meanEnergyPerPlant; //NEW
     std::vector<double> m_meanMaintenanceCostPerPlant; //NEW
     std::vector<double> m_meanDeathAge; //NEW
+    std::vector<double> m_meanStarvationDeathAge; //NEW
     std::vector<double> m_meanNonStarvationDeathAge; //NEW
     std::vector<Organism *> m_averageGenomeOrganism;
     std::vector<Organism *> m_randomGenomeOrganism;
@@ -91,6 +92,7 @@ private:
         ar & m_meanEnergyPerPlant;
         ar & m_meanMaintenanceCostPerPlant;
         ar & m_meanDeathAge;
+        ar & m_meanStarvationDeathAge;
         ar & m_meanNonStarvationDeathAge;
         ar & m_averageGenomeOrganism;
         ar & m_randomGenomeOrganism;

@@ -20,7 +20,7 @@
       <enum>Qt::StrongFocus</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="currentInfoTab">
       <attribute name="title">
@@ -474,7 +474,12 @@
          </item>
          <item>
           <property name="text">
-           <string>Mean non starvation death age</string>
+           <string>Mean starvation death age</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Mean non-starvation death age</string>
           </property>
          </item>
         </widget>
