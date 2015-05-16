@@ -80,6 +80,8 @@ public:
     double getMeanMassOfFullyGrownPlants() const;
     int getFullyGrownPlantCount() const;
     double getAverageEnergyPerSeed() const;
+    double getMeanEnergyPerPlant() const;
+    double getMeanEnergyPerFullyGrownPlant() const;
     double getMeanPartsPerPlant(PlantPartType partType) const;
     Genome getModeGenome() const;
     const Organism * getOldestOrganism() const;

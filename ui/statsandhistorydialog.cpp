@@ -280,7 +280,7 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
                                           getDataVector(MEAN_STARVATION_DEATH_AGE));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
+        graphPen.setColor(Qt::darkBlue);
         ui->customPlot->graph(2)->setPen(graphPen);
         ui->customPlot->graph(2)->setName("Mean age of death (not starvation)");
         ui->customPlot->graph(2)->setData(getTimeVector(MEAN_NON_STARVATION_DEATH_AGE),

@@ -42,6 +42,12 @@ public:
     long long m_numberOfOrganismsDiedFromBadLuck;
     long long m_numberOfOrganismsDiedFromStarvation;
     long long m_numberOfSeedsGenerated;
+
+    long long m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
+    long long m_numberOfOrganismsDiedFromStarvationSinceLastLog;
+    long long m_organismsDiedFromBadLuckSinceLastLogAgeSum;
+    long long m_organismsDiedFromStarvationSinceLastLogAgeSum;
+
     std::vector<double> m_time;
     std::vector<double> m_populationDensity;
     std::vector<double> m_tallestPlantHeight;
@@ -81,6 +87,10 @@ private:
         ar & m_numberOfOrganismsDiedFromBadLuck;
         ar & m_numberOfOrganismsDiedFromStarvation;
         ar & m_numberOfSeedsGenerated;
+        ar & m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
+        ar & m_numberOfOrganismsDiedFromStarvationSinceLastLog;
+        ar & m_organismsDiedFromBadLuckSinceLastLogAgeSum;
+        ar & m_organismsDiedFromStarvationSinceLastLogAgeSum;
         ar & m_time;
         ar & m_populationDensity;
         ar & m_tallestPlantHeight;

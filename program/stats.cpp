@@ -38,6 +38,10 @@ void Stats::reset()
     m_numberOfOrganismsDiedFromBadLuck = 0;
     m_numberOfOrganismsDiedFromStarvation = 0;
     m_numberOfSeedsGenerated = 0;
+    m_numberOfOrganismsDiedFromBadLuckSinceLastLog = 0;
+    m_numberOfOrganismsDiedFromStarvationSinceLastLog = 0;
+    m_organismsDiedFromBadLuckSinceLastLogAgeSum = 0;
+    m_organismsDiedFromStarvationSinceLastLogAgeSum = 0;
 
     cleanUp();
 }
@@ -82,11 +86,31 @@ void Stats::addToLog(Environment * environment)
     m_meanMassOfFullyGrownPlants.push_back(environment->getMeanMassOfFullyGrownPlants());
     m_meanSeedsPerPlant.push_back(environment->getMeanSeedsPerPlant());
     m_meanEnergyPerSeed.push_back(environment->getAverageEnergyPerSeed());
-    m_meanEnergyPerPlant.push_back(10.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
-    m_meanEnergyOfFullyGrownPlants.push_back(20.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
-    m_meanDeathAge.push_back(40.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
-    m_meanStarvationDeathAge.push_back(80.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
-    m_meanNonStarvationDeathAge.push_back(160.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
+    m_meanEnergyPerPlant.push_back(environment->getMeanEnergyPerPlant());
+    m_meanEnergyOfFullyGrownPlants.push_back(environment->getMeanEnergyPerFullyGrownPlant());
+
+    long long totalNumberOfOrganismsDiedSinceLastLog = m_numberOfOrganismsDiedFromBadLuckSinceLastLog + m_numberOfOrganismsDiedFromStarvationSinceLastLog;
+    long long totalOrganismsDiedSinceLastLogAgeSum = m_organismsDiedFromBadLuckSinceLastLogAgeSum + m_organismsDiedFromStarvationSinceLastLogAgeSum;
+
+    double meanDeathAge = 0.0;
+    double meanStarvationDeathAge = 0.0;
+    double meanNonStarvationDeathAge = 0.0;
+
+    if (totalNumberOfOrganismsDiedSinceLastLog > 0)
+        meanDeathAge = double(totalOrganismsDiedSinceLastLogAgeSum) / totalNumberOfOrganismsDiedSinceLastLog;
+    if (totalNumberOfOrganismsDiedSinceLastLog > 0)
+        meanStarvationDeathAge = double(m_organismsDiedFromStarvationSinceLastLogAgeSum) / m_numberOfOrganismsDiedFromStarvationSinceLastLog;
+    if (totalNumberOfOrganismsDiedSinceLastLog > 0)
+        meanNonStarvationDeathAge = double(m_organismsDiedFromBadLuckSinceLastLogAgeSum) / m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
+
+    m_meanDeathAge.push_back(meanDeathAge);
+    m_meanStarvationDeathAge.push_back(meanStarvationDeathAge);
+    m_meanNonStarvationDeathAge.push_back(meanNonStarvationDeathAge);
+
+    m_numberOfOrganismsDiedFromBadLuckSinceLastLog = 0;
+    m_numberOfOrganismsDiedFromStarvationSinceLastLog = 0;
+    m_organismsDiedFromBadLuckSinceLastLogAgeSum = 0;
+    m_organismsDiedFromStarvationSinceLastLogAgeSum = 0;
 
     if (environment->getOrganismCount() == 0)
     {

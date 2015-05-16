@@ -172,9 +172,12 @@ void Environment::killOffStarvedAndUnluckyOrganisms()
         //Kill starved organisms
         if ((*i)->getEnergy() < 0.0)
         {
+            long long deathAge = (*i)->getAge(m_elapsedTime);
             delete *i;
             i = m_organisms.erase(i);
             ++(g_stats->m_numberOfOrganismsDiedFromStarvation);
+            ++(g_stats->m_numberOfOrganismsDiedFromStarvationSinceLastLog);
+            g_stats->m_organismsDiedFromStarvationSinceLastLogAgeSum += deathAge;
         }
 
         //Kill unlucky organisms
@@ -184,9 +187,12 @@ void Environment::killOffStarvedAndUnluckyOrganisms()
             if (!(*i)->isHelped() ||
                     g_randomNumbers->chanceOfTrue(g_simulationSettings->helpedDeathRate))
             {
+                long long deathAge = (*i)->getAge(m_elapsedTime);
                 delete *i;
                 i = m_organisms.erase(i);
                 ++(g_stats->m_numberOfOrganismsDiedFromBadLuck);
+                ++(g_stats->m_numberOfOrganismsDiedFromBadLuckSinceLastLog);
+                g_stats->m_organismsDiedFromBadLuckSinceLastLogAgeSum += deathAge;
             }
         }
         else
@@ -456,6 +462,35 @@ double Environment::getAverageEnergyPerSeed() const
         return 0.0;
 
     return totalSeedEnergy / m_seeds.size();
+}
+
+
+double Environment::getMeanEnergyPerPlant() const
+{
+    if (m_organisms.size() == 0)
+        return 0.0;
+
+    double energySum = 0.0;
+
+    for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
+        energySum += (*i)->getEnergy();
+
+    return energySum / m_organisms.size();
+}
+
+
+double Environment::getMeanEnergyPerFullyGrownPlant() const
+{
+    double energySum = 0.0;
+
+    std::vector<const Organism *> grownOrganisms = getGrownOrganisms();
+    if (grownOrganisms.size() == 0)
+        return 0.0;
+
+    for (std::vector<const Organism *>::const_iterator i = grownOrganisms.begin(); i != grownOrganisms.end(); ++i)
+        energySum += (*i)->getEnergy();
+
+    return energySum / grownOrganisms.size();
 }
 
 
