@@ -53,7 +53,7 @@ void Stats::cleanUp()
     m_meanSeedsPerPlant.clear();
     m_meanEnergyPerSeed.clear();
     m_meanEnergyPerPlant.clear();
-    m_meanMaintenanceCostPerPlant.clear();
+    m_meanEnergyOfFullyGrownPlants.clear();
     m_meanDeathAge.clear();
     m_meanStarvationDeathAge.clear();
     m_meanNonStarvationDeathAge.clear();
@@ -83,7 +83,7 @@ void Stats::addToLog(Environment * environment)
     m_meanSeedsPerPlant.push_back(environment->getMeanSeedsPerPlant());
     m_meanEnergyPerSeed.push_back(environment->getAverageEnergyPerSeed());
     m_meanEnergyPerPlant.push_back(10.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
-    m_meanMaintenanceCostPerPlant.push_back(20.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
+    m_meanEnergyOfFullyGrownPlants.push_back(20.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
     m_meanDeathAge.push_back(40.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
     m_meanStarvationDeathAge.push_back(80.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
     m_meanNonStarvationDeathAge.push_back(160.0);  //TEMP - WILL NEED TO MAKE AN ACTUAL FUNCTION FOR THIS
@@ -122,7 +122,7 @@ void Stats::deleteHalfOfAllData()
     deleteHalfOfOneDoubleDataGroup(&m_meanSeedsPerPlant);
     deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerSeed);
     deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerPlant);
-    deleteHalfOfOneDoubleDataGroup(&m_meanMaintenanceCostPerPlant);
+    deleteHalfOfOneDoubleDataGroup(&m_meanEnergyOfFullyGrownPlants);
     deleteHalfOfOneDoubleDataGroup(&m_meanDeathAge);
     deleteHalfOfOneDoubleDataGroup(&m_meanStarvationDeathAge);
     deleteHalfOfOneDoubleDataGroup(&m_meanNonStarvationDeathAge);

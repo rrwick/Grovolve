@@ -459,27 +459,12 @@
          </item>
          <item>
           <property name="text">
-           <string>Mean energy per plant</string>
+           <string>Energy per plant</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Mean maintenance cost per plant</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mean death age</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mean starvation death age</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Mean non-starvation death age</string>
+           <string>Life span</string>
           </property>
          </item>
         </widget>

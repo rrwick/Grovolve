@@ -249,54 +249,44 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setName("Mean energy per plant");
         ui->customPlot->graph(0)->setData(getTimeVector(ENERGY_PER_PLANT),
                                           getDataVector(ENERGY_PER_PLANT));
 
-        ui->customPlot->legend->setVisible(false);
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkGreen);
+        ui->customPlot->graph(1)->setPen(graphPen);
+        ui->customPlot->graph(1)->setName("Mean energy per fully grown plant");
+        ui->customPlot->graph(1)->setData(getTimeVector(ENERGY_PER_GROWN_PLANT),
+                                          getDataVector(ENERGY_PER_GROWN_PLANT));
+
+        turnOnLegend();
         ui->customPlot->yAxis->setLabel("energy");
         break;
 
-    case 6: //Maintenance cost per plant
+    case 6: //Life span
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(0)->setPen(graphPen);
-        ui->customPlot->graph(0)->setData(getTimeVector(MAINTENANCE_COST_PER_PLANT),
-                                          getDataVector(MAINTENANCE_COST_PER_PLANT));
-
-        ui->customPlot->legend->setVisible(false);
-        ui->customPlot->yAxis->setLabel("energy");
-        break;
-
-    case 7: //Death age
-        ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
-        ui->customPlot->graph(0)->setPen(graphPen);
+        ui->customPlot->graph(0)->setName("Mean life span");
         ui->customPlot->graph(0)->setData(getTimeVector(MEAN_DEATH_AGE),
                                           getDataVector(MEAN_DEATH_AGE));
 
-        ui->customPlot->legend->setVisible(false);
-        ui->customPlot->yAxis->setLabel("age");
-        break;
-
-    case 8: //Starvation death age
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
-        ui->customPlot->graph(0)->setPen(graphPen);
-        ui->customPlot->graph(0)->setData(getTimeVector(MEAN_STARVATION_DEATH_AGE),
+        graphPen.setColor(Qt::darkGreen);
+        ui->customPlot->graph(1)->setPen(graphPen);
+        ui->customPlot->graph(1)->setName("Mean age of death (starvation)");
+        ui->customPlot->graph(1)->setData(getTimeVector(MEAN_STARVATION_DEATH_AGE),
                                           getDataVector(MEAN_STARVATION_DEATH_AGE));
 
-        ui->customPlot->legend->setVisible(false);
-        ui->customPlot->yAxis->setLabel("age");
-        break;
-
-    case 9: //Non-starvation death age
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkRed);
-        ui->customPlot->graph(0)->setPen(graphPen);
-        ui->customPlot->graph(0)->setData(getTimeVector(MEAN_NON_STARVATION_DEATH_AGE),
+        ui->customPlot->graph(2)->setPen(graphPen);
+        ui->customPlot->graph(2)->setName("Mean age of death (not starvation)");
+        ui->customPlot->graph(2)->setData(getTimeVector(MEAN_NON_STARVATION_DEATH_AGE),
                                           getDataVector(MEAN_NON_STARVATION_DEATH_AGE));
 
-        ui->customPlot->legend->setVisible(false);
+        turnOnLegend();
         ui->customPlot->yAxis->setLabel("age");
         break;
     }
@@ -459,7 +449,7 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVBodyLine(int i)
     body += QString::number(g_stats->m_meanSeedsPerPlant[i]) + ",";
     body += QString::number(g_stats->m_meanEnergyPerSeed[i]) + ",";
     body += QString::number(g_stats->m_meanEnergyPerPlant[i]) + ",";
-    body += QString::number(g_stats->m_meanMaintenanceCostPerPlant[i]) + ",";
+    body += QString::number(g_stats->m_meanEnergyOfFullyGrownPlants[i]) + ",";
     body += QString::number(g_stats->m_meanDeathAge[i]) + ",";
     body += QString::number(g_stats->m_meanStarvationDeathAge[i]) + ",";
     body += QString::number(g_stats->m_meanNonStarvationDeathAge[i]) + ",";
@@ -527,8 +517,8 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case ENERGY_PER_PLANT:
         statVector = &(g_stats->m_meanEnergyPerPlant);
         break;
-    case MAINTENANCE_COST_PER_PLANT:
-        statVector = &(g_stats->m_meanMaintenanceCostPerPlant);
+    case ENERGY_PER_GROWN_PLANT:
+        statVector = &(g_stats->m_meanEnergyOfFullyGrownPlants);
         break;
     case MEAN_DEATH_AGE:
         statVector = &(g_stats->m_meanDeathAge);
@@ -583,8 +573,8 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
     case ENERGY_PER_PLANT:
         statVector = &(g_stats->m_meanEnergyPerPlant);
         break;
-    case MAINTENANCE_COST_PER_PLANT:
-        statVector = &(g_stats->m_meanMaintenanceCostPerPlant);
+    case ENERGY_PER_GROWN_PLANT:
+        statVector = &(g_stats->m_meanEnergyOfFullyGrownPlants);
         break;
     case MEAN_DEATH_AGE:
         statVector = &(g_stats->m_meanDeathAge);

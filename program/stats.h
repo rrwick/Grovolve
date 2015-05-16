@@ -51,7 +51,7 @@ public:
     std::vector<double> m_meanSeedsPerPlant;
     std::vector<double> m_meanEnergyPerSeed;
     std::vector<double> m_meanEnergyPerPlant; //NEW
-    std::vector<double> m_meanMaintenanceCostPerPlant; //NEW
+    std::vector<double> m_meanEnergyOfFullyGrownPlants; //NEW
     std::vector<double> m_meanDeathAge; //NEW
     std::vector<double> m_meanStarvationDeathAge; //NEW
     std::vector<double> m_meanNonStarvationDeathAge; //NEW
@@ -90,7 +90,7 @@ private:
         ar & m_meanSeedsPerPlant;
         ar & m_meanEnergyPerSeed;
         ar & m_meanEnergyPerPlant;
-        ar & m_meanMaintenanceCostPerPlant;
+        ar & m_meanEnergyOfFullyGrownPlants;
         ar & m_meanDeathAge;
         ar & m_meanStarvationDeathAge;
         ar & m_meanNonStarvationDeathAge;
