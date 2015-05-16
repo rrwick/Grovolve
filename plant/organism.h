@@ -57,6 +57,7 @@ public:
     void growOneTick();
     void transmitLoadAndGrowWidthOneTick();
     void useEnergyOneTick();
+    double getMaintenanceCost() const;
     void deductEnergy(double energyToDeduct) {m_energy -= energyToDeduct;}
     void addEnergy(double energyToAdd) {m_energy += energyToAdd;}
     void age(int ticksToAge);

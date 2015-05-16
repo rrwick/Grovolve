@@ -316,10 +316,15 @@ void Organism::useEnergyOneTick()
 {
     if (!m_historyOrganism)
     {
-        double maintenanceCost = g_simulationSettings->organismMaintenanceCost + m_firstPart->getMaintenanceCost();
+        double maintenanceCost = getMaintenanceCost();
         m_energy -= maintenanceCost;
         m_energySpentOnGrowthAndMaintenance += maintenanceCost;
     }
+}
+
+double Organism::getMaintenanceCost() const
+{
+    return g_simulationSettings->organismMaintenanceCost + m_firstPart->getMaintenanceCost();
 }
 
 void Organism::createSeeds(std::deque<Seed> *seeds, long long elapsedTime, bool dayTime)
