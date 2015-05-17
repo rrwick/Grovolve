@@ -345,39 +345,63 @@ double Environment::getFullyGrownPlantFraction() const
 //}
 
 
-void Environment::getPlantHeightPercentiles(double * tallestPlantHeight, double * ninetyNinthPercentilePlantHeight,
-                                            double * ninetiethPercentilePlantHeight, double * medianPlantHeight) const
+void Environment::getPlantHeightPercentiles(double * tallestPlantHeight,
+                                            double * ninetyNinthPercentilePlantHeight,
+                                            double * ninetyFifthPercentilePlantHeight,
+                                            double * ninetiethPercentilePlantHeight,
+                                            double * medianPlantHeight) const
 {
     std::vector<double> heights;
     for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
         heights.push_back((*i)->getHeight());
-    getPercentilesOfDoubleVector(&heights, tallestPlantHeight, ninetyNinthPercentilePlantHeight,
-                                 ninetiethPercentilePlantHeight, medianPlantHeight);
+    getPercentilesOfDoubleVector(&heights,
+                                 tallestPlantHeight,
+                                 ninetyNinthPercentilePlantHeight,
+                                 ninetyFifthPercentilePlantHeight,
+                                 ninetiethPercentilePlantHeight,
+                                 medianPlantHeight);
 }
 
-void Environment::getPlantMassPercentiles(double * heaviestPlantMass, double * ninetyNinthPercentilePlantMass,
-                                          double * ninetiethPercentilePlantMass, double * medianPlantMass) const
+void Environment::getPlantMassPercentiles(double * heaviestPlantMass,
+                                          double * ninetyNinthPercentilePlantMass,
+                                          double * ninetyFifthPercentilePlantMass,
+                                          double * ninetiethPercentilePlantMass,
+                                          double * medianPlantMass) const
 {
     std::vector<double> masses;
     for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
         masses.push_back((*i)->getMass());
-    getPercentilesOfDoubleVector(&masses, heaviestPlantMass, ninetyNinthPercentilePlantMass,
-                                 ninetiethPercentilePlantMass, medianPlantMass);
+    getPercentilesOfDoubleVector(&masses,
+                                 heaviestPlantMass,
+                                 ninetyNinthPercentilePlantMass,
+                                 ninetyFifthPercentilePlantMass,
+                                 ninetiethPercentilePlantMass,
+                                 medianPlantMass);
 }
 
-void Environment::getPlantEnergyPercentiles(double * mostPlantEnergy, double * ninetyNinthPercentilePlantEnergy,
-                                          double * ninetiethPercentilePlantEnergy, double * medianPlantEnergy) const
+void Environment::getPlantEnergyPercentiles(double * mostPlantEnergy,
+                                            double * ninetyNinthPercentilePlantEnergy,
+                                            double * ninetyFifthPercentilePlantEnergy,
+                                            double * ninetiethPercentilePlantEnergy,
+                                            double * medianPlantEnergy) const
 {
     std::vector<double> energies;
     for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
         energies.push_back((*i)->getEnergy());
-    getPercentilesOfDoubleVector(&energies, mostPlantEnergy, ninetyNinthPercentilePlantEnergy,
-                                 ninetiethPercentilePlantEnergy, medianPlantEnergy);
+    getPercentilesOfDoubleVector(&energies,
+                                 mostPlantEnergy,
+                                 ninetyNinthPercentilePlantEnergy,
+                                 ninetyFifthPercentilePlantEnergy,
+                                 ninetiethPercentilePlantEnergy,
+                                 medianPlantEnergy);
 }
 
 void Environment::getPercentilesOfDoubleVector(std::vector<double> * doubleVector,
-                                               double * max, double * ninetyNinthPercentile,
-                                               double * ninetiethPercentile, double * median) const
+                                               double * max,
+                                               double * ninetyNinthPercentile,
+                                               double * ninetyFifthPercentile,
+                                               double * ninetiethPercentile,
+                                               double * median) const
 {
     size_t n = doubleVector->size();
 
@@ -385,6 +409,7 @@ void Environment::getPercentilesOfDoubleVector(std::vector<double> * doubleVecto
     {
         *max = 0.0;
         *ninetyNinthPercentile = 0.0;
+        *ninetyFifthPercentile = 0.0;
         *ninetiethPercentile = 0.0;
         *median = 0.0;
         return;
@@ -394,6 +419,7 @@ void Environment::getPercentilesOfDoubleVector(std::vector<double> * doubleVecto
     {
         *max = (*doubleVector)[0];
         *ninetyNinthPercentile = (*doubleVector)[0];
+        *ninetyFifthPercentile = (*doubleVector)[0];
         *ninetiethPercentile = (*doubleVector)[0];
         *median = (*doubleVector)[0];
         return;
@@ -403,6 +429,7 @@ void Environment::getPercentilesOfDoubleVector(std::vector<double> * doubleVecto
 
     *max = (*doubleVector)[n-1];
     *ninetyNinthPercentile = getPercentile(doubleVector, 0.99);
+    *ninetyFifthPercentile = getPercentile(doubleVector, 0.95);
     *ninetiethPercentile = getPercentile(doubleVector, 0.9);
     *median = getPercentile(doubleVector, 0.5);
 }

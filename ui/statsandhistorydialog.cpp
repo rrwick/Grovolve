@@ -172,31 +172,38 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
     {
     case 0: //Tallest plants
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
+        graphPen.setColor(Qt::black);
         ui->customPlot->graph(0)->setPen(graphPen);
         ui->customPlot->graph(0)->setName("Height of tallest plant");
         ui->customPlot->graph(0)->setData(getTimeVector(TALLEST_PLANT),
                                           getDataVector(TALLEST_PLANT));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkGreen);
+        graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(1)->setPen(graphPen);
         ui->customPlot->graph(1)->setName("99th percentile plant height");
         ui->customPlot->graph(1)->setData(getTimeVector(NINETY_NINTH_PERCENTILE_PLANT_HEIGHT),
                                           getDataVector(NINETY_NINTH_PERCENTILE_PLANT_HEIGHT));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkBlue);
+        graphPen.setColor(Qt::darkGreen);
         ui->customPlot->graph(2)->setPen(graphPen);
-        ui->customPlot->graph(2)->setName("90th percentile plant height");
-        ui->customPlot->graph(2)->setData(getTimeVector(NINETIETH_PERCENTILE_PLANT_HEIGHT),
+        ui->customPlot->graph(2)->setName("95th percentile plant height");
+        ui->customPlot->graph(2)->setData(getTimeVector(NINETY_FIFTH_PERCENTILE_PLANT_HEIGHT),
+                                          getDataVector(NINETY_FIFTH_PERCENTILE_PLANT_HEIGHT));
+
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkBlue);
+        ui->customPlot->graph(3)->setPen(graphPen);
+        ui->customPlot->graph(3)->setName("90th percentile plant height");
+        ui->customPlot->graph(3)->setData(getTimeVector(NINETIETH_PERCENTILE_PLANT_HEIGHT),
                                           getDataVector(NINETIETH_PERCENTILE_PLANT_HEIGHT));
 
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkYellow);
-        ui->customPlot->graph(3)->setPen(graphPen);
-        ui->customPlot->graph(3)->setName("Median plant height");
-        ui->customPlot->graph(3)->setData(getTimeVector(MEDIAN_PLANT_HEIGHT),
+        ui->customPlot->graph(4)->setPen(graphPen);
+        ui->customPlot->graph(4)->setName("Median plant height");
+        ui->customPlot->graph(4)->setData(getTimeVector(MEDIAN_PLANT_HEIGHT),
                                           getDataVector(MEDIAN_PLANT_HEIGHT));
 
         turnOnLegend();
@@ -205,31 +212,38 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
 
     case 1: //Heaviest plants
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
+        graphPen.setColor(Qt::black);
         ui->customPlot->graph(0)->setPen(graphPen);
         ui->customPlot->graph(0)->setName("Mass of heaviest plant");
         ui->customPlot->graph(0)->setData(getTimeVector(HEAVIEST_PLANT),
                                           getDataVector(HEAVIEST_PLANT));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkGreen);
+        graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(1)->setPen(graphPen);
         ui->customPlot->graph(1)->setName("99th percentile plant mass");
         ui->customPlot->graph(1)->setData(getTimeVector(NINETY_NINTH_PERCENTILE_PLANT_MASS),
                                           getDataVector(NINETY_NINTH_PERCENTILE_PLANT_MASS));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkBlue);
+        graphPen.setColor(Qt::darkGreen);
         ui->customPlot->graph(2)->setPen(graphPen);
-        ui->customPlot->graph(2)->setName("90th percentile plant mass");
-        ui->customPlot->graph(2)->setData(getTimeVector(NINETIETH_PERCENTILE_PLANT_MASS),
+        ui->customPlot->graph(2)->setName("95th percentile plant mass");
+        ui->customPlot->graph(2)->setData(getTimeVector(NINETY_FIFTH_PERCENTILE_PLANT_MASS),
+                                          getDataVector(NINETY_FIFTH_PERCENTILE_PLANT_MASS));
+
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkBlue);
+        ui->customPlot->graph(3)->setPen(graphPen);
+        ui->customPlot->graph(3)->setName("90th percentile plant mass");
+        ui->customPlot->graph(3)->setData(getTimeVector(NINETIETH_PERCENTILE_PLANT_MASS),
                                           getDataVector(NINETIETH_PERCENTILE_PLANT_MASS));
 
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkYellow);
-        ui->customPlot->graph(3)->setPen(graphPen);
-        ui->customPlot->graph(3)->setName("Median plant mass");
-        ui->customPlot->graph(3)->setData(getTimeVector(MEDIAN_PLANT_MASS),
+        ui->customPlot->graph(4)->setPen(graphPen);
+        ui->customPlot->graph(4)->setName("Median plant mass");
+        ui->customPlot->graph(4)->setData(getTimeVector(MEDIAN_PLANT_MASS),
                                           getDataVector(MEDIAN_PLANT_MASS));
 
         turnOnLegend();
@@ -238,31 +252,38 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
 
     case 2: //Plant energy
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
+        graphPen.setColor(Qt::black);
         ui->customPlot->graph(0)->setPen(graphPen);
         ui->customPlot->graph(0)->setName("Most plant energy");
         ui->customPlot->graph(0)->setData(getTimeVector(MOST_PLANT_ENERGY),
                                           getDataVector(MOST_PLANT_ENERGY));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkGreen);
+        graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(1)->setPen(graphPen);
         ui->customPlot->graph(1)->setName("99th percentile plant energy");
         ui->customPlot->graph(1)->setData(getTimeVector(NINETY_NINTH_PERCENTILE_PLANT_ENERGY),
                                           getDataVector(NINETY_NINTH_PERCENTILE_PLANT_ENERGY));
 
         ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkBlue);
+        graphPen.setColor(Qt::darkGreen);
         ui->customPlot->graph(2)->setPen(graphPen);
-        ui->customPlot->graph(2)->setName("90th percentile plant energy");
-        ui->customPlot->graph(2)->setData(getTimeVector(NINETIETH_PERCENTILE_PLANT_ENERGY),
+        ui->customPlot->graph(2)->setName("95th percentile plant energy");
+        ui->customPlot->graph(2)->setData(getTimeVector(NINETY_FIFTH_PERCENTILE_PLANT_ENERGY),
+                                          getDataVector(NINETY_FIFTH_PERCENTILE_PLANT_ENERGY));
+
+        ui->customPlot->addGraph();
+        graphPen.setColor(Qt::darkBlue);
+        ui->customPlot->graph(3)->setPen(graphPen);
+        ui->customPlot->graph(3)->setName("90th percentile plant energy");
+        ui->customPlot->graph(3)->setData(getTimeVector(NINETIETH_PERCENTILE_PLANT_ENERGY),
                                           getDataVector(NINETIETH_PERCENTILE_PLANT_ENERGY));
 
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkYellow);
-        ui->customPlot->graph(3)->setPen(graphPen);
-        ui->customPlot->graph(3)->setName("Median plant energy");
-        ui->customPlot->graph(3)->setData(getTimeVector(MEDIAN_PLANT_ENERGY),
+        ui->customPlot->graph(4)->setPen(graphPen);
+        ui->customPlot->graph(4)->setName("Median plant energy");
+        ui->customPlot->graph(4)->setData(getTimeVector(MEDIAN_PLANT_ENERGY),
                                           getDataVector(MEDIAN_PLANT_ENERGY));
 
         turnOnLegend();
@@ -463,14 +484,17 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVHeaderLine()
     header += "Population density,";
     header += "Height of tallest plant,";
     header += "99th percentile plant height,";
+    header += "95th percentile plant height,";
     header += "90th percentile plant height,";
     header += "Median plant height,";
     header += "Mass of heaviest plant,";
     header += "99th percentile plant mass,";
+    header += "95th percentile plant mass,";
     header += "90th percentile plant mass,";
     header += "Median plant mass,";
     header += "Most plant energy,";
     header += "99th percentile plant energy,";
+    header += "95th percentile plant energy,";
     header += "90th percentile plant energy,";
     header += "Median plant energy,";
     header += "Mean seeds per plant,";
@@ -489,14 +513,17 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVBodyLine(int i)
     body += QString::number(g_stats->m_populationDensity[i]) + ",";
     body += QString::number(g_stats->m_tallestPlantHeight[i]) + ",";
     body += QString::number(g_stats->m_99thPercentilePlantHeight[i]) + ",";
+    body += QString::number(g_stats->m_95thPercentilePlantHeight[i]) + ",";
     body += QString::number(g_stats->m_90thPercentilePlantHeight[i]) + ",";
     body += QString::number(g_stats->m_medianPlantHeight[i]) + ",";
     body += QString::number(g_stats->m_heaviestPlantMass[i]) + ",";
     body += QString::number(g_stats->m_99thPercentilePlantMass[i]) + ",";
+    body += QString::number(g_stats->m_95thPercentilePlantMass[i]) + ",";
     body += QString::number(g_stats->m_90thPercentilePlantMass[i]) + ",";
     body += QString::number(g_stats->m_medianPlantMass[i]) + ",";
     body += QString::number(g_stats->m_mostPlantEnergy[i]) + ",";
     body += QString::number(g_stats->m_99thPercentilePlantEnergy[i]) + ",";
+    body += QString::number(g_stats->m_95thPercentilePlantEnergy[i]) + ",";
     body += QString::number(g_stats->m_90thPercentilePlantEnergy[i]) + ",";
     body += QString::number(g_stats->m_medianPlantEnergy[i]) + ",";
     body += QString::number(g_stats->m_meanSeedsPerPlant[i]) + ",";
@@ -554,6 +581,9 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case NINETY_NINTH_PERCENTILE_PLANT_HEIGHT:
         statVector = &(g_stats->m_99thPercentilePlantHeight);
         break;
+    case NINETY_FIFTH_PERCENTILE_PLANT_HEIGHT:
+        statVector = &(g_stats->m_95thPercentilePlantHeight);
+        break;
     case NINETIETH_PERCENTILE_PLANT_HEIGHT:
         statVector = &(g_stats->m_90thPercentilePlantHeight);
         break;
@@ -567,6 +597,9 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case NINETY_NINTH_PERCENTILE_PLANT_MASS:
         statVector = &(g_stats->m_99thPercentilePlantMass);
         break;
+    case NINETY_FIFTH_PERCENTILE_PLANT_MASS:
+        statVector = &(g_stats->m_95thPercentilePlantMass);
+        break;
     case NINETIETH_PERCENTILE_PLANT_MASS:
         statVector = &(g_stats->m_90thPercentilePlantMass);
         break;
@@ -579,6 +612,9 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
         break;
     case NINETY_NINTH_PERCENTILE_PLANT_ENERGY:
         statVector = &(g_stats->m_99thPercentilePlantEnergy);
+        break;
+    case NINETY_FIFTH_PERCENTILE_PLANT_ENERGY:
+        statVector = &(g_stats->m_95thPercentilePlantEnergy);
         break;
     case NINETIETH_PERCENTILE_PLANT_ENERGY:
         statVector = &(g_stats->m_90thPercentilePlantEnergy);
@@ -632,6 +668,9 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
     case NINETY_NINTH_PERCENTILE_PLANT_HEIGHT:
         statVector = &(g_stats->m_99thPercentilePlantHeight);
         break;
+    case NINETY_FIFTH_PERCENTILE_PLANT_HEIGHT:
+        statVector = &(g_stats->m_95thPercentilePlantHeight);
+        break;
     case NINETIETH_PERCENTILE_PLANT_HEIGHT:
         statVector = &(g_stats->m_90thPercentilePlantHeight);
         break;
@@ -645,6 +684,9 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
     case NINETY_NINTH_PERCENTILE_PLANT_MASS:
         statVector = &(g_stats->m_99thPercentilePlantMass);
         break;
+    case NINETY_FIFTH_PERCENTILE_PLANT_MASS:
+        statVector = &(g_stats->m_95thPercentilePlantMass);
+        break;
     case NINETIETH_PERCENTILE_PLANT_MASS:
         statVector = &(g_stats->m_90thPercentilePlantMass);
         break;
@@ -657,6 +699,9 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
         break;
     case NINETY_NINTH_PERCENTILE_PLANT_ENERGY:
         statVector = &(g_stats->m_99thPercentilePlantEnergy);
+        break;
+    case NINETY_FIFTH_PERCENTILE_PLANT_ENERGY:
+        statVector = &(g_stats->m_95thPercentilePlantEnergy);
         break;
     case NINETIETH_PERCENTILE_PLANT_ENERGY:
         statVector = &(g_stats->m_90thPercentilePlantEnergy);

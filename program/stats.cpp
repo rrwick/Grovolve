@@ -53,16 +53,19 @@ void Stats::cleanUp()
 
     m_tallestPlantHeight.clear();
     m_99thPercentilePlantHeight.clear();
+    m_95thPercentilePlantHeight.clear();
     m_90thPercentilePlantHeight.clear();
     m_medianPlantHeight.clear();
 
     m_heaviestPlantMass.clear();
     m_99thPercentilePlantMass.clear();
+    m_95thPercentilePlantMass.clear();
     m_90thPercentilePlantMass.clear();
     m_medianPlantMass.clear();
 
     m_mostPlantEnergy.clear();
     m_99thPercentilePlantEnergy.clear();
+    m_95thPercentilePlantEnergy.clear();
     m_90thPercentilePlantEnergy.clear();
     m_medianPlantEnergy.clear();
 
@@ -93,34 +96,49 @@ void Stats::addToLog(Environment * environment)
 
     double tallestPlantHeight;
     double ninetyNinthPercentilePlantHeight;
+    double ninetyFifthPercentilePlantHeight;
     double ninetiethPercentilePlantHeight;
     double medianPlantHeight;
-    environment->getPlantHeightPercentiles(&tallestPlantHeight, &ninetyNinthPercentilePlantHeight,
-                                           &ninetiethPercentilePlantHeight, &medianPlantHeight);
+    environment->getPlantHeightPercentiles(&tallestPlantHeight,
+                                           &ninetyNinthPercentilePlantHeight,
+                                           &ninetyFifthPercentilePlantHeight,
+                                           &ninetiethPercentilePlantHeight,
+                                           &medianPlantHeight);
     m_tallestPlantHeight.push_back(tallestPlantHeight);
     m_99thPercentilePlantHeight.push_back(ninetyNinthPercentilePlantHeight);
+    m_95thPercentilePlantHeight.push_back(ninetyFifthPercentilePlantHeight);
     m_90thPercentilePlantHeight.push_back(ninetiethPercentilePlantHeight);
     m_medianPlantHeight.push_back(medianPlantHeight);
 
     double heaviestPlantMass;
     double ninetyNinthPercentilePlantMass;
+    double ninetyFifthPercentilePlantMass;
     double ninetiethPercentilePlantMass;
     double medianPlantMass;
-    environment->getPlantMassPercentiles(&heaviestPlantMass, &ninetyNinthPercentilePlantMass,
-                                         &ninetiethPercentilePlantMass, &medianPlantMass);
+    environment->getPlantMassPercentiles(&heaviestPlantMass,
+                                         &ninetyNinthPercentilePlantMass,
+                                         &ninetyFifthPercentilePlantMass,
+                                         &ninetiethPercentilePlantMass,
+                                         &medianPlantMass);
     m_heaviestPlantMass.push_back(heaviestPlantMass);
     m_99thPercentilePlantMass.push_back(ninetyNinthPercentilePlantMass);
+    m_95thPercentilePlantMass.push_back(ninetyFifthPercentilePlantMass);
     m_90thPercentilePlantMass.push_back(ninetiethPercentilePlantMass);
     m_medianPlantMass.push_back(medianPlantMass);
 
     double mostPlantEnergy;
     double ninetyNinthPercentilePlantEnergy;
+    double ninetyFifthPercentilePlantEnergy;
     double ninetiethPercentilePlantEnergy;
     double medianPlantEnergy;
-    environment->getPlantEnergyPercentiles(&mostPlantEnergy, &ninetyNinthPercentilePlantEnergy,
-                                           &ninetiethPercentilePlantEnergy, &medianPlantEnergy);
+    environment->getPlantEnergyPercentiles(&mostPlantEnergy,
+                                           &ninetyNinthPercentilePlantEnergy,
+                                           &ninetyFifthPercentilePlantEnergy,
+                                           &ninetiethPercentilePlantEnergy,
+                                           &medianPlantEnergy);
     m_mostPlantEnergy.push_back(mostPlantEnergy);
     m_99thPercentilePlantEnergy.push_back(ninetyNinthPercentilePlantEnergy);
+    m_95thPercentilePlantEnergy.push_back(ninetyFifthPercentilePlantEnergy);
     m_90thPercentilePlantEnergy.push_back(ninetiethPercentilePlantEnergy);
     m_medianPlantEnergy.push_back(medianPlantEnergy);
 
@@ -180,16 +198,19 @@ void Stats::deleteHalfOfAllData()
 
     deleteHalfOfOneDoubleDataGroup(&m_tallestPlantHeight);
     deleteHalfOfOneDoubleDataGroup(&m_99thPercentilePlantHeight);
+    deleteHalfOfOneDoubleDataGroup(&m_95thPercentilePlantHeight);
     deleteHalfOfOneDoubleDataGroup(&m_90thPercentilePlantHeight);
     deleteHalfOfOneDoubleDataGroup(&m_medianPlantHeight);
 
     deleteHalfOfOneDoubleDataGroup(&m_heaviestPlantMass);
     deleteHalfOfOneDoubleDataGroup(&m_99thPercentilePlantMass);
+    deleteHalfOfOneDoubleDataGroup(&m_95thPercentilePlantMass);
     deleteHalfOfOneDoubleDataGroup(&m_90thPercentilePlantMass);
     deleteHalfOfOneDoubleDataGroup(&m_medianPlantMass);
 
     deleteHalfOfOneDoubleDataGroup(&m_mostPlantEnergy);
     deleteHalfOfOneDoubleDataGroup(&m_99thPercentilePlantEnergy);
+    deleteHalfOfOneDoubleDataGroup(&m_95thPercentilePlantEnergy);
     deleteHalfOfOneDoubleDataGroup(&m_90thPercentilePlantEnergy);
     deleteHalfOfOneDoubleDataGroup(&m_medianPlantEnergy);
 

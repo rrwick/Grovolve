@@ -53,16 +53,19 @@ public:
 
     std::vector<double> m_tallestPlantHeight;
     std::vector<double> m_99thPercentilePlantHeight;
+    std::vector<double> m_95thPercentilePlantHeight;
     std::vector<double> m_90thPercentilePlantHeight;
     std::vector<double> m_medianPlantHeight;
 
     std::vector<double> m_heaviestPlantMass;
     std::vector<double> m_99thPercentilePlantMass;
+    std::vector<double> m_95thPercentilePlantMass;
     std::vector<double> m_90thPercentilePlantMass;
     std::vector<double> m_medianPlantMass;
 
     std::vector<double> m_mostPlantEnergy;
     std::vector<double> m_99thPercentilePlantEnergy;
+    std::vector<double> m_95thPercentilePlantEnergy;
     std::vector<double> m_90thPercentilePlantEnergy;
     std::vector<double> m_medianPlantEnergy;
 
@@ -107,16 +110,19 @@ private:
 
         ar & m_tallestPlantHeight;
         ar & m_99thPercentilePlantHeight;
+        ar & m_95thPercentilePlantHeight;
         ar & m_90thPercentilePlantHeight;
         ar & m_medianPlantHeight;
 
         ar & m_heaviestPlantMass;
         ar & m_99thPercentilePlantMass;
+        ar & m_95thPercentilePlantMass;
         ar & m_90thPercentilePlantMass;
         ar & m_medianPlantMass;
 
         ar & m_mostPlantEnergy;
         ar & m_99thPercentilePlantEnergy;
+        ar & m_95thPercentilePlantEnergy;
         ar & m_90thPercentilePlantEnergy;
         ar & m_medianPlantEnergy;
 

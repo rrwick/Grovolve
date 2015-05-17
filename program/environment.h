@@ -75,15 +75,27 @@ public:
     double getAverageGeneration() const;
     double getTallestPlantHeight() const;
 
-    void getPlantHeightPercentiles(double * tallestPlantHeight, double * ninetyNinthPercentilePlantHeight,
-                                   double * ninetiethPercentilePlantHeight, double * medianPlantHeight) const;
-    void getPlantMassPercentiles(double * heaviestPlantMass, double * ninetyNinthPercentilePlantMass,
-                                 double * ninetiethPercentilePlantMass, double * medianPlantMass) const;
-    void getPlantEnergyPercentiles(double * mostPlantEnergy, double * ninetyNinthPercentilePlantEnergy,
-                                   double * ninetiethPercentilePlantEnergy, double * medianPlantEnergy) const;
+    void getPlantHeightPercentiles(double * tallestPlantHeight,
+                                   double * ninetyNinthPercentilePlantHeight,
+                                   double * ninetyFifthPercentilePlantHeight,
+                                   double * ninetiethPercentilePlantHeight,
+                                   double * medianPlantHeight) const;
+    void getPlantMassPercentiles(double * heaviestPlantMass,
+                                 double * ninetyNinthPercentilePlantMass,
+                                 double * ninetyFifthPercentilePlantMass,
+                                 double * ninetiethPercentilePlantMass,
+                                 double * medianPlantMass) const;
+    void getPlantEnergyPercentiles(double * mostPlantEnergy,
+                                   double * ninetyNinthPercentilePlantEnergy,
+                                   double * ninetyFifthPercentilePlantEnergy,
+                                   double * ninetiethPercentilePlantEnergy,
+                                   double * medianPlantEnergy) const;
     void getPercentilesOfDoubleVector(std::vector<double> * doubleVector,
-                                      double * max, double * ninetyNinthPercentile,
-                                      double * ninetiethPercentile, double * median) const;
+                                      double * max,
+                                      double * ninetyNinthPercentile,
+                                      double * ninetyFifthPercentile,
+                                      double * ninetiethPercentile,
+                                      double * median) const;
     double getPercentile(std::vector<double> * sortedDoubleVector, double percentile) const;
 
     double getFullyGrownPlantFraction() const;
