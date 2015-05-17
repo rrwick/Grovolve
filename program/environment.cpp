@@ -379,12 +379,55 @@ void Environment::getPercentilesOfDoubleVector(std::vector<double> * doubleVecto
                                                double * max, double * ninetyNinthPercentile,
                                                double * ninetiethPercentile, double * median) const
 {
-    *max = 100.0; //TEMP
-    *ninetyNinthPercentile = 80.0; //TEMP
-    *ninetiethPercentile = 60.0; //TEMP
-    *median = 40.0; //TEMP
+    size_t n = doubleVector->size();
+
+    if (n == 0)
+    {
+        *max = 0.0;
+        *ninetyNinthPercentile = 0.0;
+        *ninetiethPercentile = 0.0;
+        *median = 0.0;
+        return;
+    }
+
+    if (n == 1)
+    {
+        *max = (*doubleVector)[0];
+        *ninetyNinthPercentile = (*doubleVector)[0];
+        *ninetiethPercentile = (*doubleVector)[0];
+        *median = (*doubleVector)[0];
+        return;
+    }
+
+    std::sort(doubleVector->begin(), doubleVector->end());
+
+    *max = (*doubleVector)[n-1];
+    *ninetyNinthPercentile = getPercentile(doubleVector, 0.99);
+    *ninetiethPercentile = getPercentile(doubleVector, 0.9);
+    *median = getPercentile(doubleVector, 0.5);
 }
 
+
+//This function gets a percentile.  It assumes that sortedDoubleVector has at least two elements.
+//TODO: I need to verify that this function won't crash, as long as the assumption is met.
+double Environment::getPercentile(std::vector<double> * sortedDoubleVector, double percentile) const
+{
+    double rank = (sortedDoubleVector->size() + 1.0) * percentile;
+
+    //Break the rank into integral and fractional parts
+    double intRank;
+    double fractionalRank = modf(rank, &intRank);
+
+    double val1;
+    int index = int(intRank) - 1;
+    if (index < 0)
+        val1 = 0;
+    else
+        val1 = (*sortedDoubleVector)[index];
+    double val2 = (*sortedDoubleVector)[index + 1];
+
+    return val1 + fractionalRank * (val2 - val1);
+}
 
 
 

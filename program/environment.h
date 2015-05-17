@@ -84,6 +84,7 @@ public:
     void getPercentilesOfDoubleVector(std::vector<double> * doubleVector,
                                       double * max, double * ninetyNinthPercentile,
                                       double * ninetiethPercentile, double * median) const;
+    double getPercentile(std::vector<double> * sortedDoubleVector, double percentile) const;
 
     double getFullyGrownPlantFraction() const;
     int getFullyGrownPlantCount() const;
