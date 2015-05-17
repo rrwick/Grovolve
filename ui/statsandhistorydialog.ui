@@ -20,7 +20,7 @@
       <enum>Qt::StrongFocus</enum>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="currentInfoTab">
       <attribute name="title">
@@ -147,6 +147,48 @@
        <item row="1" column="1">
         <widget class="QWidget" name="widget" native="true">
          <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="currentPopulationTitle">
+            <property name="text">
+             <string>Current population</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0" colspan="2">
+           <widget class="Line" name="line_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="1">
+           <widget class="QLabel" name="seedCountLabel">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QLabel" name="populationDensityLabel">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_25">
+            <property name="text">
+             <string>Environment width:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <widget class="QLabel" name="tallestPlantLabel">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
           <item row="4" column="1">
            <widget class="QLabel" name="environmentWidthLabel">
             <property name="text">
@@ -154,21 +196,21 @@
             </property>
            </widget>
           </item>
-          <item row="13" column="0">
+          <item row="12" column="0">
            <widget class="QLabel" name="label_18">
             <property name="text">
              <string>Mass of heaviest plant:</string>
             </property>
            </widget>
           </item>
-          <item row="12" column="0" colspan="2">
+          <item row="11" column="0" colspan="2">
            <widget class="Line" name="line_8">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="13" column="1">
+          <item row="12" column="1">
            <widget class="QLabel" name="heaviestPlantLabel">
             <property name="text">
              <string>0</string>
@@ -176,20 +218,6 @@
            </widget>
           </item>
           <item row="14" column="0">
-           <widget class="QLabel" name="label_19">
-            <property name="text">
-             <string>Mean mass of fully grown plants:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="14" column="1">
-           <widget class="QLabel" name="meanMassOfFullyGrownPlantsLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="16" column="0">
            <widget class="QLabel" name="label_23">
             <property name="text">
              <string>Number of seeds:</string>
@@ -210,42 +238,35 @@
             </property>
            </widget>
           </item>
-          <item row="11" column="0">
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>Mean height of fully grown plants:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="15" column="0" colspan="2">
+          <item row="13" column="0" colspan="2">
            <widget class="Line" name="line">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
-          <item row="17" column="0">
+          <item row="15" column="0">
            <widget class="QLabel" name="label_2">
             <property name="text">
              <string>Mean seeds per plant:</string>
             </property>
            </widget>
           </item>
-          <item row="18" column="1">
+          <item row="16" column="1">
            <widget class="QLabel" name="meanEnergyPerSeedLabel">
             <property name="text">
              <string>0</string>
             </property>
            </widget>
           </item>
-          <item row="17" column="1">
+          <item row="15" column="1">
            <widget class="QLabel" name="meanSeedsPerPlantLabel">
             <property name="text">
              <string>0</string>
             </property>
            </widget>
           </item>
-          <item row="18" column="0">
+          <item row="16" column="0">
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>Mean energy per seed:</string>
@@ -254,13 +275,6 @@
           </item>
           <item row="3" column="1">
            <widget class="QLabel" name="organismCountLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="11" column="1">
-           <widget class="QLabel" name="meanHeightOfFullyGrownPlantsLabel">
             <property name="text">
              <string>0</string>
             </property>
@@ -289,48 +303,6 @@
           </item>
           <item row="6" column="1">
            <widget class="QLabel" name="averageGenerationLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0" colspan="2">
-           <widget class="QLabel" name="currentPopulationTitle">
-            <property name="text">
-             <string>Current population</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0" colspan="2">
-           <widget class="Line" name="line_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="16" column="1">
-           <widget class="QLabel" name="seedCountLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="populationDensityLabel">
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QLabel" name="label_25">
-            <property name="text">
-             <string>Environment width:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="1">
-           <widget class="QLabel" name="tallestPlantLabel">
             <property name="text">
              <string>0</string>
             </property>
@@ -444,6 +416,11 @@
          </item>
          <item>
           <property name="text">
+           <string>Energy per plant</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Population density</string>
           </property>
          </item>
@@ -455,11 +432,6 @@
          <item>
           <property name="text">
            <string>Mean energy per seed</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Energy per plant</string>
           </property>
          </item>
          <item>

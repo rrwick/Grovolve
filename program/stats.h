@@ -50,17 +50,28 @@ public:
 
     std::vector<double> m_time;
     std::vector<double> m_populationDensity;
+
     std::vector<double> m_tallestPlantHeight;
-    std::vector<double> m_meanHeightOfFullyGrownPlants;
+    std::vector<double> m_99thPercentilePlantHeight;
+    std::vector<double> m_90thPercentilePlantHeight;
+    std::vector<double> m_medianPlantHeight;
+
     std::vector<double> m_heaviestPlantMass;
-    std::vector<double> m_meanMassOfFullyGrownPlants;
+    std::vector<double> m_99thPercentilePlantMass;
+    std::vector<double> m_90thPercentilePlantMass;
+    std::vector<double> m_medianPlantMass;
+
+    std::vector<double> m_mostPlantEnergy;
+    std::vector<double> m_99thPercentilePlantEnergy;
+    std::vector<double> m_90thPercentilePlantEnergy;
+    std::vector<double> m_medianPlantEnergy;
+
     std::vector<double> m_meanSeedsPerPlant;
     std::vector<double> m_meanEnergyPerSeed;
-    std::vector<double> m_meanEnergyPerPlant; //NEW
-    std::vector<double> m_meanEnergyOfFullyGrownPlants; //NEW
-    std::vector<double> m_meanDeathAge; //NEW
-    std::vector<double> m_meanStarvationDeathAge; //NEW
-    std::vector<double> m_meanNonStarvationDeathAge; //NEW
+
+    std::vector<double> m_meanDeathAge;
+    std::vector<double> m_meanStarvationDeathAge;
+    std::vector<double> m_meanNonStarvationDeathAge;
     std::vector<Organism *> m_averageGenomeOrganism;
     std::vector<Organism *> m_randomGenomeOrganism;
 
@@ -93,14 +104,24 @@ private:
         ar & m_organismsDiedFromStarvationSinceLastLogAgeSum;
         ar & m_time;
         ar & m_populationDensity;
+
         ar & m_tallestPlantHeight;
-        ar & m_meanHeightOfFullyGrownPlants;
+        ar & m_99thPercentilePlantHeight;
+        ar & m_90thPercentilePlantHeight;
+        ar & m_medianPlantHeight;
+
         ar & m_heaviestPlantMass;
-        ar & m_meanMassOfFullyGrownPlants;
+        ar & m_99thPercentilePlantMass;
+        ar & m_90thPercentilePlantMass;
+        ar & m_medianPlantMass;
+
+        ar & m_mostPlantEnergy;
+        ar & m_99thPercentilePlantEnergy;
+        ar & m_90thPercentilePlantEnergy;
+        ar & m_medianPlantEnergy;
+
         ar & m_meanSeedsPerPlant;
         ar & m_meanEnergyPerSeed;
-        ar & m_meanEnergyPerPlant;
-        ar & m_meanEnergyOfFullyGrownPlants;
         ar & m_meanDeathAge;
         ar & m_meanStarvationDeathAge;
         ar & m_meanNonStarvationDeathAge;

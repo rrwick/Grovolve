@@ -50,14 +50,24 @@ void Stats::cleanUp()
 {
     m_time.clear();
     m_populationDensity.clear();
+
     m_tallestPlantHeight.clear();
-    m_meanHeightOfFullyGrownPlants.clear();
+    m_99thPercentilePlantHeight.clear();
+    m_90thPercentilePlantHeight.clear();
+    m_medianPlantHeight.clear();
+
     m_heaviestPlantMass.clear();
-    m_meanMassOfFullyGrownPlants.clear();
+    m_99thPercentilePlantMass.clear();
+    m_90thPercentilePlantMass.clear();
+    m_medianPlantMass.clear();
+
+    m_mostPlantEnergy.clear();
+    m_99thPercentilePlantEnergy.clear();
+    m_90thPercentilePlantEnergy.clear();
+    m_medianPlantEnergy.clear();
+
     m_meanSeedsPerPlant.clear();
     m_meanEnergyPerSeed.clear();
-    m_meanEnergyPerPlant.clear();
-    m_meanEnergyOfFullyGrownPlants.clear();
     m_meanDeathAge.clear();
     m_meanStarvationDeathAge.clear();
     m_meanNonStarvationDeathAge.clear();
@@ -80,14 +90,42 @@ void Stats::addToLog(Environment * environment)
 {
     m_time.push_back(environment->getElapsedTime());
     m_populationDensity.push_back(environment->getPopulationDensity());
-    m_tallestPlantHeight.push_back(environment->getTallestPlantHeight());
-    m_meanHeightOfFullyGrownPlants.push_back(environment->getAverageHeightOfFullyGrownPlants());
-    m_heaviestPlantMass.push_back(environment->getHeaviestPlantMass());
-    m_meanMassOfFullyGrownPlants.push_back(environment->getMeanMassOfFullyGrownPlants());
+
+    double tallestPlantHeight;
+    double ninetyNinthPercentilePlantHeight;
+    double ninetiethPercentilePlantHeight;
+    double medianPlantHeight;
+    environment->getPlantHeightPercentiles(&tallestPlantHeight, &ninetyNinthPercentilePlantHeight,
+                                           &ninetiethPercentilePlantHeight, &medianPlantHeight);
+    m_tallestPlantHeight.push_back(tallestPlantHeight);
+    m_99thPercentilePlantHeight.push_back(ninetyNinthPercentilePlantHeight);
+    m_90thPercentilePlantHeight.push_back(ninetiethPercentilePlantHeight);
+    m_medianPlantHeight.push_back(medianPlantHeight);
+
+    double heaviestPlantMass;
+    double ninetyNinthPercentilePlantMass;
+    double ninetiethPercentilePlantMass;
+    double medianPlantMass;
+    environment->getPlantMassPercentiles(&heaviestPlantMass, &ninetyNinthPercentilePlantMass,
+                                         &ninetiethPercentilePlantMass, &medianPlantMass);
+    m_heaviestPlantMass.push_back(heaviestPlantMass);
+    m_99thPercentilePlantMass.push_back(ninetyNinthPercentilePlantMass);
+    m_90thPercentilePlantMass.push_back(ninetiethPercentilePlantMass);
+    m_medianPlantMass.push_back(medianPlantMass);
+
+    double mostPlantEnergy;
+    double ninetyNinthPercentilePlantEnergy;
+    double ninetiethPercentilePlantEnergy;
+    double medianPlantEnergy;
+    environment->getPlantEnergyPercentiles(&mostPlantEnergy, &ninetyNinthPercentilePlantEnergy,
+                                           &ninetiethPercentilePlantEnergy, &medianPlantEnergy);
+    m_mostPlantEnergy.push_back(mostPlantEnergy);
+    m_99thPercentilePlantEnergy.push_back(ninetyNinthPercentilePlantEnergy);
+    m_90thPercentilePlantEnergy.push_back(ninetiethPercentilePlantEnergy);
+    m_medianPlantEnergy.push_back(medianPlantEnergy);
+
     m_meanSeedsPerPlant.push_back(environment->getMeanSeedsPerPlant());
     m_meanEnergyPerSeed.push_back(environment->getAverageEnergyPerSeed());
-    m_meanEnergyPerPlant.push_back(environment->getMeanEnergyPerPlant());
-    m_meanEnergyOfFullyGrownPlants.push_back(environment->getMeanEnergyPerFullyGrownPlant());
 
     long long totalNumberOfOrganismsDiedSinceLastLog = m_numberOfOrganismsDiedFromBadLuckSinceLastLog + m_numberOfOrganismsDiedFromStarvationSinceLastLog;
     long long totalOrganismsDiedSinceLastLogAgeSum = m_organismsDiedFromBadLuckSinceLastLogAgeSum + m_organismsDiedFromStarvationSinceLastLogAgeSum;
@@ -139,14 +177,24 @@ void Stats::deleteHalfOfAllData()
 {
     deleteHalfOfOneDoubleDataGroup(&m_time);
     deleteHalfOfOneDoubleDataGroup(&m_populationDensity);
+
     deleteHalfOfOneDoubleDataGroup(&m_tallestPlantHeight);
-    deleteHalfOfOneDoubleDataGroup(&m_meanHeightOfFullyGrownPlants);
+    deleteHalfOfOneDoubleDataGroup(&m_99thPercentilePlantHeight);
+    deleteHalfOfOneDoubleDataGroup(&m_90thPercentilePlantHeight);
+    deleteHalfOfOneDoubleDataGroup(&m_medianPlantHeight);
+
     deleteHalfOfOneDoubleDataGroup(&m_heaviestPlantMass);
-    deleteHalfOfOneDoubleDataGroup(&m_meanMassOfFullyGrownPlants);
+    deleteHalfOfOneDoubleDataGroup(&m_99thPercentilePlantMass);
+    deleteHalfOfOneDoubleDataGroup(&m_90thPercentilePlantMass);
+    deleteHalfOfOneDoubleDataGroup(&m_medianPlantMass);
+
+    deleteHalfOfOneDoubleDataGroup(&m_mostPlantEnergy);
+    deleteHalfOfOneDoubleDataGroup(&m_99thPercentilePlantEnergy);
+    deleteHalfOfOneDoubleDataGroup(&m_90thPercentilePlantEnergy);
+    deleteHalfOfOneDoubleDataGroup(&m_medianPlantEnergy);
+
     deleteHalfOfOneDoubleDataGroup(&m_meanSeedsPerPlant);
     deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerSeed);
-    deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerPlant);
-    deleteHalfOfOneDoubleDataGroup(&m_meanEnergyOfFullyGrownPlants);
     deleteHalfOfOneDoubleDataGroup(&m_meanDeathAge);
     deleteHalfOfOneDoubleDataGroup(&m_meanStarvationDeathAge);
     deleteHalfOfOneDoubleDataGroup(&m_meanNonStarvationDeathAge);

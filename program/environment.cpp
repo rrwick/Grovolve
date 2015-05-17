@@ -220,7 +220,7 @@ void Environment::getRidOfOldSeeds()
 
 
 void Environment::createNewOrganisms()
-{   
+{
     int newOrganismCount = g_randomNumbers->changeDoubleToProbabilisticInt(g_simulationSettings->newOrganismsPerTickPerSeed * m_seeds.size());
 
     for (int i = 0; i < newOrganismCount; ++i)
@@ -329,50 +329,62 @@ double Environment::getFullyGrownPlantFraction() const
 
 
 
-//Returns 0.0 if there are no fully grown plants.
-double Environment::getAverageHeightOfFullyGrownPlants() const
+////Returns 0.0 if there are no fully grown plants.
+//double Environment::getAverageHeightOfFullyGrownPlants() const
+//{
+//    double heightSum = 0.0;
+
+//    std::vector<const Organism *> grownOrganisms = getGrownOrganisms();
+//    if (grownOrganisms.size() == 0)
+//        return 0.0;
+
+//    for (std::vector<const Organism *>::const_iterator i = grownOrganisms.begin(); i != grownOrganisms.end(); ++i)
+//        heightSum += (*i)->getHeight();
+
+//    return heightSum / grownOrganisms.size();
+//}
+
+
+void Environment::getPlantHeightPercentiles(double * tallestPlantHeight, double * ninetyNinthPercentilePlantHeight,
+                                            double * ninetiethPercentilePlantHeight, double * medianPlantHeight) const
 {
-    double heightSum = 0.0;
-
-    std::vector<const Organism *> grownOrganisms = getGrownOrganisms();
-    if (grownOrganisms.size() == 0)
-        return 0.0;
-
-    for (std::vector<const Organism *>::const_iterator i = grownOrganisms.begin(); i != grownOrganisms.end(); ++i)
-        heightSum += (*i)->getHeight();
-
-    return heightSum / grownOrganisms.size();
-}
-
-
-
-double Environment::getHeaviestPlantMass() const
-{
-    double heaviestPlantMass = 0.0;
-
+    std::vector<double> heights;
     for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
-    {
-        double plantMass = (*i)->getMass();
-        if (plantMass > heaviestPlantMass)
-            heaviestPlantMass = plantMass;
-    }
-
-    return heaviestPlantMass;
+        heights.push_back((*i)->getHeight());
+    getPercentilesOfDoubleVector(&heights, tallestPlantHeight, ninetyNinthPercentilePlantHeight,
+                                 ninetiethPercentilePlantHeight, medianPlantHeight);
 }
 
-double Environment::getMeanMassOfFullyGrownPlants() const
+void Environment::getPlantMassPercentiles(double * heaviestPlantMass, double * ninetyNinthPercentilePlantMass,
+                                          double * ninetiethPercentilePlantMass, double * medianPlantMass) const
 {
-    double massSum = 0.0;
-
-    std::vector<const Organism *> grownOrganisms = getGrownOrganisms();
-    if (grownOrganisms.size() == 0)
-        return 0.0;
-
-    for (std::vector<const Organism *>::const_iterator i = grownOrganisms.begin(); i != grownOrganisms.end(); ++i)
-        massSum += (*i)->getMass();
-
-    return massSum / grownOrganisms.size();
+    std::vector<double> masses;
+    for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
+        masses.push_back((*i)->getMass());
+    getPercentilesOfDoubleVector(&masses, heaviestPlantMass, ninetyNinthPercentilePlantMass,
+                                 ninetiethPercentilePlantMass, medianPlantMass);
 }
+
+void Environment::getPlantEnergyPercentiles(double * mostPlantEnergy, double * ninetyNinthPercentilePlantEnergy,
+                                          double * ninetiethPercentilePlantEnergy, double * medianPlantEnergy) const
+{
+    std::vector<double> energies;
+    for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
+        energies.push_back((*i)->getEnergy());
+    getPercentilesOfDoubleVector(&energies, mostPlantEnergy, ninetyNinthPercentilePlantEnergy,
+                                 ninetiethPercentilePlantEnergy, medianPlantEnergy);
+}
+
+void Environment::getPercentilesOfDoubleVector(std::vector<double> * doubleVector,
+                                               double * max, double * ninetyNinthPercentile,
+                                               double * ninetiethPercentile, double * median) const
+{
+    *max = 100.0; //TEMP
+    *ninetyNinthPercentile = 80.0; //TEMP
+    *ninetiethPercentile = 60.0; //TEMP
+    *median = 40.0; //TEMP
+}
+
 
 
 
@@ -462,35 +474,6 @@ double Environment::getAverageEnergyPerSeed() const
         return 0.0;
 
     return totalSeedEnergy / m_seeds.size();
-}
-
-
-double Environment::getMeanEnergyPerPlant() const
-{
-    if (m_organisms.size() == 0)
-        return 0.0;
-
-    double energySum = 0.0;
-
-    for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
-        energySum += (*i)->getEnergy();
-
-    return energySum / m_organisms.size();
-}
-
-
-double Environment::getMeanEnergyPerFullyGrownPlant() const
-{
-    double energySum = 0.0;
-
-    std::vector<const Organism *> grownOrganisms = getGrownOrganisms();
-    if (grownOrganisms.size() == 0)
-        return 0.0;
-
-    for (std::vector<const Organism *>::const_iterator i = grownOrganisms.begin(); i != grownOrganisms.end(); ++i)
-        energySum += (*i)->getEnergy();
-
-    return energySum / grownOrganisms.size();
 }
 
 

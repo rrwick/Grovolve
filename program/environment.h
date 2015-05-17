@@ -74,14 +74,20 @@ public:
     double getSunAngle() const;
     double getAverageGeneration() const;
     double getTallestPlantHeight() const;
-    double getAverageHeightOfFullyGrownPlants() const;
+
+    void getPlantHeightPercentiles(double * tallestPlantHeight, double * ninetyNinthPercentilePlantHeight,
+                                   double * ninetiethPercentilePlantHeight, double * medianPlantHeight) const;
+    void getPlantMassPercentiles(double * heaviestPlantMass, double * ninetyNinthPercentilePlantMass,
+                                 double * ninetiethPercentilePlantMass, double * medianPlantMass) const;
+    void getPlantEnergyPercentiles(double * mostPlantEnergy, double * ninetyNinthPercentilePlantEnergy,
+                                   double * ninetiethPercentilePlantEnergy, double * medianPlantEnergy) const;
+    void getPercentilesOfDoubleVector(std::vector<double> * doubleVector,
+                                      double * max, double * ninetyNinthPercentile,
+                                      double * ninetiethPercentile, double * median) const;
+
     double getFullyGrownPlantFraction() const;
-    double getHeaviestPlantMass() const;
-    double getMeanMassOfFullyGrownPlants() const;
     int getFullyGrownPlantCount() const;
     double getAverageEnergyPerSeed() const;
-    double getMeanEnergyPerPlant() const;
-    double getMeanEnergyPerFullyGrownPlant() const;
     double getMeanPartsPerPlant(PlantPartType partType) const;
     Genome getModeGenome() const;
     const Organism * getOldestOrganism() const;
