@@ -100,6 +100,7 @@ void Environment::advanceOneTick()
     createNewOrganisms();
     ++m_elapsedTime;
     distributeLightToLeaves();
+    limitPlantEnergyToMaximum();
 
     if (m_elapsedTime % (m_logIntervalMultiplier * g_simulationSettings->statLoggingInterval) == 0)
         logStats();
@@ -112,6 +113,19 @@ void Environment::distributeLightToLeaves()
     std::vector<PlantPart *> leaves;
     addLeavesToVector(&leaves);
     g_lighting->distributeLight(&leaves, this, getSunIntensity(), getSunAngle());
+}
+
+void Environment::limitPlantEnergyToMaximum()
+{
+    for (std::list<Organism *>::iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
+    {
+        //TEMPORARILY JUST USING MASS PLUS 1000 AS THE MAX ENERGY
+        double maximumPlantEnergy = 1000.0 + (*i)->getMass();
+        double plantEnergy = (*i)->getEnergy();
+
+        if (plantEnergy > maximumPlantEnergy)
+            (*i)->setEnergy(maximumPlantEnergy);
+    }
 }
 
 

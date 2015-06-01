@@ -327,9 +327,15 @@ double Organism::getMaintenanceCost() const
     return g_simulationSettings->organismMaintenanceCost + m_firstPart->getMaintenanceCost();
 }
 
+
+//The rate at which the plant can make seeds is a function of its current energy.
+//More energy means greater seed production.
 void Organism::createSeeds(std::deque<Seed> *seeds, long long elapsedTime, bool dayTime)
 {
-    m_firstPart->createSeeds(seeds, elapsedTime, dayTime);
+    double seedProductionAdjustment = getEnergy() / (getMaintenanceCost() * 100.0);
+    double seedProductionRate = seedProductionAdjustment * g_simulationSettings->newSeedsPerTickPerSeedpod;
+
+    m_firstPart->createSeeds(seeds, elapsedTime, dayTime, seedProductionRate);
 }
 
 void Organism::age(int ticksToAge)

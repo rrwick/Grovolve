@@ -136,6 +136,7 @@ private:
     void getRidOfOldSeeds();
     void createNewOrganisms();
     void distributeLightToLeaves();
+    void limitPlantEnergyToMaximum();
 
 signals:
     void addToWaitingDialog(QString text);

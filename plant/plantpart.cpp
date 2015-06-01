@@ -293,12 +293,12 @@ void PlantPart::growChildParts()
 
 
 
-void PlantPart::createSeeds(std::deque<Seed> *seeds, long long elapsedTime, bool dayTime)
+void PlantPart::createSeeds(std::deque<Seed> *seeds, long long elapsedTime, bool dayTime, double seedProductionRate)
 {
     if (m_type == BRANCH)
     {
         for (std::vector<PlantPart *>::iterator i = m_children.begin(); i != m_children.end(); ++i)
-            (*i)->createSeeds(seeds, elapsedTime, dayTime);
+            (*i)->createSeeds(seeds, elapsedTime, dayTime, seedProductionRate);
     }
 
     else if (m_type == SEEDPOD)
@@ -309,7 +309,7 @@ void PlantPart::createSeeds(std::deque<Seed> *seeds, long long elapsedTime, bool
         double length = getLength();
         double seedEnergy = length * length;
 
-        int seedCount = g_randomNumbers->changeDoubleToProbabilisticInt(g_simulationSettings->newSeedsPerTickPerSeedpod);
+        int seedCount = g_randomNumbers->changeDoubleToProbabilisticInt(seedProductionRate);
 
         for (int i = 0; i < seedCount; ++i)
         {

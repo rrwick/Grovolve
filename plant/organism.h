@@ -79,6 +79,7 @@ public:
     double getRightmostDrawnPoint() const;
     double getLeftmostDrawnPoint() const;
     double getEnergy() const {return m_energy;}
+    void setEnergy(double newEnergy)  {m_energy = newEnergy;}
     boost::shared_ptr<Genome> getGenomeSharedPointer() {return m_genome;}
     Genome * getGenome() const {return m_genome.get();}
     double getGeneration() const {return m_generation;}

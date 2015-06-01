@@ -51,7 +51,7 @@ public:
     void growChildParts();
     void calculateCenterOfMass();
     void receiveLight(double incomingLight);
-    void createSeeds(std::deque<Seed> * seeds, long long elapsedTime, bool dayTime);
+    void createSeeds(std::deque<Seed> * seeds, long long elapsedTime, bool dayTime, double seedProductionRate);
     void addLeavesToLightingVector(std::vector<PlantPart *> * leaves);
     void getShapesForDrawing(std::vector<QLineF> * branchLines,
                              std::vector<double> * branchWidths,
