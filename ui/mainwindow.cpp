@@ -483,17 +483,6 @@ void MainWindow::advanceOneTick()
 
     if (g_simulationSettings->cloudsOn)
         m_environmentWidget->moveClouds();
-
-    //TEST CODE!!!!
-    //CHECK THE LAST LOG FOR 95TH PERCENTILE HEIGHT AND STOP THE SIMULATION IF IT
-    //IS OVER 1000
-    size_t n = g_stats->m_95thPercentilePlantHeight.size();
-    if (n > 1)
-    {
-        double last95thPercentileHeight = g_stats->m_95thPercentilePlantHeight[n-1];
-        if (last95thPercentileHeight >= 1000.0)
-            stopSimulation();
-    }
 }
 
 
