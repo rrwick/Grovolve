@@ -266,20 +266,6 @@
               </property>
              </widget>
             </item>
-            <item row="4" column="2">
-             <widget class="QLabel" name="label_26">
-              <property name="text">
-               <string>Maintenance cost:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3">
-             <widget class="QLabel" name="maintenanceCostLabel">
-              <property name="text">
-               <string>0</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </widget>
          </item>

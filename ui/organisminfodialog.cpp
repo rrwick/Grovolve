@@ -56,7 +56,6 @@ OrganismInfoDialog::OrganismInfoDialog(QWidget * parent, const Organism *organis
     ui->leafCountLabel->setText(this->locale().toString(organism->getLeafCount()));
     ui->seedpodCountLabel->setText(this->locale().toString(organism->getSeedpodCount()));
     ui->totalPartsLabel->setText(this->locale().toString(organism->getPlantPartCount()));
-    ui->maintenanceCostLabel->setText(formatDoubleForDisplay(organism->getMaintenanceCost(), 1, this->locale()));
 
     ui->photosynthesisEnergyLabel->setText(formatDoubleForDisplay(organism->getEnergyFromPhotosynthesis(), 1, this->locale()));
     ui->growthMaintenanceEnergyLabel->setText(formatDoubleForDisplay(organism->getEnergySpentOnGrowthAndMaintenance(), 1, this->locale()));
