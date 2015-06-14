@@ -324,30 +324,30 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->yAxis->setLabel("energy");
         break;
 
-    case 6: //Life span
+    case 6: //Rates
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkRed);
         ui->customPlot->graph(0)->setPen(graphPen);
-        ui->customPlot->graph(0)->setName("Mean life span");
-        ui->customPlot->graph(0)->setData(getTimeVector(MEAN_DEATH_AGE),
-                                          getDataVector(MEAN_DEATH_AGE));
+        ui->customPlot->graph(0)->setName("Sprout rate");
+        ui->customPlot->graph(0)->setData(getTimeVector(SPROUT_RATE),
+                                          getDataVector(SPROUT_RATE));
 
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkGreen);
         ui->customPlot->graph(1)->setPen(graphPen);
-        ui->customPlot->graph(1)->setName("Mean age of death (starvation)");
-        ui->customPlot->graph(1)->setData(getTimeVector(MEAN_STARVATION_DEATH_AGE),
-                                          getDataVector(MEAN_STARVATION_DEATH_AGE));
+        ui->customPlot->graph(1)->setName("Rate of non-starvation death");
+        ui->customPlot->graph(1)->setData(getTimeVector(NON_STARVATION_DEATH_RATE),
+                                          getDataVector(NON_STARVATION_DEATH_RATE));
 
         ui->customPlot->addGraph();
         graphPen.setColor(Qt::darkBlue);
         ui->customPlot->graph(2)->setPen(graphPen);
-        ui->customPlot->graph(2)->setName("Mean age of death (not starvation)");
-        ui->customPlot->graph(2)->setData(getTimeVector(MEAN_NON_STARVATION_DEATH_AGE),
-                                          getDataVector(MEAN_NON_STARVATION_DEATH_AGE));
+        ui->customPlot->graph(2)->setName("Rate of starvation death");
+        ui->customPlot->graph(2)->setData(getTimeVector(STARVATION_DEATH_RATE),
+                                          getDataVector(STARVATION_DEATH_RATE));
 
         turnOnLegend();
-        ui->customPlot->yAxis->setLabel("age");
+        ui->customPlot->yAxis->setLabel("rate");
         break;
     }
 
@@ -500,9 +500,9 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVHeaderLine()
     header += "Median plant energy,";
     header += "Mean seeds per plant,";
     header += "Mean energy per seed,";
-    header += "Mean death age,";
-    header += "Mean starvation death age,";
-    header += "Mean non-starvation death age,";
+    header += "Plant sprout rate,";
+    header += "Non-starvation death rate,";
+    header += "Starvation death rate,";
     header += "Average genome,";
     header += "Randomly selected genome";
     return header;
@@ -529,9 +529,9 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVBodyLine(int i)
     body += QString::number(g_stats->m_medianPlantEnergy[i]) + ",";
     body += QString::number(g_stats->m_meanSeedsPerPlant[i]) + ",";
     body += QString::number(g_stats->m_meanEnergyPerSeed[i]) + ",";
-    body += QString::number(g_stats->m_meanDeathAge[i]) + ",";
-    body += QString::number(g_stats->m_meanStarvationDeathAge[i]) + ",";
-    body += QString::number(g_stats->m_meanNonStarvationDeathAge[i]) + ",";
+    body += QString::number(g_stats->m_sproutRate[i]) + ",";
+    body += QString::number(g_stats->m_badLuckDeathRate[i]) + ",";
+    body += QString::number(g_stats->m_starvationRate[i]) + ",";
     body += g_stats->m_averageGenomeOrganism[i]->getGenome()->outputAsString() + ",";
     body += g_stats->m_randomGenomeOrganism[i]->getGenome()->outputAsString();
     return body;
@@ -630,14 +630,14 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case ENERGY_PER_SEED:
         statVector = &(g_stats->m_meanEnergyPerSeed);
         break;
-    case MEAN_DEATH_AGE:
-        statVector = &(g_stats->m_meanDeathAge);
+    case SPROUT_RATE:
+        statVector = &(g_stats->m_sproutRate);
         break;
-    case MEAN_STARVATION_DEATH_AGE:
-        statVector = &(g_stats->m_meanStarvationDeathAge);
+    case NON_STARVATION_DEATH_RATE:
+        statVector = &(g_stats->m_badLuckDeathRate);
         break;
-    case MEAN_NON_STARVATION_DEATH_AGE:
-        statVector = &(g_stats->m_meanNonStarvationDeathAge);
+    case STARVATION_DEATH_RATE:
+        statVector = &(g_stats->m_starvationRate);
         break;
     default:
         return QVector<double>();
@@ -718,14 +718,14 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
         statVector = &(g_stats->m_meanEnergyPerSeed);
         break;
 
-    case MEAN_DEATH_AGE:
-        statVector = &(g_stats->m_meanDeathAge);
+    case SPROUT_RATE:
+        statVector = &(g_stats->m_sproutRate);
         break;
-    case MEAN_STARVATION_DEATH_AGE:
-        statVector = &(g_stats->m_meanStarvationDeathAge);
+    case NON_STARVATION_DEATH_RATE:
+        statVector = &(g_stats->m_badLuckDeathRate);
         break;
-    case MEAN_NON_STARVATION_DEATH_AGE:
-        statVector = &(g_stats->m_meanNonStarvationDeathAge);
+    case STARVATION_DEATH_RATE:
+        statVector = &(g_stats->m_starvationRate);
         break;
     default:
         return QVector<double>();

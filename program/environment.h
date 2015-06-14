@@ -120,6 +120,7 @@ public:
     QString getDateAndTimeOfSimStart() const {return QString::fromStdString(m_dateAndTimeOfSimStart);}
     QDateTime getLastStartTime() const {return lastStartTime;}
     QString outputAllInfoOnCurrentPopulation() const;
+    int getLogInterval() const {return m_logIntervalMultiplier * g_simulationSettings->statLoggingInterval;}
 
 private:
     int m_width;

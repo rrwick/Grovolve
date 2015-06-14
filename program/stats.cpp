@@ -40,8 +40,6 @@ void Stats::reset()
     m_numberOfSeedsGenerated = 0;
     m_numberOfOrganismsDiedFromBadLuckSinceLastLog = 0;
     m_numberOfOrganismsDiedFromStarvationSinceLastLog = 0;
-    m_organismsDiedFromBadLuckSinceLastLogAgeSum = 0;
-    m_organismsDiedFromStarvationSinceLastLogAgeSum = 0;
 
     cleanUp();
 }
@@ -71,9 +69,10 @@ void Stats::cleanUp()
 
     m_meanSeedsPerPlant.clear();
     m_meanEnergyPerSeed.clear();
-    m_meanDeathAge.clear();
-    m_meanStarvationDeathAge.clear();
-    m_meanNonStarvationDeathAge.clear();
+
+    m_sproutRate.clear();
+    m_badLuckDeathRate.clear();
+    m_starvationRate.clear();
 
     for (std::vector<Organism *>::const_iterator i = m_averageGenomeOrganism.begin();
          i != m_averageGenomeOrganism.end(); ++i)
@@ -145,28 +144,14 @@ void Stats::addToLog(Environment * environment)
     m_meanSeedsPerPlant.push_back(environment->getMeanSeedsPerPlant());
     m_meanEnergyPerSeed.push_back(environment->getAverageEnergyPerSeed());
 
-    long long totalNumberOfOrganismsDiedSinceLastLog = m_numberOfOrganismsDiedFromBadLuckSinceLastLog + m_numberOfOrganismsDiedFromStarvationSinceLastLog;
-    long long totalOrganismsDiedSinceLastLogAgeSum = m_organismsDiedFromBadLuckSinceLastLogAgeSum + m_organismsDiedFromStarvationSinceLastLogAgeSum;
+    int logInterval = environment->getLogInterval();
+    m_sproutRate.push_back(double(m_numberOfOrganismsSproutedSinceLastLog)/ logInterval);
+    m_badLuckDeathRate.push_back(double(m_numberOfOrganismsDiedFromBadLuckSinceLastLog) / logInterval);
+    m_starvationRate.push_back(double(m_numberOfOrganismsDiedFromStarvationSinceLastLog) / logInterval);
 
-    double meanDeathAge = 0.0;
-    double meanStarvationDeathAge = 0.0;
-    double meanNonStarvationDeathAge = 0.0;
-
-    if (totalNumberOfOrganismsDiedSinceLastLog > 0)
-        meanDeathAge = double(totalOrganismsDiedSinceLastLogAgeSum) / totalNumberOfOrganismsDiedSinceLastLog;
-    if (m_numberOfOrganismsDiedFromStarvationSinceLastLog > 0)
-        meanStarvationDeathAge = double(m_organismsDiedFromStarvationSinceLastLogAgeSum) / m_numberOfOrganismsDiedFromStarvationSinceLastLog;
-    if (m_numberOfOrganismsDiedFromBadLuckSinceLastLog > 0)
-        meanNonStarvationDeathAge = double(m_organismsDiedFromBadLuckSinceLastLogAgeSum) / m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
-
-    m_meanDeathAge.push_back(meanDeathAge);
-    m_meanStarvationDeathAge.push_back(meanStarvationDeathAge);
-    m_meanNonStarvationDeathAge.push_back(meanNonStarvationDeathAge);
-
+    m_numberOfOrganismsSproutedSinceLastLog = 0;
     m_numberOfOrganismsDiedFromBadLuckSinceLastLog = 0;
     m_numberOfOrganismsDiedFromStarvationSinceLastLog = 0;
-    m_organismsDiedFromBadLuckSinceLastLogAgeSum = 0;
-    m_organismsDiedFromStarvationSinceLastLogAgeSum = 0;
 
     if (environment->getOrganismCount() == 0)
     {
@@ -216,9 +201,10 @@ void Stats::deleteHalfOfAllData()
 
     deleteHalfOfOneDoubleDataGroup(&m_meanSeedsPerPlant);
     deleteHalfOfOneDoubleDataGroup(&m_meanEnergyPerSeed);
-    deleteHalfOfOneDoubleDataGroup(&m_meanDeathAge);
-    deleteHalfOfOneDoubleDataGroup(&m_meanStarvationDeathAge);
-    deleteHalfOfOneDoubleDataGroup(&m_meanNonStarvationDeathAge);
+
+    deleteHalfOfOneDoubleDataGroup(&m_sproutRate);
+    deleteHalfOfOneDoubleDataGroup(&m_badLuckDeathRate);
+    deleteHalfOfOneDoubleDataGroup(&m_starvationRate);
 
     deleteHalfOfOneOrganismDataGroup(&m_averageGenomeOrganism);
     deleteHalfOfOneOrganismDataGroup(&m_randomGenomeOrganism);

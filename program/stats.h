@@ -43,10 +43,9 @@ public:
     long long m_numberOfOrganismsDiedFromStarvation;
     long long m_numberOfSeedsGenerated;
 
+    long long m_numberOfOrganismsSproutedSinceLastLog;
     long long m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
     long long m_numberOfOrganismsDiedFromStarvationSinceLastLog;
-    long long m_organismsDiedFromBadLuckSinceLastLogAgeSum;
-    long long m_organismsDiedFromStarvationSinceLastLogAgeSum;
 
     std::vector<double> m_time;
     std::vector<double> m_populationDensity;
@@ -72,9 +71,10 @@ public:
     std::vector<double> m_meanSeedsPerPlant;
     std::vector<double> m_meanEnergyPerSeed;
 
-    std::vector<double> m_meanDeathAge;
-    std::vector<double> m_meanStarvationDeathAge;
-    std::vector<double> m_meanNonStarvationDeathAge;
+    std::vector<double> m_sproutRate;
+    std::vector<double> m_badLuckDeathRate;
+    std::vector<double> m_starvationRate;
+
     std::vector<Organism *> m_averageGenomeOrganism;
     std::vector<Organism *> m_randomGenomeOrganism;
 
@@ -101,10 +101,11 @@ private:
         ar & m_numberOfOrganismsDiedFromBadLuck;
         ar & m_numberOfOrganismsDiedFromStarvation;
         ar & m_numberOfSeedsGenerated;
+
+        ar & m_numberOfOrganismsSproutedSinceLastLog;
         ar & m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
         ar & m_numberOfOrganismsDiedFromStarvationSinceLastLog;
-        ar & m_organismsDiedFromBadLuckSinceLastLogAgeSum;
-        ar & m_organismsDiedFromStarvationSinceLastLogAgeSum;
+
         ar & m_time;
         ar & m_populationDensity;
 
@@ -128,9 +129,11 @@ private:
 
         ar & m_meanSeedsPerPlant;
         ar & m_meanEnergyPerSeed;
-        ar & m_meanDeathAge;
-        ar & m_meanStarvationDeathAge;
-        ar & m_meanNonStarvationDeathAge;
+
+        ar & m_sproutRate;
+        ar & m_badLuckDeathRate;
+        ar & m_starvationRate;
+
         ar & m_averageGenomeOrganism;
         ar & m_randomGenomeOrganism;
     }

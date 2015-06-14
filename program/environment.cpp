@@ -102,7 +102,7 @@ void Environment::advanceOneTick()
     distributeLightToLeaves();
     limitPlantEnergyToMaximum();
 
-    if (m_elapsedTime % (m_logIntervalMultiplier * g_simulationSettings->statLoggingInterval) == 0)
+    if (m_elapsedTime % getLogInterval() == 0)
         logStats();
 }
 
@@ -186,12 +186,10 @@ void Environment::killOffStarvedAndUnluckyOrganisms()
         //Kill starved organisms
         if ((*i)->getEnergy() < 0.0)
         {
-            long long deathAge = (*i)->getAge(m_elapsedTime);
             delete *i;
             i = m_organisms.erase(i);
             ++(g_stats->m_numberOfOrganismsDiedFromStarvation);
             ++(g_stats->m_numberOfOrganismsDiedFromStarvationSinceLastLog);
-            g_stats->m_organismsDiedFromStarvationSinceLastLogAgeSum += deathAge;
         }
 
         //Kill unlucky organisms
@@ -201,12 +199,10 @@ void Environment::killOffStarvedAndUnluckyOrganisms()
             if (!(*i)->isHelped() ||
                     g_randomNumbers->chanceOfTrue(g_simulationSettings->helpedDeathRate))
             {
-                long long deathAge = (*i)->getAge(m_elapsedTime);
                 delete *i;
                 i = m_organisms.erase(i);
                 ++(g_stats->m_numberOfOrganismsDiedFromBadLuck);
                 ++(g_stats->m_numberOfOrganismsDiedFromBadLuckSinceLastLog);
-                g_stats->m_organismsDiedFromBadLuckSinceLastLogAgeSum += deathAge;
             }
         }
         else
@@ -258,7 +254,9 @@ void Environment::createNewOrganisms()
         m_organisms.push_back(new Organism(m_seeds[seedIndex1], m_seeds[seedIndex2],
                                            m_elapsedTime,
                                            g_randomNumbers->getRandomDouble(0.0, m_width)));
+
         ++(g_stats->m_numberOfOrganismsSprouted);
+        ++(g_stats->m_numberOfOrganismsSproutedSinceLastLog);
 
         //Delete the two Seeds.  They are just labelled as null as actually removing
         //them from the middle of the deque is a costly procedure.

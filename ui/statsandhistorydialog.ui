@@ -429,7 +429,7 @@
          </item>
          <item>
           <property name="text">
-           <string>Life span</string>
+           <string>Sprout/death rates</string>
           </property>
          </item>
         </widget>
