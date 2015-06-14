@@ -68,7 +68,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     m_lastDisplayedEnvironmentInfoTab(0), m_lastDisplayedEnvironmentInfoGraph(0),
-    m_lastDisplayedEnvironmentInfoHistoryType(0), m_resumeSimulationAfterSave(false),
+    m_lastDisplayedEnvironmentInfoHistoryType(0), m_lastDisplayedLogScale(false), m_resumeSimulationAfterSave(false),
     m_justSaved(false),
     m_autosavePath(QDir::temp().path() + "/Grovolve-" + QString::number(QCoreApplication::applicationPid()) + ".grov")
 {
@@ -384,12 +384,14 @@ void MainWindow::openStatsAndHistoryDialog()
 
     environmentInfoDialog.setDisplayedTab(m_lastDisplayedEnvironmentInfoTab);
     environmentInfoDialog.setDisplayedGraph(m_lastDisplayedEnvironmentInfoGraph);
+    environmentInfoDialog.setLogScale(m_lastDisplayedLogScale);
     environmentInfoDialog.setHistoryType(m_lastDisplayedEnvironmentInfoHistoryType);
 
     environmentInfoDialog.exec();
 
     m_lastDisplayedEnvironmentInfoTab = environmentInfoDialog.getDisplayedTab();
     m_lastDisplayedEnvironmentInfoGraph = environmentInfoDialog.getDisplayedGraph();
+    m_lastDisplayedLogScale = environmentInfoDialog.getLogScale();
     m_lastDisplayedEnvironmentInfoHistoryType = environmentInfoDialog.getHistoryType();
 
     if (simulationRunningAtFunctionStart)

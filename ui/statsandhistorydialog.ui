@@ -435,6 +435,13 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="logScaleCheckBox">
+         <property name="text">
+          <string>Logrithmic scale on y axis</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QCustomPlot" name="customPlot" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">

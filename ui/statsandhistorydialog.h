@@ -43,9 +43,11 @@ public:
     int getDisplayedTab() const;
     int getDisplayedGraph() const;
     int getHistoryType() const;
+    bool getLogScale() const;
     void setDisplayedTab(int tabIndex);
     void setDisplayedGraph(int graphIndex);
     void setHistoryType(int historyType);
+    void setLogScale(bool logScale);
 
 private:
     Ui::StatsAndHistoryDialog * ui;
@@ -77,6 +79,7 @@ private slots:
     void mousePressSignal(QMouseEvent *event);
     void mouseReleaseSignal(QMouseEvent *event);
     void beforeReplot();
+    void logScaleChanged();
 };
 
 #endif // ENVIRONMENTINFODIALOG_H

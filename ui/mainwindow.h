@@ -54,6 +54,8 @@ private:
     int m_lastDisplayedEnvironmentInfoTab;
     int m_lastDisplayedEnvironmentInfoGraph;
     int m_lastDisplayedEnvironmentInfoHistoryType;
+    bool m_lastDisplayedLogScale;
+
     bool m_resumeSimulationAfterSave;
     long long m_saveImageToFileNextTime;
     long long m_saveImageToFileInterval;

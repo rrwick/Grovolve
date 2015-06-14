@@ -135,7 +135,7 @@ StatsAndHistoryDialog::StatsAndHistoryDialog(QWidget * parent, const Environment
     connect(ui->customPlot, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(mousePressSignal(QMouseEvent*)));
     connect(ui->customPlot, SIGNAL(mouseRelease(QMouseEvent*)), this, SLOT(mouseReleaseSignal(QMouseEvent*)));
     connect(ui->customPlot, SIGNAL(beforeReplot()), this, SLOT(beforeReplot()));
-
+    connect(ui->logScaleCheckBox, SIGNAL(toggled(bool)), this, SLOT(logScaleChanged()));
 }
 
 StatsAndHistoryDialog::~StatsAndHistoryDialog()
@@ -372,8 +372,17 @@ void StatsAndHistoryDialog::setGraphRange()
     ui->customPlot->xAxis->setRangeLower(0.0);
     ui->customPlot->yAxis->setRangeLower(0.0);
 
-    //Add a bit of buffer so the data doesn't go all the way to the top edge.
-    double yRangeMax = ui->customPlot->yAxis->range().upper * 1.05;
+    if (ui->logScaleCheckBox->isChecked())
+        ui->customPlot->yAxis->setScaleType(QCPAxis::stLogarithmic);
+    else
+        ui->customPlot->yAxis->setScaleType(QCPAxis::stLinear);
+
+    double yRangeMax;
+    if (ui->customPlot->graph(0)->data()->size() < 2)
+        yRangeMax = 10.0;
+    else   //Add a bit of buffer so the data doesn't go all the way to the top edge.
+        yRangeMax = ui->customPlot->yAxis->range().upper * 1.05;
+
     ui->customPlot->yAxis->setRangeUpper(yRangeMax);
     ui->customPlot->xAxis->setRangeUpper(m_environment->getElapsedTime());
 
@@ -427,6 +436,11 @@ int StatsAndHistoryDialog::getHistoryType() const
     return ui->historyTypeComboBox->currentIndex();
 }
 
+bool StatsAndHistoryDialog::getLogScale() const
+{
+    return ui->logScaleCheckBox->isChecked();
+}
+
 void StatsAndHistoryDialog::setDisplayedTab(int tabIndex)
 {
     ui->tabWidget->setCurrentIndex(tabIndex);
@@ -442,6 +456,12 @@ void StatsAndHistoryDialog::setHistoryType(int historyType)
 {
     ui->historyTypeComboBox->setCurrentIndex(historyType);
     genomeHistoryChanged();
+}
+
+void StatsAndHistoryDialog::setLogScale(bool logScale)
+{
+    ui->logScaleCheckBox->setChecked(logScale);
+    logScaleChanged();
 }
 
 
@@ -874,4 +894,10 @@ void StatsAndHistoryDialog::beforeReplot()
     // is also defined in axisRect coordinates (0..1) and thus would stretch.
     // This is due to change in a future release (probably QCP 2.0) since it's basically a design mistake.
     ui->customPlot->legend->setMaximumSize(ui->customPlot->legend->minimumSizeHint());
+}
+
+
+void StatsAndHistoryDialog::logScaleChanged()
+{
+    graphChanged(getDisplayedGraph());
 }
