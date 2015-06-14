@@ -369,21 +369,42 @@ void StatsAndHistoryDialog::setGraphRange()
 {
     ui->customPlot->rescaleAxes();
 
-    ui->customPlot->xAxis->setRangeLower(0.0);
-    ui->customPlot->yAxis->setRangeLower(0.0);
+    bool logScale = ui->logScaleCheckBox->isChecked();
 
-    if (ui->logScaleCheckBox->isChecked())
+    if (logScale)
         ui->customPlot->yAxis->setScaleType(QCPAxis::stLogarithmic);
     else
         ui->customPlot->yAxis->setScaleType(QCPAxis::stLinear);
 
     double yRangeMax;
-    if (ui->customPlot->graph(0)->data()->size() < 2)
-        yRangeMax = 10.0;
-    else   //Add a bit of buffer so the data doesn't go all the way to the top edge.
-        yRangeMax = ui->customPlot->yAxis->range().upper * 1.05;
+    double yRangeMin;
 
+    //If there isn't enough data to display yet, just set the range
+    //to a default.
+    if (ui->customPlot->graph(0)->data()->size() < 2)
+    {
+        yRangeMax = 10.0;
+        if (logScale)
+            yRangeMin = 1.0;
+        else
+            yRangeMin = 0.0;
+    }
+
+    else if (logScale)
+    {
+        yRangeMax = ui->customPlot->yAxis->range().upper * 1.2;
+        yRangeMin = ui->customPlot->yAxis->range().lower / 1.2;
+    }
+    else
+    {
+        yRangeMax = ui->customPlot->yAxis->range().upper * 1.05;
+        yRangeMin = 0.0;
+    }
+
+    ui->customPlot->yAxis->setRangeLower(yRangeMin);
     ui->customPlot->yAxis->setRangeUpper(yRangeMax);
+
+    ui->customPlot->xAxis->setRangeLower(0.0);
     ui->customPlot->xAxis->setRangeUpper(m_environment->getElapsedTime());
 
     ui->customPlot->replot();
