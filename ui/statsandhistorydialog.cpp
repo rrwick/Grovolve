@@ -55,6 +55,7 @@ StatsAndHistoryDialog::StatsAndHistoryDialog(QWidget * parent, const Environment
     ui->averageGenerationLabel->setText(formatDoubleForDisplay(environment->getAverageGeneration(), 1, this->locale()));
 
     ui->tallestPlantLabel->setText(formatDoubleForDisplay(environment->getTallestPlantHeight(), 1, this->locale()));
+    ui->heaviestPlantLabel->setText(formatDoubleForDisplay(environment->getHeaviestPlantMass(), 1, this->locale()));
 
     ui->meanEnergyPerSeedLabel->setText(formatDoubleForDisplay(environment->getAverageEnergyPerSeed(), 1, this->locale()));
 

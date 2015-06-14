@@ -74,6 +74,7 @@ public:
     double getSunAngle() const;
     double getAverageGeneration() const;
     double getTallestPlantHeight() const;
+    double getHeaviestPlantMass() const;
 
     void getPlantHeightPercentiles(double * tallestPlantHeight,
                                    double * ninetyNinthPercentilePlantHeight,

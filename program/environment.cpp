@@ -317,6 +317,21 @@ double Environment::getTallestPlantHeight() const
 
 
 
+double Environment::getHeaviestPlantMass() const
+{
+    double heaviestPlantMass = 0.0;
+
+    for (std::list<Organism *>::const_iterator i = m_organisms.begin(); i != m_organisms.end(); ++i)
+    {
+        double plantMass = (*i)->getMass();
+        if (plantMass > heaviestPlantMass)
+            heaviestPlantMass = plantMass;
+    }
+
+    return heaviestPlantMass;
+}
+
+
 
 int Environment::getFullyGrownPlantCount() const
 {
