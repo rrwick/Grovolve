@@ -189,7 +189,6 @@ void Environment::killOffStarvedAndUnluckyOrganisms()
             delete *i;
             i = m_organisms.erase(i);
             ++(g_stats->m_numberOfOrganismsDiedFromStarvation);
-            ++(g_stats->m_numberOfOrganismsDiedFromStarvationSinceLastLog);
         }
 
         //Kill unlucky organisms
@@ -202,7 +201,6 @@ void Environment::killOffStarvedAndUnluckyOrganisms()
                 delete *i;
                 i = m_organisms.erase(i);
                 ++(g_stats->m_numberOfOrganismsDiedFromBadLuck);
-                ++(g_stats->m_numberOfOrganismsDiedFromBadLuckSinceLastLog);
             }
         }
         else
@@ -256,7 +254,6 @@ void Environment::createNewOrganisms()
                                            g_randomNumbers->getRandomDouble(0.0, m_width)));
 
         ++(g_stats->m_numberOfOrganismsSprouted);
-        ++(g_stats->m_numberOfOrganismsSproutedSinceLastLog);
 
         //Delete the two Seeds.  They are just labelled as null as actually removing
         //them from the middle of the deque is a costly procedure.

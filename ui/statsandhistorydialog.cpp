@@ -325,32 +325,6 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         ui->customPlot->legend->setVisible(false);
         ui->customPlot->yAxis->setLabel("energy");
         break;
-
-    case 6: //Rates
-        ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkRed);
-        ui->customPlot->graph(0)->setPen(graphPen);
-        ui->customPlot->graph(0)->setName("Sprout rate");
-        ui->customPlot->graph(0)->setData(getTimeVector(SPROUT_RATE),
-                                          getDataVector(SPROUT_RATE));
-
-        ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkGreen);
-        ui->customPlot->graph(1)->setPen(graphPen);
-        ui->customPlot->graph(1)->setName("Rate of non-starvation death");
-        ui->customPlot->graph(1)->setData(getTimeVector(NON_STARVATION_DEATH_RATE),
-                                          getDataVector(NON_STARVATION_DEATH_RATE));
-
-        ui->customPlot->addGraph();
-        graphPen.setColor(Qt::darkBlue);
-        ui->customPlot->graph(2)->setPen(graphPen);
-        ui->customPlot->graph(2)->setName("Rate of starvation death");
-        ui->customPlot->graph(2)->setData(getTimeVector(STARVATION_DEATH_RATE),
-                                          getDataVector(STARVATION_DEATH_RATE));
-
-        turnOnLegend();
-        ui->customPlot->yAxis->setLabel("rate");
-        break;
     }
 
     setGraphYRange();
@@ -550,9 +524,6 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVHeaderLine()
     header += "Median plant energy,";
     header += "Mean seeds per plant,";
     header += "Mean energy per seed,";
-    header += "Plant sprout rate,";
-    header += "Non-starvation death rate,";
-    header += "Starvation death rate,";
     header += "Average genome,";
     header += "Randomly selected genome";
     return header;
@@ -579,9 +550,6 @@ QString StatsAndHistoryDialog::makeHistoryInfoCSVBodyLine(int i)
     body += QString::number(g_stats->m_medianPlantEnergy[i]) + ",";
     body += QString::number(g_stats->m_meanSeedsPerPlant[i]) + ",";
     body += QString::number(g_stats->m_meanEnergyPerSeed[i]) + ",";
-    body += QString::number(g_stats->m_sproutRate[i]) + ",";
-    body += QString::number(g_stats->m_badLuckDeathRate[i]) + ",";
-    body += QString::number(g_stats->m_starvationRate[i]) + ",";
     body += g_stats->m_averageGenomeOrganism[i]->getGenome()->outputAsString() + ",";
     body += g_stats->m_randomGenomeOrganism[i]->getGenome()->outputAsString();
     return body;
@@ -680,15 +648,7 @@ QVector<double> StatsAndHistoryDialog::getDataVector(GraphData graphData)
     case ENERGY_PER_SEED:
         statVector = &(g_stats->m_meanEnergyPerSeed);
         break;
-    case SPROUT_RATE:
-        statVector = &(g_stats->m_sproutRate);
-        break;
-    case NON_STARVATION_DEATH_RATE:
-        statVector = &(g_stats->m_badLuckDeathRate);
-        break;
-    case STARVATION_DEATH_RATE:
-        statVector = &(g_stats->m_starvationRate);
-        break;
+
     default:
         return QVector<double>();
     }
@@ -768,15 +728,6 @@ QVector<double> StatsAndHistoryDialog::getTimeVector(GraphData graphData)
         statVector = &(g_stats->m_meanEnergyPerSeed);
         break;
 
-    case SPROUT_RATE:
-        statVector = &(g_stats->m_sproutRate);
-        break;
-    case NON_STARVATION_DEATH_RATE:
-        statVector = &(g_stats->m_badLuckDeathRate);
-        break;
-    case STARVATION_DEATH_RATE:
-        statVector = &(g_stats->m_starvationRate);
-        break;
     default:
         return QVector<double>();
     }

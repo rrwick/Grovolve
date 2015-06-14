@@ -399,17 +399,17 @@
          </property>
          <item>
           <property name="text">
-           <string>Tallest plants</string>
+           <string>Plant height</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Heaviest plants</string>
+           <string>Plant mass</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Energy per plant</string>
+           <string>Plant energy</string>
           </property>
          </item>
          <item>
@@ -425,11 +425,6 @@
          <item>
           <property name="text">
            <string>Mean energy per seed</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Sprout/death rates</string>
           </property>
          </item>
         </widget>
