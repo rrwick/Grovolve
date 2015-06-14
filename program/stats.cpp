@@ -154,9 +154,9 @@ void Stats::addToLog(Environment * environment)
 
     if (totalNumberOfOrganismsDiedSinceLastLog > 0)
         meanDeathAge = double(totalOrganismsDiedSinceLastLogAgeSum) / totalNumberOfOrganismsDiedSinceLastLog;
-    if (totalNumberOfOrganismsDiedSinceLastLog > 0)
+    if (m_numberOfOrganismsDiedFromStarvationSinceLastLog > 0)
         meanStarvationDeathAge = double(m_organismsDiedFromStarvationSinceLastLogAgeSum) / m_numberOfOrganismsDiedFromStarvationSinceLastLog;
-    if (totalNumberOfOrganismsDiedSinceLastLog > 0)
+    if (m_numberOfOrganismsDiedFromBadLuckSinceLastLog > 0)
         meanNonStarvationDeathAge = double(m_organismsDiedFromBadLuckSinceLastLogAgeSum) / m_numberOfOrganismsDiedFromBadLuckSinceLastLog;
 
     m_meanDeathAge.push_back(meanDeathAge);
