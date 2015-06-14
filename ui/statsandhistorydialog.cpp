@@ -119,6 +119,8 @@ StatsAndHistoryDialog::StatsAndHistoryDialog(QWidget * parent, const Environment
 
     setOrganismWidgetRange();
 
+    resetGraphXRange();
+
     ui->historyGenomeTextEdit->setFont(getMonospaceFont());
 
     connect(ui->graphDataComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(graphChanged(int)));
@@ -351,7 +353,7 @@ void StatsAndHistoryDialog::graphChanged(int newGraphIndex)
         break;
     }
 
-    setGraphRange();
+    setGraphYRange();
 }
 
 void StatsAndHistoryDialog::turnOnLegend()
@@ -365,9 +367,18 @@ void StatsAndHistoryDialog::turnOnLegend()
 
 
 
-void StatsAndHistoryDialog::setGraphRange()
+void StatsAndHistoryDialog::resetGraphXRange()
 {
-    ui->customPlot->rescaleAxes();
+    ui->customPlot->xAxis->setRangeLower(0.0);
+    ui->customPlot->xAxis->setRangeUpper(m_environment->getElapsedTime());
+
+    ui->customPlot->replot();
+}
+
+
+void StatsAndHistoryDialog::setGraphYRange()
+{
+    ui->customPlot->yAxis->rescale();
 
     bool logScale = ui->logScaleCheckBox->isChecked();
 
@@ -404,11 +415,9 @@ void StatsAndHistoryDialog::setGraphRange()
     ui->customPlot->yAxis->setRangeLower(yRangeMin);
     ui->customPlot->yAxis->setRangeUpper(yRangeMax);
 
-    ui->customPlot->xAxis->setRangeLower(0.0);
-    ui->customPlot->xAxis->setRangeUpper(m_environment->getElapsedTime());
-
     ui->customPlot->replot();
 }
+
 
 
 
@@ -920,5 +929,5 @@ void StatsAndHistoryDialog::beforeReplot()
 
 void StatsAndHistoryDialog::logScaleChanged()
 {
-    graphChanged(getDisplayedGraph());
+    setGraphYRange();
 }

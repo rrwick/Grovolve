@@ -56,7 +56,8 @@ private:
     bool m_draggingLegend;
     QPointF m_dragLegendOrigin;
 
-    void setGraphRange();
+    void resetGraphXRange();
+    void setGraphYRange();
     QString makeHistoryInfoCSVHeaderLine();
     QString makeHistoryInfoCSVBodyLine(int index);
     QVector<double> getDataVector(GraphData graphData);
