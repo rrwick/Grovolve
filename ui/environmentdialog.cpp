@@ -85,7 +85,7 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
                                                     "a specified amount of time.<br><br>"
                                                     "Large immediate changes may lead to extinction, but those "
                                                     "same changes may not cause extinction if applied gradually.");
-    ui->timeForGradualChangeInfoText->setInfoText("The unit of time is simulation ticks. "
+    ui->timeForGradualChangeInfoText->setInfoText("The time is measured by the simulation clock. "
                                                   "How long the change will take in real time depends on your computer's speed.");
 
 
@@ -108,7 +108,7 @@ EnvironmentDialog::EnvironmentDialog(QWidget *parent, long long elapsedTime) :
 
         QLocale addCommas(QLocale::English);
         QString timeRemainingNumber = addCommas.toString(g_environmentSettings->getTargetTime() - elapsedTime);
-        ui->timeRemainingLabel->setText("Time remaining in gradual change: " + timeRemainingNumber + " simulation ticks");
+        ui->timeRemainingLabel->setText("Time remaining in gradual change: " + timeRemainingNumber);
     }
     else
     {
